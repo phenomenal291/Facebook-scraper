@@ -151,91 +151,81 @@ def scrape_facebook_posts(driver, keyword, max_posts=50):
             if text and text not in posts:
                 logging.info("just scraped a post!")  
             else:
-                continue
+                scroll_attempts = 0
+                
+            if time.time() > timeout:
+                self.logger.warning("Scrolling timed out")
+                break
 
-            # Hover over the <span> element and extract a link
-            old_url = driver.current_url
-            link = None
-            try:
-                span_elem = elem.find_element(By.CSS_SELECTOR, "span.html-span.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j")
-                span_elem.click()
-                driver.execute_script("arguments[0].click();", span_elem)
-                # Wait until the URL changes or a specific element loads on the new page
-                WebDriverWait(driver, 10).until(lambda d: d.current_url != old_url)
-                link = driver.current_url
-                # Now go back to the previous page
-                driver.back()
-                # Optionally, wait until the page returns to the previous state
-                WebDriverWait(driver, 10).until(lambda d: d.current_url == old_url)
-            except Exception as e:
-                logging.debug(f"Could not hover or extract link from the span: {e}")
+            last_height = new_height
 
-            posts.append({"text": text, "link": link, "keyword": keyword})
+        self.logger.info(f"Scraped {len(posts)} posts for keyword '{keyword}'")
+        return posts
 
-        # Scroll down and check for new content
-        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(random.uniform(2, 5))
-        new_height = driver.execute_script("return document.body.scrollHeight")
+    @staticmethod
+    def save_to_excel(data, filename="facebook_posts.xlsx"):
+        """
+        Saves scraped post data to an Excel file with plain text formatting.
+        
+        Args:
+            data: List of post dictionaries
+            filename: Output Excel file name
+        """
+        df = pd.DataFrame(data)
+        df.rename(columns={'text': 'Post Content', 'link': 'Link', 'keyword': 'Keyword'}, inplace=True)
+        
+        with pd.ExcelWriter(filename, engine='openpyxl') as writer:
+            df.to_excel(writer, sheet_name="Posts", index=False)
+            
+        logging.info(f"Data saved to {filename}")
 
-        if new_height == last_height:
-            scroll_attempts += 1
-            logging.info(f"No new content loaded. Scroll attempts: {scroll_attempts}")
-        else:
-            scroll_attempts = 0
+    def close(self):
+        """
+        Closes the browser and cleans up resources.
+        """
+        if self.driver:
+            self.driver.quit()
+        self.logger.info("Browser closed")
 
-        if time.time() > timeout:
-            logging.warning("Scrolling timed out.")
-            break
 
-        last_height = new_height
-
-    logging.info(f"Scraped {len(posts)} posts.")
-    return posts
-
-def save_to_excel(data, filename="facebook_posts.xlsx"):
+def main():
     """
-    Saves data to a excel file.
+    Main function that runs the Facebook scraper.
     """
-    # data.append("                     ")
-    # data.append("#####   #   #   #### ")
-    # data.append("#       ##  #   #   #")
-    # data.append("#####   # # #   #   #")
-    # data.append("#       #  ##   #   #")
-    # data.append("#####   #   #   #### ")
-    # data.append("                     ")
+    # Configuration
+    headless = True  # Run without showing browser window if True
+    proxy = None     # No proxy by default
+    max_posts = 20   # Number of posts to scrape per keyword
+    
+    # Initialize scraper
+    scraper = FacebookScraper(headless=headless, proxy=proxy)
+    
+    try:
+        # Login to Facebook
+        if not scraper.login():
+            logging.error("Login failed. Exiting.")
+            return
+            
+        # Load keywords from file
+        with open('keywords.txt', 'r', encoding='utf-8') as file:
+            keywords = [line.strip() for line in file if line.strip()]
+            
+        # Scrape posts for each keyword
+        all_posts = []
+        for keyword in keywords:
+            posts = scraper.scrape_posts(keyword, max_posts)
+            if posts:
+                all_posts.extend(posts)
+            else:
+                logging.info(f"No posts found for keyword: {keyword}")
+                
+        # Save results to Excel
+        FacebookScraper.save_to_excel(all_posts)
+        
+    finally:
+        # Always close the browser
+        scraper.close()
 
-    import openpyxl
-    df = pd.DataFrame(data)
-    df.rename(columns={'text': 'Post Content', 'link': 'Link', 'keyword': 'Keyword'}, inplace=True)
-    with pd.ExcelWriter(filename, engine='openpyxl') as writer:
-        df.to_excel(writer, sheet_name="Posts", index=False)
 
 if __name__ == "__main__":
-
-    headless = True
-    proxy = None
-    max_posts = 20
-
-    setup_logger()
-    driver = get_webdriver(headless=headless, proxy=proxy)
-    if not facebook_login_with_cookies(driver):
-        logging.error("Login failed. Exiting.")
-        driver.quit()
-        exit()
-    with open('keywords.txt', 'r', encoding='utf-8') as file:
-        keywords = [line.strip() for line in file if line.strip()]
-    all_posts=[]
-    for keyword in keywords:
-        posts = scrape_facebook_posts(driver, keyword, max_posts)
-        if posts:
-            all_posts.extend(posts)
-        else:
-            logging.info(f"No posts found for: {keyword}")
-    if all_posts:
-        save_to_excel(all_posts)
-    else:
-        save_to_excel([])
-    # from time import sleep
-    # sleep(5)
-    
-    driver.quit()
+    main()

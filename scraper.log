@@ -418,3 +418,161 @@
 2025-02-24 12:44:20,666 - INFO - just scraped a post!
 2025-02-24 12:44:35,503 - INFO - No new content loaded. Scroll attempts: 1
 2025-02-24 12:44:35,504 - INFO - Scraped 20 posts.
+2025-02-28 10:20:23,667 - INFO - Facebook scraper initialized
+2025-02-28 10:20:23,668 - INFO - Logging into Facebook...
+2025-02-28 10:20:24,777 - INFO - Cookies loaded from facebook_cookies.json
+2025-02-28 10:20:30,221 - INFO - Login successful
+2025-02-28 10:20:41,730 - INFO - Post found!
+2025-02-28 10:20:43,697 - INFO - Post found!
+2025-02-28 10:20:44,002 - INFO - Post found!
+2025-02-28 10:20:44,250 - INFO - Post found!
+2025-02-28 10:20:44,510 - INFO - Post found!
+2025-02-28 10:20:46,158 - INFO - Post found!
+2025-02-28 10:20:46,555 - INFO - Post found!
+2025-02-28 10:20:47,280 - INFO - Post found!
+2025-02-28 10:20:47,949 - INFO - Post found!
+2025-02-28 10:20:48,365 - INFO - Post found!
+2025-02-28 10:20:49,124 - INFO - Post found!
+2025-02-28 10:20:55,814 - INFO - Post found!
+2025-02-28 10:20:56,110 - INFO - Post found!
+2025-02-28 10:20:56,617 - INFO - Post found!
+2025-02-28 10:20:57,144 - INFO - Post found!
+2025-02-28 10:21:03,856 - INFO - Post found!
+2025-02-28 10:21:04,818 - INFO - Post found!
+2025-02-28 10:21:05,845 - INFO - Post found!
+2025-02-28 10:21:06,761 - INFO - Post found!
+2025-02-28 10:21:07,753 - INFO - Post found!
+2025-02-28 10:21:23,124 - INFO - Post found!
+2025-02-28 10:21:24,515 - INFO - Post found!
+2025-02-28 10:21:25,228 - INFO - Post found!
+2025-02-28 10:21:25,496 - INFO - Post found!
+2025-02-28 10:21:26,320 - INFO - Post found!
+2025-02-28 10:21:26,761 - INFO - Post found!
+2025-02-28 10:21:29,870 - INFO - Post found!
+2025-02-28 10:21:31,123 - INFO - Post found!
+2025-02-28 10:21:31,582 - INFO - Post found!
+2025-02-28 10:21:32,022 - INFO - Post found!
+2025-02-28 10:21:32,554 - INFO - Post found!
+2025-02-28 10:21:36,771 - INFO - Post found!
+2025-02-28 10:21:37,530 - INFO - Post found!
+2025-02-28 10:21:39,119 - INFO - Post found!
+2025-02-28 10:21:40,654 - INFO - Post found!
+2025-02-28 10:21:41,433 - INFO - Post found!
+2025-02-28 10:21:42,019 - INFO - Post found!
+2025-02-28 10:21:47,613 - INFO - Post found!
+2025-02-28 10:21:49,563 - INFO - Post found!
+2025-02-28 10:21:49,942 - INFO - Post found!
+2025-02-28 10:22:05,206 - INFO - Post found!
+2025-02-28 10:22:06,555 - INFO - Post found!
+2025-02-28 10:22:06,806 - INFO - Post found!
+2025-02-28 10:22:06,976 - INFO - Post found!
+2025-02-28 10:22:08,407 - INFO - Post found!
+2025-02-28 10:22:09,750 - INFO - Post found!
+2025-02-28 10:22:12,343 - INFO - Post found!
+2025-02-28 10:22:13,827 - INFO - Post found!
+2025-02-28 10:22:14,298 - INFO - Post found!
+2025-02-28 10:22:14,509 - INFO - Post found!
+2025-02-28 10:22:15,008 - INFO - Post found!
+2025-02-28 10:22:15,499 - INFO - Post found!
+2025-02-28 10:22:19,641 - INFO - Post found!
+2025-02-28 10:22:20,128 - INFO - Post found!
+2025-02-28 10:22:20,771 - INFO - Post found!
+2025-02-28 10:22:21,435 - INFO - Post found!
+2025-02-28 10:22:21,752 - INFO - Post found!
+2025-02-28 10:22:22,365 - INFO - Post found!
+2025-02-28 10:22:27,000 - INFO - Post found!
+2025-02-28 10:22:28,300 - INFO - Post found!
+2025-02-28 10:22:48,488 - INFO - Post found!
+2025-02-28 10:22:48,880 - INFO - Post found!
+2025-02-28 10:22:49,711 - INFO - Post found!
+2025-02-28 10:22:50,532 - INFO - Post found!
+2025-02-28 10:22:51,172 - INFO - Post found!
+2025-02-28 10:22:53,658 - INFO - Post found!
+2025-02-28 10:22:56,144 - INFO - Post found!
+2025-02-28 10:22:57,550 - INFO - Post found!
+2025-02-28 10:23:00,076 - INFO - Post found!
+2025-02-28 10:23:02,609 - INFO - Post found!
+2025-02-28 10:23:04,818 - INFO - Post found!
+2025-02-28 10:23:06,127 - INFO - Post found!
+2025-02-28 10:23:07,436 - INFO - Post found!
+2025-02-28 10:23:08,773 - INFO - Post found!
+2025-02-28 10:23:11,248 - INFO - Post found!
+2025-02-28 10:23:13,283 - INFO - Post found!
+2025-02-28 10:23:15,616 - INFO - Post found!
+2025-02-28 10:23:24,005 - INFO - Post found!
+2025-02-28 10:23:26,714 - INFO - Post found!
+2025-02-28 10:23:28,383 - INFO - Post found!
+2025-02-28 10:23:44,507 - INFO - Post found!
+2025-02-28 10:23:46,289 - INFO - Post found!
+2025-02-28 10:23:47,681 - INFO - Post found!
+2025-02-28 10:23:48,447 - INFO - Post found!
+2025-02-28 10:23:48,744 - INFO - Post found!
+2025-02-28 10:23:50,551 - INFO - Post found!
+2025-02-28 10:23:52,311 - INFO - Post found!
+2025-02-28 10:23:53,632 - INFO - Post found!
+2025-02-28 10:23:58,777 - INFO - Post found!
+2025-02-28 10:24:02,377 - INFO - Post found!
+2025-02-28 10:24:04,461 - INFO - Post found!
+2025-02-28 10:24:06,604 - INFO - Post found!
+2025-02-28 10:24:07,408 - INFO - Post found!
+2025-02-28 10:24:14,639 - INFO - Post found!
+2025-02-28 10:24:15,399 - INFO - Post found!
+2025-02-28 10:24:17,460 - INFO - Post found!
+2025-02-28 10:24:20,513 - INFO - Post found!
+2025-02-28 10:24:29,478 - INFO - Post found!
+2025-02-28 10:24:30,388 - INFO - Post found!
+2025-02-28 10:24:31,392 - INFO - Post found!
+2025-02-28 10:24:37,978 - INFO - Data saved to facebook_posts.xlsx
+2025-02-28 10:24:40,364 - INFO - Browser closed
+2025-02-28 13:26:04,093 - INFO - Facebook scraper initialized
+2025-02-28 13:26:04,093 - INFO - Logging into Facebook...
+2025-02-28 13:26:05,112 - INFO - Cookies loaded from facebook_cookies.json
+2025-02-28 13:26:14,517 - INFO - Login successful
+2025-02-28 13:26:26,012 - INFO - Post found!
+2025-02-28 13:26:27,745 - INFO - Post found!
+2025-02-28 13:26:27,967 - INFO - Post found!
+2025-02-28 13:26:29,217 - INFO - Post found!
+2025-02-28 13:26:29,444 - INFO - Post found!
+2025-02-28 13:26:29,905 - INFO - Post found!
+2025-02-28 13:26:30,122 - INFO - Post found!
+2025-02-28 13:26:31,568 - INFO - Post found!
+2025-02-28 13:26:32,025 - INFO - Post found!
+2025-02-28 13:26:32,378 - INFO - Post found!
+2025-02-28 13:26:37,365 - INFO - Post found!
+2025-02-28 13:26:37,924 - INFO - Post found!
+2025-02-28 13:26:38,784 - INFO - Post found!
+2025-02-28 13:26:40,366 - INFO - Post found!
+2025-02-28 13:26:40,914 - INFO - Post found!
+2025-02-28 13:26:47,699 - INFO - Post found!
+2025-02-28 13:26:48,245 - INFO - Post found!
+2025-02-28 13:26:49,007 - INFO - Post found!
+2025-02-28 13:26:50,587 - INFO - Post found!
+2025-02-28 13:26:51,131 - INFO - Post found!
+2025-02-28 13:26:55,109 - INFO - Data saved to facebook_posts.xlsx
+2025-02-28 13:26:57,362 - INFO - Browser closed
+2025-02-28 13:36:37,141 - INFO - Facebook scraper initialized
+2025-02-28 13:36:37,142 - INFO - Logging into Facebook...
+2025-02-28 13:36:38,039 - INFO - Cookies loaded from facebook_cookies.json
+2025-02-28 13:36:43,427 - INFO - Login successful
+2025-02-28 13:36:54,993 - INFO - Post found!
+2025-02-28 13:36:56,832 - INFO - Post found!
+2025-02-28 13:36:57,064 - INFO - Post found!
+2025-02-28 13:36:58,258 - INFO - Post found!
+2025-02-28 13:36:59,483 - INFO - Post found!
+2025-02-28 13:36:59,893 - INFO - Post found!
+2025-02-28 13:37:00,089 - INFO - Post found!
+2025-02-28 13:37:00,650 - INFO - Post found!
+2025-02-28 13:37:01,195 - INFO - Post found!
+2025-02-28 13:37:01,612 - INFO - Post found!
+2025-02-28 13:37:07,019 - INFO - Post found!
+2025-02-28 13:37:07,520 - INFO - Post found!
+2025-02-28 13:37:08,272 - INFO - Post found!
+2025-02-28 13:37:09,818 - INFO - Post found!
+2025-02-28 13:37:10,304 - INFO - Post found!
+2025-02-28 13:37:16,274 - INFO - Post found!
+2025-02-28 13:37:16,854 - INFO - Post found!
+2025-02-28 13:37:18,488 - INFO - Post found!
+2025-02-28 13:37:19,002 - INFO - Post found!
+2025-02-28 13:37:19,788 - INFO - Post found!
+2025-02-28 13:37:24,085 - INFO - Data saved to facebook_posts.xlsx
+2025-02-28 13:37:26,310 - INFO - Browser closed
