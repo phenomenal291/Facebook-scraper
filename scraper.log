@@ -1,0 +1,420 @@
+2025-02-10 21:02:02,447 - INFO - ====== WebDriver manager ======
+2025-02-10 21:02:03,369 - INFO - Get LATEST chromedriver version for google-chrome
+2025-02-10 21:02:04,236 - INFO - Get LATEST chromedriver version for google-chrome
+2025-02-10 21:02:05,121 - INFO - There is no [win64] chromedriver "133.0.6943.53" for browser google-chrome "133.0.6943" in cache
+2025-02-10 21:02:05,121 - INFO - Get LATEST chromedriver version for google-chrome
+2025-02-10 21:02:06,297 - INFO - WebDriver version 133.0.6943.53 selected
+2025-02-10 21:02:06,301 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.53/win32/chromedriver-win32.zip
+2025-02-10 21:02:06,301 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.53/win32/chromedriver-win32.zip
+2025-02-10 21:02:06,520 - INFO - Driver downloading response is 200
+2025-02-10 21:02:07,614 - INFO - Get LATEST chromedriver version for google-chrome
+2025-02-10 21:02:08,818 - INFO - Driver has been saved in cache [C:\Users\Tan\.wdm\drivers\chromedriver\win64\133.0.6943.53]
+2025-02-10 21:02:11,226 - ERROR - Cookie file facebook_cookies.json not found.
+2025-02-10 21:06:56,357 - INFO - ====== WebDriver manager ======
+2025-02-10 21:06:57,043 - INFO - Get LATEST chromedriver version for google-chrome
+2025-02-10 21:06:58,044 - INFO - Get LATEST chromedriver version for google-chrome
+2025-02-10 21:06:58,824 - INFO - Driver [C:\Users\Tan\.wdm\drivers\chromedriver\win64\133.0.6943.53\chromedriver-win32/chromedriver.exe] found in cache
+2025-02-21 10:17:22,404 - INFO - No CAPTCHA detected.
+2025-02-21 10:17:27,409 - INFO - just scraped a post!
+2025-02-21 10:17:30,992 - INFO - Scraped 1 posts.
+2025-02-21 10:48:58,701 - INFO - No CAPTCHA detected.
+2025-02-21 10:48:59,946 - INFO - just scraped a post!
+2025-02-21 10:49:03,111 - INFO - Scraped 1 posts.
+2025-02-21 11:01:37,906 - INFO - No CAPTCHA detected.
+2025-02-21 11:01:38,889 - INFO - just scraped a post!
+2025-02-21 11:01:41,100 - INFO - Scraped 1 posts.
+2025-02-21 11:05:38,916 - INFO - No CAPTCHA detected.
+2025-02-21 11:05:40,008 - INFO - just scraped a post!
+2025-02-21 11:05:42,880 - INFO - Scraped 1 posts.
+2025-02-21 11:06:13,916 - INFO - No CAPTCHA detected.
+2025-02-21 11:06:14,342 - INFO - just scraped a post!
+2025-02-21 11:06:17,930 - INFO - Scraped 1 posts.
+2025-02-21 11:07:25,732 - INFO - No CAPTCHA detected.
+2025-02-21 11:07:27,734 - INFO - just scraped a post!
+2025-02-21 11:07:32,430 - INFO - Scraped 1 posts.
+2025-02-21 11:08:25,391 - INFO - No CAPTCHA detected.
+2025-02-21 11:08:26,450 - INFO - just scraped a post!
+2025-02-21 11:08:31,155 - INFO - No new content loaded. Scroll attempts: 1
+2025-02-21 11:08:31,156 - INFO - Scraped 1 posts.
+2025-02-21 11:09:09,184 - INFO - No CAPTCHA detected.
+2025-02-21 11:09:10,240 - INFO - just scraped a post!
+2025-02-21 11:09:14,483 - INFO - Scraped 1 posts.
+2025-02-21 11:09:52,506 - INFO - No CAPTCHA detected.
+2025-02-21 11:09:54,633 - INFO - just scraped a post!
+2025-02-21 11:09:58,104 - INFO - Scraped 1 posts.
+2025-02-21 11:23:50,820 - INFO - No CAPTCHA detected.
+2025-02-21 11:25:03,305 - INFO - No new content loaded. Scroll attempts: 1
+2025-02-21 11:25:06,181 - INFO - No new content loaded. Scroll attempts: 2
+2025-02-21 11:25:09,278 - INFO - No new content loaded. Scroll attempts: 3
+2025-02-21 11:25:12,913 - INFO - No new content loaded. Scroll attempts: 4
+2025-02-21 11:25:17,606 - INFO - No new content loaded. Scroll attempts: 5
+2025-02-21 11:25:17,607 - INFO - Scraped 0 posts.
+2025-02-21 11:25:48,375 - INFO - No CAPTCHA detected.
+2025-02-21 11:25:51,480 - INFO - No new content loaded. Scroll attempts: 1
+2025-02-21 11:25:55,528 - INFO - No new content loaded. Scroll attempts: 2
+2025-02-21 11:25:59,897 - INFO - No new content loaded. Scroll attempts: 3
+2025-02-21 11:26:02,281 - INFO - No new content loaded. Scroll attempts: 4
+2025-02-21 11:26:06,552 - INFO - No new content loaded. Scroll attempts: 5
+2025-02-21 11:26:06,553 - INFO - Scraped 0 posts.
+2025-02-21 11:30:36,945 - INFO - No CAPTCHA detected.
+2025-02-21 11:31:34,606 - INFO - No new content loaded. Scroll attempts: 1
+2025-02-21 11:31:40,729 - INFO - No new content loaded. Scroll attempts: 2
+2025-02-21 11:31:46,788 - INFO - No new content loaded. Scroll attempts: 3
+2025-02-21 11:31:52,807 - INFO - No new content loaded. Scroll attempts: 4
+2025-02-21 11:31:56,080 - INFO - No new content loaded. Scroll attempts: 5
+2025-02-21 11:31:56,081 - INFO - Scraped 0 posts.
+2025-02-21 11:32:25,036 - INFO - No CAPTCHA detected.
+2025-02-21 11:34:26,013 - INFO - No new content loaded. Scroll attempts: 1
+2025-02-21 11:34:26,014 - WARNING - Scrolling timed out.
+2025-02-21 11:34:26,015 - INFO - Scraped 0 posts.
+2025-02-21 11:35:43,491 - INFO - No CAPTCHA detected.
+2025-02-21 11:35:44,777 - INFO - just scraped a post!
+2025-02-21 11:35:47,564 - INFO - Scraped 1 posts.
+2025-02-21 11:36:12,020 - INFO - No CAPTCHA detected.
+2025-02-21 11:36:13,262 - INFO - just scraped a post!
+2025-02-21 11:36:17,869 - INFO - Scraped 1 posts.
+2025-02-21 11:38:29,628 - INFO - No CAPTCHA detected.
+2025-02-21 11:41:13,190 - INFO - No CAPTCHA detected.
+2025-02-21 11:41:14,425 - INFO - just scraped a post!
+2025-02-21 11:41:18,425 - INFO - Scraped 1 posts.
+2025-02-21 11:41:44,248 - INFO - No CAPTCHA detected.
+2025-02-21 11:41:46,409 - INFO - just scraped a post!
+2025-02-21 11:41:49,446 - INFO - Scraped 1 posts.
+2025-02-21 12:54:29,736 - INFO - No CAPTCHA detected.
+2025-02-21 12:54:30,992 - INFO - just scraped a post!
+2025-02-21 12:54:35,413 - INFO - just scraped a post!
+2025-02-21 12:54:36,532 - INFO - just scraped a post!
+2025-02-21 12:54:37,691 - INFO - just scraped a post!
+2025-02-21 12:54:38,810 - INFO - just scraped a post!
+2025-02-21 12:54:43,660 - INFO - just scraped a post!
+2025-02-21 12:54:44,762 - INFO - just scraped a post!
+2025-02-21 12:54:45,863 - INFO - just scraped a post!
+2025-02-21 12:54:50,731 - INFO - just scraped a post!
+2025-02-21 12:54:51,850 - INFO - just scraped a post!
+2025-02-21 12:54:55,642 - INFO - Scraped 10 posts.
+2025-02-21 13:18:07,190 - INFO - No CAPTCHA detected.
+2025-02-21 13:18:11,870 - INFO - Scraped 1 posts.
+2025-02-21 13:22:40,951 - INFO - No CAPTCHA detected.
+2025-02-21 13:22:42,195 - INFO - just scraped a post!
+2025-02-21 13:22:46,520 - INFO - Scraped 1 posts.
+2025-02-21 13:35:33,687 - INFO - No CAPTCHA detected.
+2025-02-21 13:35:34,928 - INFO - just scraped a post!
+2025-02-21 13:35:38,720 - INFO - Scraped 1 posts.
+2025-02-21 13:36:16,141 - INFO - No CAPTCHA detected.
+2025-02-21 13:36:18,380 - INFO - just scraped a post!
+2025-02-21 13:36:23,252 - INFO - Scraped 1 posts.
+2025-02-21 13:36:47,505 - INFO - No CAPTCHA detected.
+2025-02-21 13:36:48,649 - INFO - just scraped a post!
+2025-02-21 13:36:52,579 - INFO - Scraped 1 posts.
+2025-02-21 13:38:59,412 - INFO - No CAPTCHA detected.
+2025-02-21 13:39:00,658 - INFO - just scraped a post!
+2025-02-21 13:39:03,796 - INFO - Scraped 1 posts.
+2025-02-21 13:44:50,473 - INFO - No CAPTCHA detected.
+2025-02-21 13:44:51,699 - INFO - just scraped a post!
+2025-02-21 13:44:54,720 - INFO - Scraped 1 posts.
+2025-02-21 13:45:54,708 - INFO - No CAPTCHA detected.
+2025-02-21 13:45:55,932 - INFO - just scraped a post!
+2025-02-21 13:45:57,336 - INFO - just scraped a post!
+2025-02-21 13:45:59,096 - INFO - just scraped a post!
+2025-02-21 13:46:00,826 - INFO - just scraped a post!
+2025-02-21 13:46:05,102 - INFO - just scraped a post!
+2025-02-21 13:46:06,340 - INFO - just scraped a post!
+2025-02-21 13:46:07,152 - INFO - just scraped a post!
+2025-02-21 13:46:07,831 - INFO - just scraped a post!
+2025-02-21 13:46:09,705 - INFO - just scraped a post!
+2025-02-21 13:46:11,732 - INFO - just scraped a post!
+2025-02-21 13:46:15,746 - INFO - Scraped 10 posts.
+2025-02-21 13:47:25,219 - INFO - No CAPTCHA detected.
+2025-02-21 13:47:26,369 - INFO - just scraped a post!
+2025-02-21 13:47:27,761 - INFO - just scraped a post!
+2025-02-21 13:47:29,588 - INFO - just scraped a post!
+2025-02-21 13:47:31,299 - INFO - just scraped a post!
+2025-02-21 13:47:34,810 - INFO - just scraped a post!
+2025-02-21 13:47:36,053 - INFO - just scraped a post!
+2025-02-21 13:47:37,070 - INFO - just scraped a post!
+2025-02-21 13:47:38,037 - INFO - just scraped a post!
+2025-02-21 13:47:40,044 - INFO - just scraped a post!
+2025-02-21 13:47:42,152 - INFO - just scraped a post!
+2025-02-21 13:47:46,234 - INFO - Scraped 10 posts.
+2025-02-21 13:52:41,010 - INFO - No CAPTCHA detected.
+2025-02-21 13:52:45,055 - INFO - No new content loaded. Scroll attempts: 1
+2025-02-21 13:52:49,349 - INFO - No new content loaded. Scroll attempts: 2
+2025-02-21 13:52:51,912 - INFO - No new content loaded. Scroll attempts: 3
+2025-02-21 13:52:54,588 - INFO - No new content loaded. Scroll attempts: 4
+2025-02-21 13:52:57,762 - INFO - No new content loaded. Scroll attempts: 5
+2025-02-21 13:52:57,762 - INFO - Scraped 0 posts.
+2025-02-21 13:53:08,543 - INFO - No CAPTCHA detected.
+2025-02-21 13:53:12,991 - INFO - just scraped a post!
+2025-02-21 13:53:17,016 - INFO - No new content loaded. Scroll attempts: 1
+2025-02-21 13:53:17,109 - INFO - just scraped a post!
+2025-02-21 13:53:20,365 - INFO - No new content loaded. Scroll attempts: 2
+2025-02-21 13:53:20,459 - INFO - just scraped a post!
+2025-02-21 13:54:03,561 - INFO - No CAPTCHA detected.
+2025-02-21 13:54:04,741 - INFO - just scraped a post!
+2025-02-21 13:54:06,170 - INFO - just scraped a post!
+2025-02-21 13:54:07,903 - INFO - just scraped a post!
+2025-02-21 13:54:09,610 - INFO - just scraped a post!
+2025-02-21 13:54:14,622 - INFO - just scraped a post!
+2025-02-21 13:54:15,868 - INFO - just scraped a post!
+2025-02-21 13:54:16,609 - INFO - just scraped a post!
+2025-02-21 13:54:17,336 - INFO - just scraped a post!
+2025-02-21 13:54:19,249 - INFO - just scraped a post!
+2025-02-21 13:54:21,204 - INFO - just scraped a post!
+2025-02-21 13:54:26,924 - INFO - Scraped 10 posts.
+2025-02-21 13:54:33,989 - INFO - No CAPTCHA detected.
+2025-02-21 13:55:53,871 - INFO - No CAPTCHA detected.
+2025-02-21 13:55:55,062 - INFO - just scraped a post!
+2025-02-21 13:55:56,518 - INFO - just scraped a post!
+2025-02-21 13:55:58,240 - INFO - just scraped a post!
+2025-02-21 13:55:59,895 - INFO - just scraped a post!
+2025-02-21 13:56:04,438 - INFO - just scraped a post!
+2025-02-21 13:56:05,707 - INFO - just scraped a post!
+2025-02-21 13:56:06,403 - INFO - just scraped a post!
+2025-02-21 13:56:07,183 - INFO - just scraped a post!
+2025-02-21 13:56:09,057 - INFO - just scraped a post!
+2025-02-21 13:56:11,084 - INFO - just scraped a post!
+2025-02-21 13:56:15,940 - INFO - Scraped 10 posts.
+2025-02-21 13:56:27,320 - INFO - No CAPTCHA detected.
+2025-02-21 13:56:27,443 - INFO - just scraped a post!
+2025-02-21 13:57:49,377 - INFO - No CAPTCHA detected.
+2025-02-21 13:57:50,601 - INFO - just scraped a post!
+2025-02-21 13:57:52,073 - INFO - just scraped a post!
+2025-02-21 13:57:53,856 - INFO - just scraped a post!
+2025-02-21 13:57:55,492 - INFO - just scraped a post!
+2025-02-21 13:57:59,044 - INFO - just scraped a post!
+2025-02-21 13:58:00,251 - INFO - just scraped a post!
+2025-02-21 13:58:01,090 - INFO - just scraped a post!
+2025-02-21 13:58:01,915 - INFO - just scraped a post!
+2025-02-21 13:58:03,806 - INFO - just scraped a post!
+2025-02-21 13:58:05,802 - INFO - just scraped a post!
+2025-02-21 13:58:09,366 - INFO - Scraped 10 posts.
+2025-02-21 13:58:20,539 - INFO - No CAPTCHA detected.
+2025-02-21 13:58:21,686 - INFO - just scraped a post!
+2025-02-21 13:58:22,563 - INFO - just scraped a post!
+2025-02-21 13:58:27,213 - INFO - just scraped a post!
+2025-02-21 13:58:28,420 - INFO - just scraped a post!
+2025-02-21 13:58:33,407 - INFO - No new content loaded. Scroll attempts: 1
+2025-02-21 13:58:33,518 - INFO - just scraped a post!
+2025-02-21 13:58:34,728 - INFO - just scraped a post!
+2025-02-21 13:58:38,981 - INFO - No new content loaded. Scroll attempts: 2
+2025-02-21 13:58:39,097 - INFO - just scraped a post!
+2025-02-21 13:58:40,361 - INFO - just scraped a post!
+2025-02-21 13:58:44,585 - INFO - No new content loaded. Scroll attempts: 3
+2025-02-21 13:58:44,690 - INFO - just scraped a post!
+2025-02-21 13:58:45,902 - INFO - just scraped a post!
+2025-02-21 13:58:50,859 - INFO - No new content loaded. Scroll attempts: 4
+2025-02-21 13:58:50,860 - INFO - Scraped 10 posts.
+2025-02-21 13:58:57,795 - INFO - No CAPTCHA detected.
+2025-02-21 14:00:09,003 - INFO - No CAPTCHA detected.
+2025-02-21 14:00:09,123 - INFO - just scraped a post!
+2025-02-21 14:00:13,720 - INFO - Scraped 1 posts.
+2025-02-21 14:00:24,734 - INFO - No CAPTCHA detected.
+2025-02-21 14:00:24,845 - INFO - just scraped a post!
+2025-02-21 14:00:29,997 - INFO - Scraped 1 posts.
+2025-02-21 14:00:40,519 - INFO - No CAPTCHA detected.
+2025-02-21 14:00:40,656 - INFO - just scraped a post!
+2025-02-21 14:00:46,462 - INFO - No new content loaded. Scroll attempts: 1
+2025-02-21 14:00:46,464 - INFO - Scraped 1 posts.
+2025-02-21 14:00:56,902 - INFO - No CAPTCHA detected.
+2025-02-21 14:00:56,991 - INFO - just scraped a post!
+2025-02-21 14:01:36,932 - INFO - No CAPTCHA detected.
+2025-02-21 14:01:38,156 - INFO - just scraped a post!
+2025-02-21 14:01:41,639 - INFO - Scraped 1 posts.
+2025-02-21 14:01:52,867 - INFO - No CAPTCHA detected.
+2025-02-21 14:01:54,008 - INFO - just scraped a post!
+2025-02-21 14:01:57,109 - INFO - Scraped 1 posts.
+2025-02-21 14:02:07,729 - INFO - No CAPTCHA detected.
+2025-02-21 14:02:08,853 - INFO - just scraped a post!
+2025-02-21 14:02:12,297 - INFO - Scraped 1 posts.
+2025-02-21 14:02:22,918 - INFO - No CAPTCHA detected.
+2025-02-21 14:02:24,072 - INFO - just scraped a post!
+2025-02-21 14:02:28,439 - INFO - Scraped 1 posts.
+2025-02-21 14:02:39,081 - INFO - No CAPTCHA detected.
+2025-02-21 14:02:40,221 - INFO - just scraped a post!
+2025-02-21 14:02:43,762 - INFO - Scraped 1 posts.
+2025-02-21 14:02:54,445 - INFO - No CAPTCHA detected.
+2025-02-21 14:02:55,597 - INFO - just scraped a post!
+2025-02-21 14:03:01,069 - INFO - Scraped 1 posts.
+2025-02-21 14:03:11,701 - INFO - No CAPTCHA detected.
+2025-02-21 14:03:15,446 - INFO - just scraped a post!
+2025-02-21 14:03:20,947 - INFO - Scraped 1 posts.
+2025-02-21 14:10:55,453 - INFO - No CAPTCHA detected.
+2025-02-21 14:10:56,709 - INFO - just scraped a post!
+2025-02-21 14:11:01,924 - INFO - Scraped 1 posts.
+2025-02-21 14:11:12,574 - INFO - No CAPTCHA detected.
+2025-02-21 14:11:13,720 - INFO - just scraped a post!
+2025-02-21 14:11:18,415 - INFO - Scraped 1 posts.
+2025-02-21 14:11:29,104 - INFO - No CAPTCHA detected.
+2025-02-21 14:11:30,250 - INFO - just scraped a post!
+2025-02-21 14:11:35,521 - INFO - Scraped 1 posts.
+2025-02-21 14:11:46,224 - INFO - No CAPTCHA detected.
+2025-02-21 14:11:46,329 - INFO - just scraped a post!
+2025-02-21 14:11:49,232 - INFO - Scraped 1 posts.
+2025-02-21 14:11:59,787 - INFO - No CAPTCHA detected.
+2025-02-21 14:12:00,934 - INFO - just scraped a post!
+2025-02-21 14:12:05,822 - INFO - Scraped 1 posts.
+2025-02-21 14:12:16,523 - INFO - No CAPTCHA detected.
+2025-02-21 14:12:17,693 - INFO - just scraped a post!
+2025-02-21 14:12:22,330 - INFO - Scraped 1 posts.
+2025-02-21 14:12:32,963 - INFO - No CAPTCHA detected.
+2025-02-21 14:12:34,280 - INFO - just scraped a post!
+2025-02-21 14:12:37,423 - INFO - Scraped 1 posts.
+2025-02-21 14:15:51,495 - INFO - No CAPTCHA detected.
+2025-02-21 14:15:52,643 - INFO - just scraped a post!
+2025-02-21 14:15:57,088 - INFO - Scraped 1 posts.
+2025-02-21 14:16:07,599 - INFO - No CAPTCHA detected.
+2025-02-21 14:16:08,704 - INFO - just scraped a post!
+2025-02-21 14:16:13,122 - INFO - Scraped 1 posts.
+2025-02-21 14:16:23,676 - INFO - No CAPTCHA detected.
+2025-02-21 14:16:24,761 - INFO - just scraped a post!
+2025-02-21 14:16:27,591 - INFO - Scraped 1 posts.
+2025-02-21 14:16:38,106 - INFO - No CAPTCHA detected.
+2025-02-21 14:16:39,182 - INFO - just scraped a post!
+2025-02-21 14:16:43,843 - INFO - Scraped 1 posts.
+2025-02-21 14:16:54,321 - INFO - No CAPTCHA detected.
+2025-02-21 14:16:55,405 - INFO - just scraped a post!
+2025-02-21 14:17:00,809 - INFO - Scraped 1 posts.
+2025-02-21 14:17:11,420 - INFO - No CAPTCHA detected.
+2025-02-21 14:17:12,521 - INFO - just scraped a post!
+2025-02-21 14:17:17,553 - INFO - Scraped 1 posts.
+2025-02-21 14:17:28,151 - INFO - No CAPTCHA detected.
+2025-02-21 14:17:29,300 - INFO - just scraped a post!
+2025-02-21 14:17:32,223 - INFO - Scraped 1 posts.
+2025-02-21 14:18:43,871 - INFO - No CAPTCHA detected.
+2025-02-21 14:18:45,036 - INFO - just scraped a post!
+2025-02-21 14:18:46,363 - INFO - just scraped a post!
+2025-02-21 14:18:48,094 - INFO - just scraped a post!
+2025-02-21 14:18:51,249 - INFO - just scraped a post!
+2025-02-21 14:18:52,457 - INFO - just scraped a post!
+2025-02-21 14:18:55,693 - INFO - Scraped 5 posts.
+2025-02-21 14:19:06,209 - INFO - No CAPTCHA detected.
+2025-02-21 14:19:07,292 - INFO - just scraped a post!
+2025-02-21 14:19:08,568 - INFO - just scraped a post!
+2025-02-21 14:19:09,197 - INFO - just scraped a post!
+2025-02-21 14:19:09,542 - INFO - just scraped a post!
+2025-02-21 14:19:09,979 - INFO - just scraped a post!
+2025-02-21 14:19:12,491 - INFO - Scraped 5 posts.
+2025-02-21 14:19:23,038 - INFO - No CAPTCHA detected.
+2025-02-21 14:19:24,124 - INFO - just scraped a post!
+2025-02-21 14:19:24,310 - INFO - just scraped a post!
+2025-02-21 14:19:25,551 - INFO - just scraped a post!
+2025-02-21 14:19:25,902 - INFO - just scraped a post!
+2025-02-21 14:19:30,248 - INFO - just scraped a post!
+2025-02-21 14:19:34,929 - INFO - Scraped 5 posts.
+2025-02-21 14:19:45,460 - INFO - No CAPTCHA detected.
+2025-02-21 14:19:46,558 - INFO - just scraped a post!
+2025-02-21 14:19:47,260 - INFO - just scraped a post!
+2025-02-21 14:19:47,982 - INFO - just scraped a post!
+2025-02-21 14:19:52,330 - INFO - just scraped a post!
+2025-02-21 14:19:53,432 - INFO - just scraped a post!
+2025-02-21 14:19:56,431 - INFO - Scraped 5 posts.
+2025-02-21 14:20:06,914 - INFO - No CAPTCHA detected.
+2025-02-21 14:20:08,026 - INFO - just scraped a post!
+2025-02-21 14:20:09,901 - INFO - just scraped a post!
+2025-02-21 14:20:11,222 - INFO - just scraped a post!
+2025-02-21 14:20:12,955 - INFO - just scraped a post!
+2025-02-21 14:20:14,717 - INFO - just scraped a post!
+2025-02-21 14:20:17,644 - INFO - Scraped 5 posts.
+2025-02-21 14:20:28,221 - INFO - No CAPTCHA detected.
+2025-02-21 14:20:29,305 - INFO - just scraped a post!
+2025-02-21 14:20:31,060 - INFO - just scraped a post!
+2025-02-21 14:20:32,844 - INFO - just scraped a post!
+2025-02-21 14:20:33,587 - INFO - just scraped a post!
+2025-02-21 14:20:35,315 - INFO - just scraped a post!
+2025-02-21 14:20:40,221 - INFO - Scraped 5 posts.
+2025-02-21 14:20:51,127 - INFO - No CAPTCHA detected.
+2025-02-21 14:20:52,637 - INFO - just scraped a post!
+2025-02-21 14:20:53,696 - INFO - just scraped a post!
+2025-02-21 14:20:58,593 - INFO - just scraped a post!
+2025-02-21 14:21:00,019 - INFO - just scraped a post!
+2025-02-21 14:21:02,203 - INFO - just scraped a post!
+2025-02-21 14:21:06,248 - INFO - Scraped 5 posts.
+2025-02-24 12:40:59,611 - INFO - No CAPTCHA detected.
+2025-02-24 12:41:00,954 - INFO - just scraped a post!
+2025-02-24 12:41:01,683 - INFO - just scraped a post!
+2025-02-24 12:41:03,814 - INFO - just scraped a post!
+2025-02-24 12:41:06,241 - INFO - just scraped a post!
+2025-02-24 12:41:07,753 - INFO - just scraped a post!
+2025-02-24 12:41:10,425 - INFO - just scraped a post!
+2025-02-24 12:41:12,076 - INFO - just scraped a post!
+2025-02-24 12:41:18,580 - INFO - just scraped a post!
+2025-02-24 12:41:19,949 - INFO - just scraped a post!
+2025-02-24 12:41:21,881 - INFO - just scraped a post!
+2025-02-24 12:41:23,100 - INFO - just scraped a post!
+2025-02-24 12:41:24,944 - INFO - just scraped a post!
+2025-02-24 12:41:26,769 - INFO - just scraped a post!
+2025-02-24 12:41:28,454 - INFO - just scraped a post!
+2025-02-24 12:41:30,220 - INFO - just scraped a post!
+2025-02-24 12:41:32,747 - INFO - just scraped a post!
+2025-02-24 12:41:34,494 - INFO - just scraped a post!
+2025-02-24 12:41:36,545 - INFO - just scraped a post!
+2025-02-24 12:41:42,515 - INFO - just scraped a post!
+2025-02-24 12:41:43,831 - INFO - just scraped a post!
+2025-02-24 12:41:49,866 - INFO - Scraped 20 posts.
+2025-02-24 12:42:00,817 - INFO - No CAPTCHA detected.
+2025-02-24 12:42:00,937 - INFO - just scraped a post!
+2025-02-24 12:42:02,579 - INFO - just scraped a post!
+2025-02-24 12:42:04,001 - INFO - just scraped a post!
+2025-02-24 12:42:05,113 - INFO - just scraped a post!
+2025-02-24 12:42:10,153 - INFO - just scraped a post!
+2025-02-24 12:42:11,382 - INFO - just scraped a post!
+2025-02-24 12:42:11,929 - INFO - just scraped a post!
+2025-02-24 12:42:12,242 - INFO - just scraped a post!
+2025-02-24 12:42:13,404 - INFO - just scraped a post!
+2025-02-24 12:42:14,129 - INFO - just scraped a post!
+2025-02-24 12:42:16,025 - INFO - just scraped a post!
+2025-02-24 12:42:16,691 - INFO - just scraped a post!
+2025-02-24 12:42:21,212 - INFO - just scraped a post!
+2025-02-24 12:42:22,775 - INFO - just scraped a post!
+2025-02-24 12:42:24,123 - INFO - just scraped a post!
+2025-02-24 12:42:25,816 - INFO - just scraped a post!
+2025-02-24 12:42:27,897 - INFO - just scraped a post!
+2025-02-24 12:42:29,674 - INFO - just scraped a post!
+2025-02-24 12:42:31,025 - INFO - just scraped a post!
+2025-02-24 12:42:32,796 - INFO - just scraped a post!
+2025-02-24 12:42:38,536 - INFO - Scraped 20 posts.
+2025-02-24 12:42:49,573 - INFO - No CAPTCHA detected.
+2025-02-24 12:42:49,703 - INFO - just scraped a post!
+2025-02-24 12:42:50,962 - INFO - just scraped a post!
+2025-02-24 12:42:51,864 - INFO - just scraped a post!
+2025-02-24 12:42:53,647 - INFO - just scraped a post!
+2025-02-24 12:42:56,664 - INFO - just scraped a post!
+2025-02-24 12:42:58,041 - INFO - just scraped a post!
+2025-02-24 12:42:59,580 - INFO - just scraped a post!
+2025-02-24 12:43:01,173 - INFO - just scraped a post!
+2025-02-24 12:43:02,684 - INFO - just scraped a post!
+2025-02-24 12:43:04,443 - INFO - just scraped a post!
+2025-02-24 12:43:05,962 - INFO - just scraped a post!
+2025-02-24 12:43:07,698 - INFO - just scraped a post!
+2025-02-24 12:43:14,028 - INFO - just scraped a post!
+2025-02-24 12:43:15,395 - INFO - just scraped a post!
+2025-02-24 12:43:17,089 - INFO - just scraped a post!
+2025-02-24 12:43:18,369 - INFO - just scraped a post!
+2025-02-24 12:43:19,754 - INFO - just scraped a post!
+2025-02-24 12:43:20,911 - INFO - just scraped a post!
+2025-02-24 12:43:21,878 - INFO - just scraped a post!
+2025-02-24 12:43:22,926 - INFO - just scraped a post!
+2025-02-24 12:43:28,825 - INFO - Scraped 20 posts.
+2025-02-24 12:43:39,452 - INFO - No CAPTCHA detected.
+2025-02-24 12:43:39,528 - INFO - just scraped a post!
+2025-02-24 12:43:39,877 - INFO - just scraped a post!
+2025-02-24 12:43:42,182 - INFO - just scraped a post!
+2025-02-24 12:43:46,801 - INFO - just scraped a post!
+2025-02-24 12:43:48,045 - INFO - just scraped a post!
+2025-02-24 12:43:48,777 - INFO - just scraped a post!
+2025-02-24 12:43:49,769 - INFO - just scraped a post!
+2025-02-24 12:43:50,695 - INFO - just scraped a post!
+2025-02-24 12:43:52,772 - INFO - just scraped a post!
+2025-02-24 12:43:53,686 - INFO - just scraped a post!
+2025-02-24 12:43:58,644 - INFO - just scraped a post!
+2025-02-24 12:43:59,830 - INFO - just scraped a post!
+2025-02-24 12:44:00,564 - INFO - just scraped a post!
+2025-02-24 12:44:01,560 - INFO - just scraped a post!
+2025-02-24 12:44:02,603 - INFO - just scraped a post!
+2025-02-24 12:44:03,411 - INFO - just scraped a post!
+2025-02-24 12:44:04,162 - INFO - just scraped a post!
+2025-02-24 12:44:06,896 - INFO - just scraped a post!
+2025-02-24 12:44:19,456 - INFO - just scraped a post!
+2025-02-24 12:44:20,666 - INFO - just scraped a post!
+2025-02-24 12:44:35,503 - INFO - No new content loaded. Scroll attempts: 1
+2025-02-24 12:44:35,504 - INFO - Scraped 20 posts.
