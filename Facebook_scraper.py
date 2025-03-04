@@ -13,6 +13,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 import os
 
+from utils import get_default_chrome_user_data_dir
+
 class FacebookScraperLogger:
     """
     Handles logging configuration for the Facebook scraper.
@@ -51,7 +53,7 @@ class BrowserManager:
         return random.choice(user_agents)
     
     @staticmethod
-    def create_browser(headless=False, proxy=None):
+    def create_browser(headless=False, proxy=None, user_data_dir = None, profile_name=None):
         """
         Creates and configures a Chrome browser instance.
         
@@ -71,6 +73,12 @@ class BrowserManager:
         options.add_argument("--mute-audio")
         options.add_argument("start-maximized")
         options.add_argument(f"user-agent={BrowserManager.get_random_user_agent()}")
+
+        if profile_name: # Use specified profile
+            if not user_data_dir:
+                user_data_dir = get_default_chrome_user_data_dir()
+            options.add_argument(f"user-data-dir={user_data_dir}")
+            options.add_argument(f'--profile-directory={profile_name}')
 
         # Configure proxy if provided
         if proxy:
@@ -92,7 +100,7 @@ class FacebookScraper:
     """
     Main class for scraping posts from Facebook based on keywords.
     """
-    def __init__(self, headless=True, proxy=None, cookies_file="facebook_cookies.json"):
+    def __init__(self, headless=True, proxy=None, cookies_file=None, user_data_dir=None, profile_name=None):
         """
         Initialize the Facebook scraper.
         
@@ -102,7 +110,7 @@ class FacebookScraper:
             cookies_file: Path to the file containing Facebook cookies
         """
         self.logger = FacebookScraperLogger.setup()
-        self.driver = BrowserManager.create_browser(headless, proxy)
+        self.driver = BrowserManager.create_browser(headless, proxy, user_data_dir, profile_name)
         self.cookies_file = cookies_file
         self.logger.info("Facebook scraper initialized")
     
@@ -143,7 +151,8 @@ class FacebookScraper:
         """
         self.logger.info("Logging into Facebook...")
         self.driver.get("https://www.facebook.com/")
-        self.load_cookies()
+        if self.cookies_file:
+            self.load_cookies()
         self.driver.refresh()
         time.sleep(5)
         
@@ -171,7 +180,7 @@ class FacebookScraper:
         # Search for the keyword
         try:
             search_box = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, "//input[@type='search' and contains(@aria-label, 'Tìm kiếm')]"))
+                EC.presence_of_element_located((By.XPATH, "//input[@type='search' and contains(@aria-label, 'Search Facebook')]"))
             )
             search_box.send_keys(Keys.CONTROL + "a")
             search_box.send_keys(Keys.DELETE)
@@ -206,7 +215,7 @@ class FacebookScraper:
 
                 # Try to expand truncated posts
                 try:
-                    xem_them_button = elem.find_element(By.XPATH, ".//div[contains(text(), 'Xem thêm')]")
+                    xem_them_button = elem.find_element(By.XPATH, ".//div[contains(text(), 'See more')]")
                     self.driver.execute_script("arguments[0].click();", xem_them_button)
                     wait = WebDriverWait(self.driver, 5)
                     wait.until(lambda d: 
@@ -303,12 +312,21 @@ def main():
     Main function that runs the Facebook scraper.
     """
     # Configuration
-    headless = True  # Run without showing browser window if True
+    headless = False  # Run without showing browser window if True
     proxy = None     # No proxy by default
+    cookies_file = None  # No cookies file by default
+    user_data_dir = None  # Use default Chrome user data directory
+    profile_name = "Profile 1"  # Use the specified Chrome profile
     max_posts = 20   # Number of posts to scrape per keyword
     
     # Initialize scraper
-    scraper = FacebookScraper(headless=headless, proxy=proxy)
+    scraper = FacebookScraper(
+        headless=headless, 
+        proxy=proxy, 
+        cookies_file=cookies_file,
+        user_data_dir=user_data_dir, 
+        profile_name=profile_name
+    )
     
     try:
         # Login to Facebook
