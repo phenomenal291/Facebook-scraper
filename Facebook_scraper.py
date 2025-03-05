@@ -176,9 +176,15 @@ class FacebookScraper:
             search_box.send_keys(Keys.CONTROL + "a")
             search_box.send_keys(Keys.DELETE)
             search_box.send_keys(keyword)
+            current_url = self.driver.current_url
             search_box.send_keys(Keys.RETURN)
-
-            time.sleep(5)
+            
+            WebDriverWait(self.driver, 15).until(
+                lambda driver: driver.current_url != current_url
+            )
+            WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, "div.x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z"))
+            )
             self.handle_captcha()
         except Exception as e:
             self.logger.error(f"Search failed: {str(e)}")
@@ -188,9 +194,8 @@ class FacebookScraper:
         posts = []
         last_height = self.driver.execute_script("return document.body.scrollHeight")
         scroll_attempts = 0
-        timeout = time.time() + 120
-        actions = ActionChains(self.driver)
-
+        timeout = time.time() + max_posts*5
+        
         while len(posts) < max_posts and scroll_attempts < 5:
             # Find post elements
             elements = self.driver.find_elements(By.CSS_SELECTOR, "div.x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z")
@@ -203,7 +208,10 @@ class FacebookScraper:
                 try:
                     xem_them_button = elem.find_element(By.XPATH, ".//div[contains(text(), 'Xem thêm')]")
                     self.driver.execute_script("arguments[0].click();", xem_them_button)
-                    time.sleep(1)
+                    wait = WebDriverWait(self.driver, 5)
+                    wait.until(lambda d: 
+                        len(elem.find_elements(By.XPATH, ".//div[contains(text(), 'Xem thêm')]")) == 0
+                    )
                 except Exception:
                     pass  # "See more" button not found, continuing
 
@@ -223,6 +231,7 @@ class FacebookScraper:
                         span_elem = elem.find_element(By.CSS_SELECTOR, "span.html-span.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j")
                         span_elem.click()
                         WebDriverWait(self.driver, 10).until(lambda d: d.current_url != old_url)
+                        WebDriverWait(self.driver, 10).until(lambda d: d.execute_script("return document.readyState") == "complete")
                         link = self.driver.current_url
                         self.driver.back()
                         WebDriverWait(self.driver, 10).until(lambda d: d.current_url == old_url)
@@ -235,7 +244,16 @@ class FacebookScraper:
 
             # Scroll to load more content
             self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(random.uniform(2, 5))
+            initial_count = len(self.driver.find_elements(By.CSS_SELECTOR, "div.x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z"))
+            initial_height = self.driver.execute_script("return document.body.scrollHeight")
+            wait = WebDriverWait(self.driver, 10)
+            try:
+                wait.until(lambda d: (
+                    d.execute_script("return document.body.scrollHeight") > initial_height or 
+                    len(d.find_elements(By.CSS_SELECTOR, "div.x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z")) > initial_count
+                ))
+            except:
+                time.sleep(1)
             new_height = self.driver.execute_script("return document.body.scrollHeight")
 
             # Check if we reached the end or timeout
