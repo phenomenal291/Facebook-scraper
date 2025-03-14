@@ -180,7 +180,7 @@ class FacebookScraper:
         # Search for the keyword
         try:
             search_box = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, "//input[@type='search' and contains(@aria-label, 'Search Facebook')]"))
+                EC.presence_of_element_located((By.XPATH, "//input[@type='search' and contains(@aria-label, 'Tìm kiếm')]"))
             )
             search_box.send_keys(Keys.CONTROL + "a")
             search_box.send_keys(Keys.DELETE)
@@ -215,7 +215,7 @@ class FacebookScraper:
 
                 # Try to expand truncated posts
                 try:
-                    xem_them_button = elem.find_element(By.XPATH, ".//div[contains(text(), 'See more')]")
+                    xem_them_button = elem.find_element(By.XPATH, ".//div[contains(text(), 'Xem thêm')]")
                     self.driver.execute_script("arguments[0].click();", xem_them_button)
                     wait = WebDriverWait(self.driver, 5)
                     wait.until(lambda d: 
@@ -233,21 +233,36 @@ class FacebookScraper:
                     
                     self.logger.info("Post found!")
                     
-                    # Try to extract post link
+                    # Try to extract post link, date, images/videos
                     old_url = self.driver.current_url
                     link = None
+                    post_date = None
+                    images = []
+                    videos = []
                     try:
                         span_elem = elem.find_element(By.CSS_SELECTOR, "span.html-span.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j")
+                        
+                        # extract date
+                        actions = ActionChains(self.driver)
+                        actions.move_to_element(span_elem).perform()
+                        date_tooltip = WebDriverWait(self.driver, 10).until(
+                            EC.presence_of_element_located((By.CSS_SELECTOR, "div.x11i5rnm.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x78zum5.xjpr12u.xr9ek0c.x3ieub6.x6s0dn4"))
+                        )
+                        post_date = date_tooltip.text.strip()
+
+                        # extract link/images/video
                         span_elem.click()
                         WebDriverWait(self.driver, 10).until(lambda d: d.current_url != old_url)
                         WebDriverWait(self.driver, 10).until(lambda d: d.execute_script("return document.readyState") == "complete")
                         link = self.driver.current_url
+
+                        # close current post
                         self.driver.back()
                         WebDriverWait(self.driver, 10).until(lambda d: d.current_url == old_url)
                     except Exception:
-                        self.logger.debug("Could not extract post link")
+                        self.logger.debug("Could not extract post link/date/images/videos")
 
-                    posts.append({"text": text, "link": link, "keyword": keyword})
+                    posts.append({"text": text, "link": link, "keyword": keyword, "date": post_date, "images": images, "videos": videos})
                 except Exception as e:
                     self.logger.debug(f"Could not extract post content: {str(e)}")
 
@@ -317,7 +332,7 @@ def main():
     cookies_file = None  # No cookies file by default
     user_data_dir = None  # Use default Chrome user data directory
     profile_name = "Profile 1"  # Use the specified Chrome profile
-    max_posts = 20   # Number of posts to scrape per keyword
+    max_posts = 1   # Number of posts to scrape per keyword
     
     # Initialize scraper
     scraper = FacebookScraper(
