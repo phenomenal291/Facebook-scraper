@@ -28,7 +28,7 @@ class FacebookScraperLogger:
             level=logging.INFO,
             format="%(asctime)s - %(levelname)s - %(message)s",
             handlers=[
-                logging.FileHandler("scraper.log"),
+                logging.FileHandler("scraper.log", encoding='utf-8'),
                 logging.StreamHandler()
             ]
         )
@@ -232,16 +232,22 @@ class FacebookScraper:
                         continue
                     
                     self.logger.info("Post found!")
+
+                    # extract images
+                    img_elements = elem.find_elements(By.CSS_SELECTOR, "div.x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z a[role='link'] img")
+                    images = [img.get_attribute("src") for img in img_elements if "emoji.php" not in img.get_attribute("src")]
                     
-                    # Try to extract post link, date, images/videos
+                    # extract videos
+                    video_elements = elem.find_elements(By.CSS_SELECTOR, "div.x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z a[role='link'] video")
+                    videos = [video.find_element(By.XPATH, "./ancestor::a").get_attribute("href") for video in video_elements]
+
+                    # Try to extract post link, date
                     old_url = self.driver.current_url
                     link = None
                     post_date = None
-                    images = []
-                    videos = []
                     try:
                         span_elem = elem.find_element(By.CSS_SELECTOR, "span.html-span.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j")
-                        
+                    
                         # extract date
                         actions = ActionChains(self.driver)
                         actions.move_to_element(span_elem).perform()
@@ -250,7 +256,7 @@ class FacebookScraper:
                         )
                         post_date = date_tooltip.text.strip()
 
-                        # extract link/images/video
+                        # extract link
                         span_elem.click()
                         WebDriverWait(self.driver, 10).until(lambda d: d.current_url != old_url)
                         WebDriverWait(self.driver, 10).until(lambda d: d.execute_script("return document.readyState") == "complete")
@@ -260,9 +266,9 @@ class FacebookScraper:
                         self.driver.back()
                         WebDriverWait(self.driver, 10).until(lambda d: d.current_url == old_url)
                     except Exception:
-                        self.logger.debug("Could not extract post link/date/images/videos")
+                        self.logger.debug("Could not extract post link/date")
 
-                    posts.append({"text": text, "link": link, "keyword": keyword, "date": post_date, "images": images, "videos": videos})
+                    posts.append({"text": text, "link": link, "date": post_date, "images": images, "videos": videos, "keyword": keyword})
                 except Exception as e:
                     self.logger.debug(f"Could not extract post content: {str(e)}")
 
@@ -332,7 +338,7 @@ def main():
     cookies_file = None  # No cookies file by default
     user_data_dir = None  # Use default Chrome user data directory
     profile_name = "Profile 1"  # Use the specified Chrome profile
-    max_posts = 1   # Number of posts to scrape per keyword
+    max_posts = 10   # Number of posts to scrape per keyword
     
     # Initialize scraper
     scraper = FacebookScraper(
