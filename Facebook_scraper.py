@@ -1,3 +1,5 @@
+import os
+import re
 import time
 import random
 import logging
@@ -11,7 +13,6 @@ from selenium.webdriver.common.proxy import Proxy, ProxyType
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
-import os
 
 from utils import get_default_chrome_user_data_dir
 
@@ -158,7 +159,7 @@ class FacebookScraper:
         
         # Check if we're still on the login page
         if "login" in self.driver.current_url:
-            self.logger.error("Login failed, still on login page")
+            self.logger.error("Login failed, still on login page. Please checking cookies file/profile browser.")
             return False
             
         self.logger.info("Login successful")
@@ -310,6 +311,11 @@ class FacebookScraper:
         return posts
 
     @staticmethod
+    def clean_text(text):
+        """Removes invalid characters"""
+        return re.sub(r'[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]', '', text) if isinstance(text, str) else text
+
+    @staticmethod
     def save_to_excel(data, filename="facebook_posts.xlsx"):
         """
         Saves scraped post data to an Excel file with plain text formatting.
@@ -318,13 +324,21 @@ class FacebookScraper:
             data: List of post dictionaries
             filename: Output Excel file name
         """
+        for post in data:
+            for key in post:
+                post[key] = FacebookScraper.clean_text(post[key])
+
         df = pd.DataFrame(data)
         df.rename(columns={'text': 'Post Content', 'link': 'Link', 'keyword': 'Keyword'}, inplace=True)
         
-        with pd.ExcelWriter(filename, engine='openpyxl') as writer:
-            df.to_excel(writer, sheet_name="Posts", index=False)
-            
-        logging.info(f"Data saved to {filename}")
+        try:
+            with pd.ExcelWriter(filename, engine='openpyxl') as writer:
+                df.to_excel(writer, sheet_name="Posts", index=False)
+
+            logging.info(f"Data saved to {filename}")
+
+        except Exception as e:
+            logging.error(f"Failed to save data to Excel: {e}")
 
     def close(self):
         """
