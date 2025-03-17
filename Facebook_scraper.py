@@ -356,9 +356,9 @@ def main():
     # Configuration
     headless = True  # Run without showing browser window if True
     proxy = None     # No proxy by default
-    cookies_file = None  # cookies file path
+    cookies_file = "facebook_cookies.json"  # cookies file path
     user_data_dir = None  # Use default Chrome user data directory
-    profile_name = "Profile 1"  # Use the specified Chrome profile
+    profile_name = None  # Use the specified Chrome profile
     max_posts = 20   # Number of posts to scrape per keyword
     
     # Initialize scraper
