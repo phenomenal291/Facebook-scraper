@@ -247,12 +247,19 @@ class FacebookScraper:
                     post_date = None
                     try:
                         span_elem = elem.find_element(By.CSS_SELECTOR, "span.html-span.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j")
-                    
+                        # scroll to element
+                        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", span_elem)
+                        # Wait for the element to be clickable
+                        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(span_elem))
+
                         # extract date
                         actions = ActionChains(self.driver)
                         actions.move_to_element(span_elem).perform()
                         date_tooltip = WebDriverWait(self.driver, 10).until(
                             EC.presence_of_element_located((By.CSS_SELECTOR, "div.x11i5rnm.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x78zum5.xjpr12u.xr9ek0c.x3ieub6.x6s0dn4"))
+                        )
+                        WebDriverWait(self.driver, 5).until(
+                            lambda d: date_tooltip.text.strip() != ""
                         )
                         post_date = date_tooltip.text.strip()
 
@@ -265,8 +272,8 @@ class FacebookScraper:
                         # close current post
                         self.driver.back()
                         WebDriverWait(self.driver, 10).until(lambda d: d.current_url == old_url)
-                    except Exception:
-                        self.logger.debug("Could not extract post link/date")
+                    except Exception as e:
+                        self.logger.debug(f"Could not extract post link/date: {str(e)}")
 
                     posts.append({"text": text, "link": link, "date": post_date, "images": images, "videos": videos, "keyword": keyword})
                 except Exception as e:
@@ -333,12 +340,12 @@ def main():
     Main function that runs the Facebook scraper.
     """
     # Configuration
-    headless = False  # Run without showing browser window if True
+    headless = True  # Run without showing browser window if True
     proxy = None     # No proxy by default
-    cookies_file = None  # No cookies file by default
+    cookies_file = None  # cookies file path
     user_data_dir = None  # Use default Chrome user data directory
     profile_name = "Profile 1"  # Use the specified Chrome profile
-    max_posts = 10   # Number of posts to scrape per keyword
+    max_posts = 20   # Number of posts to scrape per keyword
     
     # Initialize scraper
     scraper = FacebookScraper(
