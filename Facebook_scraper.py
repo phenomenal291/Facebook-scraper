@@ -1,3 +1,5 @@
+import os
+import re
 import time
 import random
 import logging
@@ -11,7 +13,8 @@ from selenium.webdriver.common.proxy import Proxy, ProxyType
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
-import os
+
+from utils import get_default_chrome_user_data_dir
 
 class FacebookScraperLogger:
     """
@@ -26,7 +29,7 @@ class FacebookScraperLogger:
             level=logging.INFO,
             format="%(asctime)s - %(levelname)s - %(message)s",
             handlers=[
-                logging.FileHandler("scraper.log"),
+                logging.FileHandler("scraper.log", encoding='utf-8'),
                 logging.StreamHandler()
             ]
         )
@@ -51,7 +54,7 @@ class BrowserManager:
         return random.choice(user_agents)
     
     @staticmethod
-    def create_browser(headless=False, proxy=None):
+    def create_browser(headless=False, proxy=None, user_data_dir = None, profile_name=None):
         """
         Creates and configures a Chrome browser instance.
         
@@ -71,6 +74,12 @@ class BrowserManager:
         options.add_argument("--mute-audio")
         options.add_argument("start-maximized")
         options.add_argument(f"user-agent={BrowserManager.get_random_user_agent()}")
+
+        if profile_name: # Use specified profile
+            if not user_data_dir:
+                user_data_dir = get_default_chrome_user_data_dir()
+            options.add_argument(f"user-data-dir={user_data_dir}")
+            options.add_argument(f'--profile-directory={profile_name}')
 
         # Configure proxy if provided
         if proxy:
@@ -92,7 +101,7 @@ class FacebookScraper:
     """
     Main class for scraping posts from Facebook based on keywords.
     """
-    def __init__(self, headless=True, proxy=None, cookies_file="facebook_cookies.json"):
+    def __init__(self, headless=True, proxy=None, cookies_file=None, user_data_dir=None, profile_name=None):
         """
         Initialize the Facebook scraper.
         
@@ -102,7 +111,7 @@ class FacebookScraper:
             cookies_file: Path to the file containing Facebook cookies
         """
         self.logger = FacebookScraperLogger.setup()
-        self.driver = BrowserManager.create_browser(headless, proxy)
+        self.driver = BrowserManager.create_browser(headless, proxy, user_data_dir, profile_name)
         self.cookies_file = cookies_file
         self.logger.info("Facebook scraper initialized")
     
@@ -143,13 +152,14 @@ class FacebookScraper:
         """
         self.logger.info("Logging into Facebook...")
         self.driver.get("https://www.facebook.com/")
-        self.load_cookies()
+        if self.cookies_file:
+            self.load_cookies()
         self.driver.refresh()
         time.sleep(5)
         
         # Check if we're still on the login page
         if "login" in self.driver.current_url:
-            self.logger.error("Login failed, still on login page")
+            self.logger.error("Login failed, still on login page. Please checking cookies file/profile browser.")
             return False
             
         self.logger.info("Login successful")
@@ -223,22 +233,50 @@ class FacebookScraper:
                         continue
                     
                     self.logger.info("Post found!")
+
+                    # extract images
+                    img_elements = elem.find_elements(By.CSS_SELECTOR, "div.x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z a[role='link'] img")
+                    images = [img.get_attribute("src") for img in img_elements if "emoji.php" not in img.get_attribute("src")]
                     
-                    # Try to extract post link
+                    # extract videos
+                    video_elements = elem.find_elements(By.CSS_SELECTOR, "div.x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z a[role='link'] video")
+                    videos = [video.find_element(By.XPATH, "./ancestor::a").get_attribute("href") for video in video_elements]
+
+                    # Try to extract post link, date
                     old_url = self.driver.current_url
                     link = None
+                    post_date = None
                     try:
                         span_elem = elem.find_element(By.CSS_SELECTOR, "span.html-span.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j")
+                        # scroll to element
+                        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", span_elem)
+                        # Wait for the element to be clickable
+                        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(span_elem))
+
+                        # extract date
+                        actions = ActionChains(self.driver)
+                        actions.move_to_element(span_elem).perform()
+                        date_tooltip = WebDriverWait(self.driver, 10).until(
+                            EC.presence_of_element_located((By.CSS_SELECTOR, "div.x11i5rnm.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x78zum5.xjpr12u.xr9ek0c.x3ieub6.x6s0dn4"))
+                        )
+                        WebDriverWait(self.driver, 5).until(
+                            lambda d: date_tooltip.text.strip() != ""
+                        )
+                        post_date = date_tooltip.text.strip()
+
+                        # extract link
                         span_elem.click()
                         WebDriverWait(self.driver, 10).until(lambda d: d.current_url != old_url)
                         WebDriverWait(self.driver, 10).until(lambda d: d.execute_script("return document.readyState") == "complete")
                         link = self.driver.current_url
+
+                        # close current post
                         self.driver.back()
                         WebDriverWait(self.driver, 10).until(lambda d: d.current_url == old_url)
-                    except Exception:
-                        self.logger.debug("Could not extract post link")
+                    except Exception as e:
+                        self.logger.debug(f"Could not extract post link/date: {str(e)}")
 
-                    posts.append({"text": text, "link": link, "keyword": keyword})
+                    posts.append({"text": text, "link": link, "date": post_date, "images": images, "videos": videos, "keyword": keyword})
                 except Exception as e:
                     self.logger.debug(f"Could not extract post content: {str(e)}")
 
@@ -273,6 +311,11 @@ class FacebookScraper:
         return posts
 
     @staticmethod
+    def clean_text(text):
+        """Removes invalid characters"""
+        return re.sub(r'[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]', '', text) if isinstance(text, str) else text
+
+    @staticmethod
     def save_to_excel(data, filename="facebook_posts.xlsx"):
         """
         Saves scraped post data to an Excel file with plain text formatting.
@@ -281,13 +324,21 @@ class FacebookScraper:
             data: List of post dictionaries
             filename: Output Excel file name
         """
+        for post in data:
+            for key in post:
+                post[key] = FacebookScraper.clean_text(post[key])
+
         df = pd.DataFrame(data)
         df.rename(columns={'text': 'Post Content', 'link': 'Link', 'keyword': 'Keyword'}, inplace=True)
         
-        with pd.ExcelWriter(filename, engine='openpyxl') as writer:
-            df.to_excel(writer, sheet_name="Posts", index=False)
-            
-        logging.info(f"Data saved to {filename}")
+        try:
+            with pd.ExcelWriter(filename, engine='openpyxl') as writer:
+                df.to_excel(writer, sheet_name="Posts", index=False)
+
+            logging.info(f"Data saved to {filename}")
+
+        except Exception as e:
+            logging.error(f"Failed to save data to Excel: {e}")
 
     def close(self):
         """
@@ -305,10 +356,19 @@ def main():
     # Configuration
     headless = True  # Run without showing browser window if True
     proxy = None     # No proxy by default
+    cookies_file = "facebook_cookies.json"  # cookies file path
+    user_data_dir = None  # Use default Chrome user data directory
+    profile_name = None  # Use the specified Chrome profile
     max_posts = 20   # Number of posts to scrape per keyword
     
     # Initialize scraper
-    scraper = FacebookScraper(headless=headless, proxy=proxy)
+    scraper = FacebookScraper(
+        headless=headless, 
+        proxy=proxy, 
+        cookies_file=cookies_file,
+        user_data_dir=user_data_dir, 
+        profile_name=profile_name
+    )
     
     try:
         # Login to Facebook
