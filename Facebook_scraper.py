@@ -16,6 +16,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from utils import get_default_chrome_user_data_dir
 
+
 class FacebookScraperLogger:
     """
     Handles logging configuration for the Facebook scraper.
@@ -101,7 +102,7 @@ class FacebookScraper:
     """
     Main class for scraping posts from Facebook based on keywords.
     """
-    def __init__(self, headless=True, proxy=None, cookies_file=None, user_data_dir=None, profile_name=None):
+    def __init__(self, headless=True, proxy=None, cookies_file=None, user_data_dir=None, profile_name=None, white_list=None):
         """
         Initialize the Facebook scraper.
         
@@ -109,11 +110,32 @@ class FacebookScraper:
             headless: Whether to run the browser in headless mode
             proxy: Optional proxy server to use
             cookies_file: Path to the file containing Facebook cookies
+            white_list: Path to whitelist file containing URL substrings to skip
         """
         self.logger = FacebookScraperLogger.setup()
         self.driver = BrowserManager.create_browser(headless, proxy, user_data_dir, profile_name)
         self.cookies_file = cookies_file
+        self.white_list = white_list
         self.logger.info("Facebook scraper initialized")
+
+    def load_white_list(self):
+        """
+        Load list of URLs to skip from a white_list file.
+        
+        Returns:
+            List of domain substrings to skip/ignore.
+        """
+        white_list = []
+        try:
+            with open(self.white_list, 'r', encoding='utf-8') as file:
+                for line in file:
+                    line = line.strip()
+                    if line:
+                        white_list.append(line)
+            self.logger.info(f"Loaded {len(white_list)} URLs from white_list")
+        except FileNotFoundError:
+            self.logger.warning(f"white_list file {self.white_list} not found")
+        return white_list
     
     def handle_captcha(self):
         """
@@ -174,7 +196,7 @@ class FacebookScraper:
             max_posts: Maximum number of posts to collect
             
         Returns:
-            List of dictionaries containing scraped post data
+            List of dictionaries containing scraped post data.
         """
         self.logger.info(f"Searching for posts with keyword: {keyword}")
         
@@ -204,7 +226,8 @@ class FacebookScraper:
         posts = []
         last_height = self.driver.execute_script("return document.body.scrollHeight")
         scroll_attempts = 0
-        timeout = time.time() + max_posts*5
+        timeout = time.time() + max_posts * 5
+        whitelist_entries = self.load_white_list() if self.white_list else []
         
         while len(posts) < max_posts and scroll_attempts < 5:
             # Find post elements
@@ -219,11 +242,9 @@ class FacebookScraper:
                     xem_them_button = elem.find_element(By.XPATH, ".//div[contains(text(), 'Xem thêm')]")
                     self.driver.execute_script("arguments[0].click();", xem_them_button)
                     wait = WebDriverWait(self.driver, 5)
-                    wait.until(lambda d: 
-                        len(elem.find_elements(By.XPATH, ".//div[contains(text(), 'Xem thêm')]")) == 0
-                    )
+                    wait.until(lambda d: len(elem.find_elements(By.XPATH, ".//div[contains(text(), 'Xem thêm')]")) == 0)
                 except Exception:
-                    pass  # "See more" button not found, continuing
+                    pass  # "See more" button not found, continue
 
                 # Extract post content
                 try:
@@ -231,50 +252,56 @@ class FacebookScraper:
                     text = story_elem.text.strip()
                     if not text or text in [p["text"] for p in posts]:
                         continue
-                    
                     self.logger.info("Post found!")
 
-                    # extract images
+                    # Extract images
                     img_elements = elem.find_elements(By.CSS_SELECTOR, "div.x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z a[role='link'] img")
                     images = [img.get_attribute("src") for img in img_elements if "emoji.php" not in img.get_attribute("src")]
-                    
-                    # extract videos
+
+                    # Extract videos
                     video_elements = elem.find_elements(By.CSS_SELECTOR, "div.x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z a[role='link'] video")
                     videos = [video.find_element(By.XPATH, "./ancestor::a").get_attribute("href") for video in video_elements]
 
-                    # Try to extract post link, date
+                    # Try to extract post link and date
                     old_url = self.driver.current_url
                     link = None
                     post_date = None
                     try:
                         span_elem = elem.find_element(By.CSS_SELECTOR, "span.html-span.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j")
-                        # scroll to element
+                        # Scroll to element
                         self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", span_elem)
-                        # Wait for the element to be clickable
                         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(span_elem))
-
-                        # extract date
+                        # Extract date
                         actions = ActionChains(self.driver)
                         actions.move_to_element(span_elem).perform()
                         date_tooltip = WebDriverWait(self.driver, 10).until(
                             EC.presence_of_element_located((By.CSS_SELECTOR, "div.x11i5rnm.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x78zum5.xjpr12u.xr9ek0c.x3ieub6.x6s0dn4"))
                         )
-                        WebDriverWait(self.driver, 5).until(
-                            lambda d: date_tooltip.text.strip() != ""
-                        )
+                        WebDriverWait(self.driver, 5).until(lambda d: date_tooltip.text.strip() != "")
                         post_date = date_tooltip.text.strip()
 
-                        # extract link
+                        # Extract link
                         span_elem.click()
                         WebDriverWait(self.driver, 15).until(lambda d: d.current_url != old_url)
                         WebDriverWait(self.driver, 15).until(lambda d: d.execute_script("return document.readyState") == "complete")
                         link = self.driver.current_url
 
-                        # close current post
+                        # Close current post
                         self.driver.back()
                         WebDriverWait(self.driver, 10).until(lambda d: d.current_url == old_url)
                     except Exception as e:
                         self.logger.debug(f"Could not extract post link/date: {str(e)}")
+
+                    # Check whitelist: if any entry appears in the link, skip this post
+                    skip_post = False
+                    if link:
+                        for entry in whitelist_entries:
+                            if entry in link:
+                                self.logger.info(f"Skipping post from whitelisted source: {link}")
+                                skip_post = True
+                                break
+                    if skip_post:
+                        continue
 
                     posts.append({"text": text, "link": link, "date": post_date, "images": images, "videos": videos, "keyword": keyword})
                 except Exception as e:
@@ -286,10 +313,8 @@ class FacebookScraper:
             initial_height = self.driver.execute_script("return document.body.scrollHeight")
             wait = WebDriverWait(self.driver, 10)
             try:
-                wait.until(lambda d: (
-                    d.execute_script("return document.body.scrollHeight") > initial_height or 
-                    len(d.find_elements(By.CSS_SELECTOR, "div.x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z")) > initial_count
-                ))
+                wait.until(lambda d: (d.execute_script("return document.body.scrollHeight") > initial_height or 
+                                        len(d.find_elements(By.CSS_SELECTOR, "div.x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z")) > initial_count))
             except:
                 time.sleep(1)
             new_height = self.driver.execute_script("return document.body.scrollHeight")
@@ -300,7 +325,7 @@ class FacebookScraper:
                 self.logger.info(f"No new content loaded. Scroll attempt {scroll_attempts}/5")
             else:
                 scroll_attempts = 0
-                
+
             if time.time() > timeout:
                 self.logger.warning("Scrolling timed out")
                 break
@@ -309,7 +334,7 @@ class FacebookScraper:
 
         self.logger.info(f"Scraped {len(posts)} posts for keyword '{keyword}'")
         return posts
-    
+
     @staticmethod
     def clean_text(text):
         """
@@ -360,8 +385,6 @@ class FacebookScraper:
         
         # First normalize the text - this will separate characters from combining marks
         normalized = unicodedata.normalize('NFKD', text)
-        
-        # Process each character
         result = ""
         for char in normalized:
             code = ord(char)
@@ -382,14 +405,13 @@ class FacebookScraper:
             if not replaced:
                 if code < 65536:  # Basic Multilingual Plane
                     result += char
-        
         return result
 
     @staticmethod
     def save_to_excel(data, filename="facebook_posts.xlsx"):
         """
         Saves scraped post data to an Excel file with plain text formatting.
-                
+        
         Args:
             data: List of post dictionaries
             filename: Output Excel file name
@@ -418,14 +440,12 @@ class FacebookScraper:
             'keyword': lambda kw: ', '.join(set(kw))  # Combine keywords
         })
 
-        # Sort by 'keyword'
         grouped.sort_values(by='keyword', inplace=True)
         
         # Reorder columns to put text and link first
         column_order = ['text', 'link', 'date', 'images', 'videos', 'keyword']
         grouped = grouped[column_order]
 
-        # Write to Excel with openpyxl
         try:
             with pd.ExcelWriter(filename, engine='openpyxl') as writer:
                 grouped.to_excel(writer, sheet_name="Posts", index=False)
@@ -433,7 +453,6 @@ class FacebookScraper:
                 for row in worksheet.iter_rows():
                     for cell in row:
                         cell.number_format = '@'
-                        
         except Exception as e:
             logging.error(f"Failed to save data to Excel: {e}")
             return
@@ -454,12 +473,13 @@ def main():
     Main function that runs the Facebook scraper.
     """
     # Configuration
-    headless = True # Run without showing browser window if True
+    headless = True  # Run without showing browser window if True
     proxy = None     # No proxy by default
-    cookies_file = "facebook_cookies.json"  # cookies file path
+    cookies_file = "facebook_cookies.json"  # Cookies file path
+    white_list = "white_list.txt"
     user_data_dir = None  # Use default Chrome user data directory
-    profile_name = None  # Use the specified Chrome profile
-    max_posts = 20   # Number of posts to scrape per keyword
+    profile_name = None   # Use the specified Chrome profile
+    max_posts = 20        # Number of posts to scrape per keyword
     
     # Initialize scraper
     scraper = FacebookScraper(
@@ -467,7 +487,8 @@ def main():
         proxy=proxy, 
         cookies_file=cookies_file,
         user_data_dir=user_data_dir, 
-        profile_name=profile_name
+        profile_name=profile_name,
+        white_list=white_list
     )
     
     try:
