@@ -10,6 +10,7 @@ from selenium.webdriver.common.proxy import Proxy, ProxyType
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import json
+import re
 from pathlib import Path
 
 
@@ -100,6 +101,7 @@ class AdsScraper:
     def scrape_posts(self, keyword, maxposts = 50):
         self.driver.get("https://www.facebook.com/ads/library/")
         
+        
         ads_category = WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.XPATH, ".//span[contains(text(),'All ads') or contains(text(), 'Tất cả quảng cáo')]"))
             )
@@ -127,12 +129,25 @@ class AdsScraper:
             for ad in ads:
                 if ( len(posts) >= maxposts):
                     break
+        
                 text = ad.text
+                
                 if not text or text in [p["text"] for p in posts]:
                         continue
+                    
+                    
                 link = ad.find_element(By.CLASS_NAME, "xt0psk2.x1hl2dhg.xt0b8zv.x8t9es0.x1fvot60.xxio538.xjnfcd9.xq9mrsl.x1yc453h.x1h4wwuj.x1fcty0u")
                 link = link.get_attribute('href')
-                posts.append({"text": text, "link": link, "keyword": keyword})
+                
+                imgs = ad.find_elements(By.TAG_NAME, "img")
+                vids = ad.find_elements(By.TAG_NAME, "video")
+                
+                images = [ img.get_attribute("src") for img in imgs]
+                images = images[1:]     ## remove the image of profile
+                videos = [vid.get_attribute("src") for vid in vids]
+                
+                clean_text = self.remove_emojies(text)
+                posts.append({"text": clean_text, "link": link, "image": images, "video": videos,"keyword": keyword})
                 self.logger.info("Ads Scraped")
                 
             # Scroll to load more content
@@ -167,6 +182,22 @@ class AdsScraper:
             self.driver.quit()
         self.logger.info("Browser closed")
         
+    def remove_emojies(self,text):    
+        emoji_pattern = re.compile(
+        "[\U0001F600-\U0001F64F"  # Emoticons
+        "\U0001F300-\U0001F5FF"  # Symbols & pictographs
+        "\U0001F680-\U0001F6FF"  # Transport & map symbols
+        "\U0001F700-\U0001F77F"  # Alchemical symbols
+        "\U0001F780-\U0001F7FF"  # Geometric symbols
+        "\U0001F800-\U0001F8FF"  # Supplemental Arrows-C
+        "\U0001F900-\U0001F9FF"  # Supplemental Symbols and Pictographs
+        "\U0001FA00-\U0001FA6F"  # Chess symbols
+        "\U0001FA70-\U0001FAFF"  # Symbols and Pictographs Extended-A
+        "\U00002702-\U000027B0"  # Dingbats
+        "\U000024C2-\U0001F251"  # Enclosed characters
+        "]+", flags=re.UNICODE)
+        return emoji_pattern.sub(r'', text)
+        
     @staticmethod
     def save_to_excel(data, filename="ads_posts.xlsx"):
         """
@@ -181,17 +212,19 @@ class AdsScraper:
             return
 
         df = pd.DataFrame(data)
-        df.rename(columns={'text': 'Post Content', 'link': 'Link', 'keyword': 'Keyword'}, inplace=True)
+        df.rename(columns={'text': 'Post Content', 'link': 'Link', 'image' : 'Image', 'video': 'Video','keyword': 'Keyword'}, inplace=True)
         
         with pd.ExcelWriter(filename, engine='openpyxl') as writer:
             df.to_excel(writer, sheet_name="Posts", index=False)
             
         logging.info(f"Data saved to {filename}")
+    
+        
 
 def main():
     headless = False  # Run without showing browser window if True
     proxy = None     # No proxy by default
-    max_posts = 50   # Number of posts to scrape per keyword
+    max_posts = 5   # Number of posts to scrape per keyword
     
     scraper = AdsScraper(headless=headless, proxy=proxy)
     
