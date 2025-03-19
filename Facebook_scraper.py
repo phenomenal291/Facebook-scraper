@@ -1,4 +1,5 @@
 import os
+import unicodedata
 import re
 import time
 import random
@@ -13,8 +14,8 @@ from selenium.webdriver.common.proxy import Proxy, ProxyType
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
-
 from utils import get_default_chrome_user_data_dir
+
 
 class FacebookScraperLogger:
     """
@@ -101,7 +102,7 @@ class FacebookScraper:
     """
     Main class for scraping posts from Facebook based on keywords.
     """
-    def __init__(self, headless=True, proxy=None, cookies_file=None, user_data_dir=None, profile_name=None):
+    def __init__(self, headless=True, proxy=None, cookies_file=None, user_data_dir=None, profile_name=None, white_list=None):
         """
         Initialize the Facebook scraper.
         
@@ -109,11 +110,32 @@ class FacebookScraper:
             headless: Whether to run the browser in headless mode
             proxy: Optional proxy server to use
             cookies_file: Path to the file containing Facebook cookies
+            white_list: Path to whitelist file containing URL substrings to skip
         """
         self.logger = FacebookScraperLogger.setup()
         self.driver = BrowserManager.create_browser(headless, proxy, user_data_dir, profile_name)
         self.cookies_file = cookies_file
+        self.white_list = white_list
         self.logger.info("Facebook scraper initialized")
+
+    def load_white_list(self):
+        """
+        Load list of URLs to skip from a white_list file.
+        
+        Returns:
+            List of domain substrings to skip/ignore.
+        """
+        white_list = []
+        try:
+            with open(self.white_list, 'r', encoding='utf-8') as file:
+                for line in file:
+                    line = line.strip()
+                    if line:
+                        white_list.append(line)
+            self.logger.info(f"Loaded {len(white_list)} URLs from white_list")
+        except FileNotFoundError:
+            self.logger.warning(f"white_list file {self.white_list} not found")
+        return white_list
     
     def handle_captcha(self):
         """
@@ -174,7 +196,7 @@ class FacebookScraper:
             max_posts: Maximum number of posts to collect
             
         Returns:
-            List of dictionaries containing scraped post data
+            List of dictionaries containing scraped post data.
         """
         self.logger.info(f"Searching for posts with keyword: {keyword}")
         
@@ -204,7 +226,8 @@ class FacebookScraper:
         posts = []
         last_height = self.driver.execute_script("return document.body.scrollHeight")
         scroll_attempts = 0
-        timeout = time.time() + max_posts*5
+        timeout = time.time() + max_posts * 5
+        whitelist_entries = self.load_white_list() if self.white_list else []
         
         while len(posts) < max_posts and scroll_attempts < 5:
             # Find post elements
@@ -219,11 +242,9 @@ class FacebookScraper:
                     xem_them_button = elem.find_element(By.XPATH, ".//div[contains(text(), 'Xem thêm')]")
                     self.driver.execute_script("arguments[0].click();", xem_them_button)
                     wait = WebDriverWait(self.driver, 5)
-                    wait.until(lambda d: 
-                        len(elem.find_elements(By.XPATH, ".//div[contains(text(), 'Xem thêm')]")) == 0
-                    )
+                    wait.until(lambda d: len(elem.find_elements(By.XPATH, ".//div[contains(text(), 'Xem thêm')]")) == 0)
                 except Exception:
-                    pass  # "See more" button not found, continuing
+                    pass  # "See more" button not found, continue
 
                 # Extract post content
                 try:
@@ -231,18 +252,17 @@ class FacebookScraper:
                     text = story_elem.text.strip()
                     if not text or text in [p["text"] for p in posts]:
                         continue
-                    
                     self.logger.info("Post found!")
 
-                    # extract images
+                    # Extract images
                     img_elements = elem.find_elements(By.CSS_SELECTOR, "div.x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z a[role='link'] img")
                     images = [img.get_attribute("src") for img in img_elements if "emoji.php" not in img.get_attribute("src")]
-                    
-                    # extract videos
+
+                    # Extract videos
                     video_elements = elem.find_elements(By.CSS_SELECTOR, "div.x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z a[role='link'] video")
                     videos = [video.find_element(By.XPATH, "./ancestor::a").get_attribute("href") for video in video_elements]
 
-                    # Try to extract post link, date
+                    # Try to extract post link and date
                     old_url = self.driver.current_url
                     link = None
                     post_date = None
@@ -271,22 +291,31 @@ class FacebookScraper:
                         date_tooltip = WebDriverWait(self.driver, 10).until(
                             EC.presence_of_element_located((By.CSS_SELECTOR, "div.x11i5rnm.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x78zum5.xjpr12u.xr9ek0c.x3ieub6.x6s0dn4"))
                         )
-                        WebDriverWait(self.driver, 5).until(
-                            lambda d: date_tooltip.text.strip() != ""
-                        )
+                        WebDriverWait(self.driver, 5).until(lambda d: date_tooltip.text.strip() != "")
                         post_date = date_tooltip.text.strip()
 
-                        # extract link
+                        # Extract link
                         span_elem.click()
-                        WebDriverWait(self.driver, 10).until(lambda d: d.current_url != old_url)
-                        WebDriverWait(self.driver, 10).until(lambda d: d.execute_script("return document.readyState") == "complete")
+                        WebDriverWait(self.driver, 15).until(lambda d: d.current_url != old_url)
+                        WebDriverWait(self.driver, 15).until(lambda d: d.execute_script("return document.readyState") == "complete")
                         link = self.driver.current_url
 
-                        # close current post
+                        # Close current post
                         self.driver.back()
                         WebDriverWait(self.driver, 10).until(lambda d: d.current_url == old_url)
                     except Exception as e:
                         self.logger.debug(f"Could not extract post link/date: {str(e)}")
+
+                    # Check whitelist: if any entry appears in the link, skip this post
+                    skip_post = False
+                    if link:
+                        for entry in whitelist_entries:
+                            if entry in link:
+                                self.logger.info(f"Skipping post from whitelisted source: {link}")
+                                skip_post = True
+                                break
+                    if skip_post:
+                        continue
 
                     posts.append({"text": text, "link": link, "date": post_date, "images": images, "videos": videos, "keyword": keyword})
                 except Exception as e:
@@ -298,10 +327,8 @@ class FacebookScraper:
             initial_height = self.driver.execute_script("return document.body.scrollHeight")
             wait = WebDriverWait(self.driver, 10)
             try:
-                wait.until(lambda d: (
-                    d.execute_script("return document.body.scrollHeight") > initial_height or 
-                    len(d.find_elements(By.CSS_SELECTOR, "div.x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z")) > initial_count
-                ))
+                wait.until(lambda d: (d.execute_script("return document.body.scrollHeight") > initial_height or 
+                                        len(d.find_elements(By.CSS_SELECTOR, "div.x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z")) > initial_count))
             except:
                 time.sleep(1)
             new_height = self.driver.execute_script("return document.body.scrollHeight")
@@ -312,7 +339,7 @@ class FacebookScraper:
                 self.logger.info(f"No new content loaded. Scroll attempt {scroll_attempts}/5")
             else:
                 scroll_attempts = 0
-                
+
             if time.time() > timeout:
                 self.logger.warning("Scrolling timed out")
                 break
@@ -324,8 +351,75 @@ class FacebookScraper:
 
     @staticmethod
     def clean_text(text):
-        """Removes invalid characters"""
-        return re.sub(r'[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]', '', text) if isinstance(text, str) else text
+        """
+        Remove or replace characters that cause Excel errors.
+        Handles multiple styles of Unicode mathematical alphabetic symbols.
+        """
+        if not isinstance(text, str):
+            return text
+        
+        # Dictionary of Unicode mathematical alphabetic symbols and their replacements
+        replacements = {
+            # Bold
+            range(0x1D400, 0x1D433): lambda c: chr(ord(c) - 0x1D400 + ord('A')),  # Bold A-Z and a-z
+            range(0x1D7CE, 0x1D7FF): lambda c: chr(ord(c) - 0x1D7CE + ord('0')),  # Bold numbers
+            
+            # Italic
+            range(0x1D434, 0x1D467): lambda c: chr(ord(c) - 0x1D434 + ord('A')),  # Italic A-Z and a-z
+            
+            # Bold Italic
+            range(0x1D468, 0x1D49B): lambda c: chr(ord(c) - 0x1D468 + ord('A')),  # Bold Italic A-Z and a-z
+            
+            # Script
+            range(0x1D49C, 0x1D4CF): lambda c: chr(ord(c) - 0x1D49C + ord('A')),  # Script A-Z and a-z
+            
+            # Bold Script
+            range(0x1D4D0, 0x1D503): lambda c: chr(ord(c) - 0x1D4D0 + ord('A')),  # Bold Script A-Z and a-z
+            
+            # Fraktur
+            range(0x1D504, 0x1D537): lambda c: chr(ord(c) - 0x1D504 + ord('A')),  # Fraktur A-Z and a-z
+            
+            # Double-struck
+            range(0x1D538, 0x1D56B): lambda c: chr(ord(c) - 0x1D538 + ord('A')),  # Double-struck A-Z and a-z
+            
+            # Bold Fraktur
+            range(0x1D56C, 0x1D59F): lambda c: chr(ord(c) - 0x1D56C + ord('A')),  # Bold Fraktur A-Z and a-z
+            
+            # Sans-serif
+            range(0x1D5A0, 0x1D5D3): lambda c: chr(ord(c) - 0x1D5A0 + ord('A')),  # Sans-serif A-Z and a-z
+            
+            # Sans-serif Bold
+            range(0x1D5D4, 0x1D607): lambda c: chr(ord(c) - 0x1D5D4 + ord('A')),  # Sans-serif Bold A-Z and a-z
+            range(0x1D7EC, 0x1D7F6): lambda c: chr(ord(c) - 0x1D7EC + ord('0')),  # Sans-serif Bold numbers
+            
+            # Sans-serif Italic
+            range(0x1D608, 0x1D63B): lambda c: chr(ord(c) - 0x1D608 + ord('A')),  # Sans-serif Italic A-Z and a-z
+        }
+        
+        
+        # First normalize the text - this will separate characters from combining marks
+        normalized = unicodedata.normalize('NFKD', text)
+        result = ""
+        for char in normalized:
+            code = ord(char)
+            
+            # Skip control characters except tab, LF, CR
+            if code < 32 and code not in (9, 10, 13):
+                continue
+            
+            # Try replacing mathematical symbols
+            replaced = False
+            for char_range, replacement_func in replacements.items():
+                if code in char_range:
+                    result += replacement_func(char)
+                    replaced = True
+                    break
+            
+            # Keep the character if it wasn't replaced and is in BMP
+            if not replaced:
+                if code < 65536:  # Basic Multilingual Plane
+                    result += char
+        return result
 
     @staticmethod
     def save_to_excel(data, filename="facebook_posts.xlsx"):
@@ -336,21 +430,48 @@ class FacebookScraper:
             data: List of post dictionaries
             filename: Output Excel file name
         """
+        # Clean text before creating DataFrame
+        cleaned_data = []
         for post in data:
-            for key in post:
-                post[key] = FacebookScraper.clean_text(post[key])
+            cleaned_post = {}
+            for key, value in post.items():
+                if key == 'text':
+                    cleaned_post[key] = FacebookScraper.clean_text(value)
+                else:
+                    cleaned_post[key] = value
+            cleaned_data.append(cleaned_post)
 
-        df = pd.DataFrame(data)
-        df.rename(columns={'text': 'Post Content', 'link': 'Link', 'keyword': 'Keyword'}, inplace=True)
+        # Convert to a DataFrame
+        df = pd.DataFrame(cleaned_data).fillna('')
+
+        # Group by 'text'
+        grouped = df.groupby('text', as_index=False).agg({
+            'text': 'first',
+            'link': lambda links: next((ln for ln in links if ln), ''),  # first non-empty link
+            'date': 'first',  # Keep first date
+            'images': 'first',  # Keep first images list
+            'videos': 'first',  # Keep first videos list
+            'keyword': lambda kw: ', '.join(set(kw))  # Combine keywords
+        })
+
+        grouped.sort_values(by='keyword', inplace=True)
         
+        # Reorder columns to put text and link first
+        column_order = ['text', 'link', 'date', 'images', 'videos', 'keyword']
+        grouped = grouped[column_order]
+
         try:
             with pd.ExcelWriter(filename, engine='openpyxl') as writer:
-                df.to_excel(writer, sheet_name="Posts", index=False)
-
-            logging.info(f"Data saved to {filename}")
-
+                grouped.to_excel(writer, sheet_name="Posts", index=False)
+                worksheet = writer.sheets["Posts"]
+                for row in worksheet.iter_rows():
+                    for cell in row:
+                        cell.number_format = '@'
         except Exception as e:
             logging.error(f"Failed to save data to Excel: {e}")
+            return
+
+        logging.info(f"Data saved to {filename}")
 
     def close(self):
         """
@@ -368,10 +489,11 @@ def main():
     # Configuration
     headless = True  # Run without showing browser window if True
     proxy = None     # No proxy by default
-    cookies_file = "facebook_cookies.json"  # cookies file path
+    cookies_file = "facebook_cookies.json"  # Cookies file path
+    white_list = "white_list.txt"
     user_data_dir = None  # Use default Chrome user data directory
-    profile_name = None  # Use the specified Chrome profile
-    max_posts = 20   # Number of posts to scrape per keyword
+    profile_name = None   # Use the specified Chrome profile
+    max_posts = 20        # Number of posts to scrape per keyword
     
     # Initialize scraper
     scraper = FacebookScraper(
@@ -379,7 +501,8 @@ def main():
         proxy=proxy, 
         cookies_file=cookies_file,
         user_data_dir=user_data_dir, 
-        profile_name=profile_name
+        profile_name=profile_name,
+        white_list=white_list
     )
     
     try:
