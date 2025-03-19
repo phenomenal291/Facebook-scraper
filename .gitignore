@@ -1,7 +1,20 @@
-/facebook_cookies.json
-/scraper.log
-/a post element.txt
-/scrapped posts.txt
-facebook_posts.xlsx
-keywords.txt
+venv/
+.env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.whl
+
+.vscode/
+
+# Ignore file log
 scraper.log
+**/scraper.log
+
+# Ignore file Excel
+facebook_posts.xlsx
+**/facebook_posts.xlsx
+
+facebook_cookies.json
+**/facebook_cookies.json
