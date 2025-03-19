@@ -266,14 +266,28 @@ class FacebookScraper:
                     old_url = self.driver.current_url
                     link = None
                     post_date = None
+                    date_tooltip = None # date tooltip element
                     try:
                         span_elem = elem.find_element(By.CSS_SELECTOR, "span.html-span.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j")
-                        # Scroll to element
+                        
+                        # scroll to element
                         self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", span_elem)
-                        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(span_elem))
-                        # Extract date
+                        # Wait for the element in viewport
+                        WebDriverWait(self.driver, 10).until(
+                            lambda d: d.execute_script(
+                                "var rect = arguments[0].getBoundingClientRect();"
+                                "return (rect.top >= 0 && rect.bottom <= window.innerHeight);",
+                                span_elem
+                            )
+                        )              
+
+                        # extract date
                         actions = ActionChains(self.driver)
                         actions.move_to_element(span_elem).perform()
+                        # wait for old date tooltip (if exits) is stale (aka new tooltip is loaded)
+                        if date_tooltip:
+                            WebDriverWait(self.driver, 5).until(EC.staleness_of(date_tooltip))
+                        # get new date tooltip
                         date_tooltip = WebDriverWait(self.driver, 10).until(
                             EC.presence_of_element_located((By.CSS_SELECTOR, "div.x11i5rnm.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x78zum5.xjpr12u.xr9ek0c.x3ieub6.x6s0dn4"))
                         )
