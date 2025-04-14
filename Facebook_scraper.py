@@ -15,6 +15,8 @@ from selenium.webdriver.common.action_chains import ActionChains
 from utils import get_default_chrome_user_data_dir
 from db_mapping import save_to_database, save_to_excel
 
+from webdriver_manager.chrome import ChromeDriverManager
+
 
 class FacebookScraperLogger:
     """
@@ -90,9 +92,7 @@ class BrowserManager:
             options.proxy = proxy_settings
             
         # Set up ChromeDriver path
-        current_file = __file__
-        chromedriver_path = current_file.replace("Facebook_scraper.py", r"chromedriver.exe")
-        service = Service(chromedriver_path)
+        service = Service(service=(ChromeDriverManager().install()))
         
         return webdriver.Chrome(service=service, options=options)
 
