@@ -9,6 +9,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.proxy import Proxy, ProxyType
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from webdriver_manager.chrome import ChromeDriverManager
 import json
 from pathlib import Path
 import re
@@ -81,8 +82,7 @@ class BrowserManager:
             
         # Set up ChromeDriver path
         current_file = __file__
-        chromedriver_path = current_file.replace("ads_scraper.py", r"chromedriver.exe")
-        service = Service(chromedriver_path)
+        service = Service(service=(ChromeDriverManager().install()))
         return webdriver.Chrome(service=service, options=options)
     
 class AdsScraper:
