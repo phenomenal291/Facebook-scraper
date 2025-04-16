@@ -9,6 +9,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.proxy import Proxy, ProxyType
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from webdriver_manager.chrome import ChromeDriverManager
 import json
 from pathlib import Path
 import re
@@ -33,6 +34,7 @@ class AdsScraperLogger:
             ]
         )
         return logging.getLogger("AdsScraper")
+
 class BrowserManager:
     """
     Manages browser instance creation and configuration.
@@ -80,8 +82,7 @@ class BrowserManager:
             
         # Set up ChromeDriver path
         current_file = __file__
-        chromedriver_path = current_file.replace("ads_scraper.py", r"chromedriver.exe")
-        service = Service(chromedriver_path)
+        service = Service(service=(ChromeDriverManager().install()))
         return webdriver.Chrome(service=service, options=options)
     
 class AdsScraper:
@@ -131,14 +132,21 @@ class AdsScraper:
                 if ( len(posts) >= maxposts):
                     break
         
-                text = ad.text
+                try:
+                    text = ad.text
+                except Exception as e:
+                    self.logger.error(f"Error retrieving text from ad: {e}")
+                    continue
                 
                 if not text or text in [p["text"] for p in posts]:
-                        continue
+                    continue
                     
-                    
-                link = ad.find_element(By.CLASS_NAME, "xt0psk2.x1hl2dhg.xt0b8zv.x8t9es0.x1fvot60.xxio538.xjnfcd9.xq9mrsl.x1yc453h.x1h4wwuj.x1fcty0u")
-                link = link.get_attribute('href')
+                try:
+                    link = ad.find_element(By.CLASS_NAME, "xt0psk2.x1hl2dhg.xt0b8zv.x8t9es0.x1fvot60.xxio538.xjnfcd9.xq9mrsl.x1yc453h.x1h4wwuj.x1fcty0u")
+                    link = link.get_attribute('href')
+                except Exception as e:
+                    self.logger.error(f"Error retrieving link from ad: {e}")
+                    continue
                 
                 imgs = ad.find_elements(By.TAG_NAME, "img")
                 vids = ad.find_elements(By.TAG_NAME, "video")
@@ -176,6 +184,8 @@ class AdsScraper:
             last_height = new_height
         self.logger.info(f"Scraped {len(posts)} posts for keyword '{keyword}'")
         return posts
+    
+    @staticmethod
     def clean_text(text):
         """
         Remove or replace characters that cause Excel errors.
@@ -247,19 +257,12 @@ class AdsScraper:
                 if code < 65536:  # Basic Multilingual Plane
                     result += char
         return result
+    
     def close(self):
         if self.driver:
             self.driver.quit()
         self.logger.info("Browser closed")
-    
-    @staticmethod
-    def remove_illegal_chars_and_emojis(text):
-        # Remove emojis
-        text = emoji.replace_emoji(text, "")
-        # Remove control characters in range U+0000–U+001F and U+007F
-        text = re.sub(r'[\u0000-\u001F\u007F]+', '', text)
-        return text
-
+   
     @staticmethod
     def save_to_excel(data, filename="ads_posts.xlsx"):
         """
@@ -288,33 +291,33 @@ class AdsScraper:
         
 
 def main():
-    headless = True  # Run without showing browser window if True
-    proxy = None     # No proxy by default
-    max_posts = 5   # Number of posts to scrape per keyword
+    headless = True
+    proxy = None
+    max_posts = 15
     
     scraper = AdsScraper(headless=headless, proxy=proxy)
-    
+    all_posts = []
+
+    # Using try/except here so the browser only closes on success/final step
     try:
-        # Load keywords from file
         with open('keywords.txt', 'r', encoding='utf-8') as file:
             keywords = [line.strip() for line in file if line.strip()]
-            
-        # Scrape posts for each keyword
-        all_posts = []
+        
         for keyword in keywords:
             posts = scraper.scrape_posts(keyword, max_posts)
             if posts:
                 all_posts.extend(posts)
             else:
                 logging.info(f"No posts found for keyword: {keyword}")
-                
-        # Save results to Excel
-        AdsScraper.save_to_excel(all_posts)
         
+        # Save after all keywords are scraped
+        AdsScraper.save_to_excel(all_posts)
+    except Exception as e:
+        logging.error(f"Scraper error: {e}")
     finally:
-        # Always close the browser
+        # Always close the browser 
         scraper.close()
-
+        logging.info("Browser closed")
 
 if __name__ == "__main__":
     main()

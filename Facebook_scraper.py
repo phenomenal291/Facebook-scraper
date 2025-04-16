@@ -1,6 +1,4 @@
 import os
-import unicodedata
-import re
 import time
 import random
 import logging
@@ -15,6 +13,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from utils import get_default_chrome_user_data_dir
+from db_mapping import save_to_database, save_to_excel
+
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 class FacebookScraperLogger:
@@ -91,9 +92,7 @@ class BrowserManager:
             options.proxy = proxy_settings
             
         # Set up ChromeDriver path
-        current_file = __file__
-        chromedriver_path = current_file.replace("Facebook_scraper.py", r"chromedriver.exe")
-        service = Service(chromedriver_path)
+        service = Service(service=(ChromeDriverManager().install()))
         
         return webdriver.Chrome(service=service, options=options)
 
@@ -203,7 +202,7 @@ class FacebookScraper:
         # Search for the keyword
         try:
             search_box = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, "//input[@type='search' and contains(@aria-label, 'Tìm kiếm')]"))
+                EC.presence_of_element_located((By.XPATH, "//input[@type='search' and contains(@aria-label, 'Search Facebook')]"))
             )
             search_box.send_keys(Keys.CONTROL + "a")
             search_box.send_keys(Keys.DELETE)
@@ -349,137 +348,18 @@ class FacebookScraper:
         self.logger.info(f"Scraped {len(posts)} posts for keyword '{keyword}'")
         return posts
 
-    @staticmethod
-    def clean_text(text):
-        """
-        Remove or replace characters that cause Excel errors.
-        Handles multiple styles of Unicode mathematical alphabetic symbols.
-        """
-        if not isinstance(text, str):
-            return text
-        
-        # Dictionary of Unicode mathematical alphabetic symbols and their replacements
-        replacements = {
-            # Bold
-            range(0x1D400, 0x1D433): lambda c: chr(ord(c) - 0x1D400 + ord('A')),  # Bold A-Z and a-z
-            range(0x1D7CE, 0x1D7FF): lambda c: chr(ord(c) - 0x1D7CE + ord('0')),  # Bold numbers
-            
-            # Italic
-            range(0x1D434, 0x1D467): lambda c: chr(ord(c) - 0x1D434 + ord('A')),  # Italic A-Z and a-z
-            
-            # Bold Italic
-            range(0x1D468, 0x1D49B): lambda c: chr(ord(c) - 0x1D468 + ord('A')),  # Bold Italic A-Z and a-z
-            
-            # Script
-            range(0x1D49C, 0x1D4CF): lambda c: chr(ord(c) - 0x1D49C + ord('A')),  # Script A-Z and a-z
-            
-            # Bold Script
-            range(0x1D4D0, 0x1D503): lambda c: chr(ord(c) - 0x1D4D0 + ord('A')),  # Bold Script A-Z and a-z
-            
-            # Fraktur
-            range(0x1D504, 0x1D537): lambda c: chr(ord(c) - 0x1D504 + ord('A')),  # Fraktur A-Z and a-z
-            
-            # Double-struck
-            range(0x1D538, 0x1D56B): lambda c: chr(ord(c) - 0x1D538 + ord('A')),  # Double-struck A-Z and a-z
-            
-            # Bold Fraktur
-            range(0x1D56C, 0x1D59F): lambda c: chr(ord(c) - 0x1D56C + ord('A')),  # Bold Fraktur A-Z and a-z
-            
-            # Sans-serif
-            range(0x1D5A0, 0x1D5D3): lambda c: chr(ord(c) - 0x1D5A0 + ord('A')),  # Sans-serif A-Z and a-z
-            
-            # Sans-serif Bold
-            range(0x1D5D4, 0x1D607): lambda c: chr(ord(c) - 0x1D5D4 + ord('A')),  # Sans-serif Bold A-Z and a-z
-            range(0x1D7EC, 0x1D7F6): lambda c: chr(ord(c) - 0x1D7EC + ord('0')),  # Sans-serif Bold numbers
-            
-            # Sans-serif Italic
-            range(0x1D608, 0x1D63B): lambda c: chr(ord(c) - 0x1D608 + ord('A')),  # Sans-serif Italic A-Z and a-z
-        }
-        
-        
-        # First normalize the text - this will separate characters from combining marks
-        normalized = unicodedata.normalize('NFKD', text)
-        result = ""
-        for char in normalized:
-            code = ord(char)
-            
-            # Skip control characters except tab, LF, CR
-            if code < 32 and code not in (9, 10, 13):
-                continue
-            
-            # Try replacing mathematical symbols
-            replaced = False
-            for char_range, replacement_func in replacements.items():
-                if code in char_range:
-                    result += replacement_func(char)
-                    replaced = True
-                    break
-            
-            # Keep the character if it wasn't replaced and is in BMP
-            if not replaced:
-                if code < 65536:  # Basic Multilingual Plane
-                    result += char
-        return result
-
-    @staticmethod
-    def save_to_excel(data, filename="facebook_posts.xlsx"):
-        """
-        Saves scraped post data to an Excel file with plain text formatting.
-        
-        Args:
-            data: List of post dictionaries
-            filename: Output Excel file name
-        """
-        # Clean text before creating DataFrame
-        cleaned_data = []
-        for post in data:
-            cleaned_post = {}
-            for key, value in post.items():
-                if key == 'text':
-                    cleaned_post[key] = FacebookScraper.clean_text(value)
-                else:
-                    cleaned_post[key] = value
-            cleaned_data.append(cleaned_post)
-
-        # Convert to a DataFrame
-        df = pd.DataFrame(cleaned_data).fillna('')
-
-        # Group by 'text'
-        grouped = df.groupby('text', as_index=False).agg({
-            'text': 'first',
-            'link': lambda links: next((ln for ln in links if ln), ''),  # first non-empty link
-            'date': 'first',  # Keep first date
-            'images': 'first',  # Keep first images list
-            'videos': 'first',  # Keep first videos list
-            'keyword': lambda kw: ', '.join(set(kw))  # Combine keywords
-        })
-
-        grouped.sort_values(by='keyword', inplace=True)
-        
-        # Reorder columns to put text and link first
-        column_order = ['text', 'link', 'date', 'images', 'videos', 'keyword']
-        grouped = grouped[column_order]
-
-        try:
-            with pd.ExcelWriter(filename, engine='openpyxl') as writer:
-                grouped.to_excel(writer, sheet_name="Posts", index=False)
-                worksheet = writer.sheets["Posts"]
-                for row in worksheet.iter_rows():
-                    for cell in row:
-                        cell.number_format = '@'
-        except Exception as e:
-            logging.error(f"Failed to save data to Excel: {e}")
-            return
-
-        logging.info(f"Data saved to {filename}")
-
     def close(self):
         """
-        Closes the browser and cleans up resources.
+        Closes the browser and quits the WebDriver session.
         """
         if self.driver:
-            self.driver.quit()
-        self.logger.info("Browser closed")
+            try:
+                self.driver.quit()
+                self.logger.info("Browser closed successfully.")
+            except Exception as e:
+                self.logger.error(f"Error closing browser: {e}")
+        else:
+            self.logger.info("No browser instance to close.")
 
 
 def main():
@@ -493,7 +373,7 @@ def main():
     white_list = "white_list.txt"
     user_data_dir = None  # Use default Chrome user data directory
     profile_name = None   # Use the specified Chrome profile
-    max_posts = 20        # Number of posts to scrape per keyword
+    max_posts = 10        # Number of posts to scrape per keyword
     
     # Initialize scraper
     scraper = FacebookScraper(
@@ -525,7 +405,20 @@ def main():
                 logging.info(f"No posts found for keyword: {keyword}")
                 
         # Save results to Excel
-        FacebookScraper.save_to_excel(all_posts)
+        save_to_excel(all_posts)
+        
+        # Save to database
+        connection_string = (
+            "mssql+pyodbc://"
+            "sa:123456@" #login:password
+            "Tan-PC/"  # Replace with your server name
+            "crawl"    # Your database name
+            "?driver=ODBC+Driver+18+for+SQL+Server"
+            "&TrustServerCertificate=yes"
+            "&charset=UTF8"
+            "&encoding=utf8"
+        )
+        save_to_database(all_posts, connection_string)
         
     finally:
         # Always close the browser
