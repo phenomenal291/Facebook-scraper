@@ -13,7 +13,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from utils import get_default_chrome_user_data_dir
-from db_mapping import save_to_database, save_to_excel
+from db_mapping import save_to_database, save_to_excel,open_database,close_database
 
 from webdriver_manager.chrome import ChromeDriverManager
 
@@ -222,18 +222,19 @@ class FacebookScraper:
             return []
 
         # Begin collecting posts
-        posts = []
+        count=0
+        url_checked = [] # anh này dùng để lưu những url đã crawl rồi
         last_height = self.driver.execute_script("return document.body.scrollHeight")
         scroll_attempts = 0
         timeout = time.time() + max_posts * 5
         whitelist_entries = self.load_white_list() if self.white_list else []
         
-        while len(posts) < max_posts and scroll_attempts < 5:
+        while count < max_posts and scroll_attempts < 5:
             # Find post elements
             elements = self.driver.find_elements(By.CSS_SELECTOR, "div.x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z")
 
             for elem in elements:
-                if len(posts) >= max_posts:
+                if count >= max_posts:
                     break
 
                 # Try to expand truncated posts
@@ -313,10 +314,10 @@ class FacebookScraper:
                                 self.logger.info(f"Skipping post from whitelisted source: {link}")
                                 skip_post = True
                                 break
-                    if skip_post:
+                    if skip_post or link in url_checked: #thêm điều kiện check url_checked
                         continue
-
-                    posts.append({"text": text, "link": link, "date": post_date, "images": images, "videos": videos, "keyword": keyword})
+                    #thay vì save to posts ta sẽ yield 
+                    yield({"text": text, "link": link, "date": post_date, "images": images, "videos": videos, "keyword": keyword})
                 except Exception as e:
                     self.logger.debug(f"Could not extract post content: {str(e)}")
 
@@ -345,8 +346,7 @@ class FacebookScraper:
 
             last_height = new_height
 
-        self.logger.info(f"Scraped {len(posts)} posts for keyword '{keyword}'")
-        return posts
+        self.logger.info(f"Scraped {count} posts for keyword '{keyword}'")
 
     def close(self):
         """
@@ -390,24 +390,15 @@ def main():
         if not scraper.login():
             logging.error("Login failed. Exiting.")
             return
-            
+        
+
+
         # Load keywords from file
         with open('keywords.txt', 'r', encoding='utf-8') as file:
             keywords = [line.strip() for line in file if line.strip()]
             
-        # Scrape posts for each keyword
-        all_posts = []
-        for keyword in keywords:
-            posts = scraper.scrape_posts(keyword, max_posts)
-            if posts:
-                all_posts.extend(posts)
-            else:
-                logging.info(f"No posts found for keyword: {keyword}")
-                
-        # Save results to Excel
-        save_to_excel(all_posts)
-        
-        # Save to database
+        #open database
+        engine , session = None,None
         connection_string = (
             "mssql+pyodbc://"
             "sa:123456@" #login:password
@@ -418,11 +409,36 @@ def main():
             "&charset=UTF8"
             "&encoding=utf8"
         )
-        save_to_database(all_posts, connection_string)
+        engine,session = open_database(connection_string)
+
+        # Scrape posts for each keyword
+        batch = []
+        batch_size = 10
+        """ 
+            ông oke với hàm này thì ta sẽ tiến hành add biến branch_size vào cái args của hàm,
+            giờ mình demo trước đã nên tôi chưa thêm, lỡ không ổn xoá đỡ         
+         """
+        for keyword in keywords:
+            post = scraper.scrape_posts(keyword, max_posts)
+            if post:
+                batch.append(post)
+                if len(batch) >= batch_size:
+                    save_to_excel(batch)
+                    save_to_database(session,batch)
+                    batch = []  #reset batch
+            else:
+                logging.info(f"No posts found for keyword: {keyword}")
         
+        #check dư thừa vì batch chưa đủ = batch_size thì vẫn dư ra mín:
+        if batch:
+            save_to_excel(batch)
+            save_to_database(session,batch)
+
     finally:
         # Always close the browser
         scraper.close()
+        #close database lun:
+        close_database(engine,session)
 
 
 if __name__ == "__main__":
