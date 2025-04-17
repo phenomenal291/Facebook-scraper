@@ -16,6 +16,8 @@ import re
 import emoji
 import unicodedata
 
+from db_mapping import save_to_database, save_to_excel,open_database,close_database
+
 class AdsScraperLogger:
     """
     Handles logging configuration for the Facebook scraper.
@@ -113,7 +115,8 @@ class AdsScraper:
         search_box.send_keys(keyword)
         search_box.send_keys(Keys.RETURN)
     
-        posts = []
+        count = 0
+        url_checked =[]
         link = None
         last_height = self.driver.execute_script("return document.body.scrollHeight")
         scroll_attempts = 0
@@ -126,10 +129,10 @@ class AdsScraper:
         except Exception as e:
             print("Error finding ads:", e)
         
-        while ( len(posts) < maxposts and scroll_attempts < 5):
+        while ( count < maxposts and scroll_attempts < 5):
             ads = elems.find_elements(By.XPATH, "//div[contains(@class, '_7jyg _7jyh')]")
             for ad in ads:
-                if ( len(posts) >= maxposts):
+                if ( count >= maxposts):
                     break
         
                 try:
@@ -138,7 +141,7 @@ class AdsScraper:
                     self.logger.error(f"Error retrieving text from ad: {e}")
                     continue
                 
-                if not text or text in [p["text"] for p in posts]:
+                if not text:
                     continue
                     
                 try:
@@ -147,6 +150,11 @@ class AdsScraper:
                 except Exception as e:
                     self.logger.error(f"Error retrieving link from ad: {e}")
                     continue
+
+                if link in url_checked:
+                    continue
+                else: 
+                    url_checked.append(link)
                 
                 imgs = ad.find_elements(By.TAG_NAME, "img")
                 vids = ad.find_elements(By.TAG_NAME, "video")
@@ -155,7 +163,8 @@ class AdsScraper:
                 images = images[1:]     ## remove the image of profile
                 videos = [vid.get_attribute("src") for vid in vids]
                 
-                posts.append({"link": link,"text": text , "image": images, "video": videos,"keyword": keyword})
+                count+=1
+                yield({"link": link,"text": text , "image": images, "video": videos,"keyword": keyword})
                 self.logger.info("Ads Scraped")
                 
             # Scroll to load more content
@@ -296,25 +305,47 @@ def main():
     max_posts = 15
     
     scraper = AdsScraper(headless=headless, proxy=proxy)
-    all_posts = []
-
+    batch = []
+    batch_size = 10
+    #  open database
+    engine , session = None,None
+    connection_string = (
+        "mssql+pyodbc://"
+        "sa:123456@" #login:password
+        "Tan-PC/"  # Replace with your server name
+        "crawl"    # Your database name
+        "?driver=ODBC+Driver+18+for+SQL+Server"
+        "&TrustServerCertificate=yes"
+        "&charset=UTF8"
+        "&encoding=utf8"
+    )
+    engine,session = open_database(connection_string)
     # Using try/except here so the browser only closes on success/final step
     try:
         with open('keywords.txt', 'r', encoding='utf-8') as file:
             keywords = [line.strip() for line in file if line.strip()]
         
         for keyword in keywords:
-            posts = scraper.scrape_posts(keyword, max_posts)
-            if posts:
-                all_posts.extend(posts)
+            post = scraper.scrape_posts(keyword, max_posts)
+            if post:
+                batch.append(posts)
+                if len(batch) >= batch_size:
+                    save_to_database(batch)
+                    save_to_excel(batch)
+                    batch = []
             else:
                 logging.info(f"No posts found for keyword: {keyword}")
         
         # Save after all keywords are scraped
-        AdsScraper.save_to_excel(all_posts)
+        if(batch):
+            save_to_database(batch)
+            save_to_excel(batch)
+            batch = []
+
     except Exception as e:
         logging.error(f"Scraper error: {e}")
     finally:
+        close_database(engine,session)
         # Always close the browser 
         scraper.close()
         logging.info("Browser closed")

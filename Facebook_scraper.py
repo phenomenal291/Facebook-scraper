@@ -317,6 +317,7 @@ class FacebookScraper:
                     if skip_post or link in url_checked: #thêm điều kiện check url_checked
                         continue
                     #thay vì save to posts ta sẽ yield 
+                    count+=1 #cộng count lên đã
                     yield({"text": text, "link": link, "date": post_date, "images": images, "videos": videos, "keyword": keyword})
                 except Exception as e:
                     self.logger.debug(f"Could not extract post content: {str(e)}")
@@ -436,9 +437,9 @@ def main():
 
     finally:
         # Always close the browser
+        close_database(engine,session)
         scraper.close()
         #close database lun:
-        close_database(engine,session)
 
 
 if __name__ == "__main__":
