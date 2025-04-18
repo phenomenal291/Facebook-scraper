@@ -2235,3 +2235,1510 @@
 2025-03-19 18:30:03,626 - INFO - Scraped 50 posts for keyword 'cậu nhỏ'
 2025-03-19 18:30:04,459 - INFO - Data saved to ads_posts.xlsx
 2025-03-19 18:30:07,365 - INFO - Browser closed
+2025-04-18 10:24:07,860 - INFO - ====== WebDriver manager ======
+2025-04-18 10:24:12,739 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 10:24:12,926 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 10:24:13,102 - INFO - There is no [mac64] chromedriver "135.0.7049.95" for browser google-chrome "135.0.7049" in cache
+2025-04-18 10:24:13,116 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 10:24:13,422 - INFO - WebDriver version 135.0.7049.95 selected
+2025-04-18 10:24:13,425 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/135.0.7049.95/mac-arm64/chromedriver-mac-arm64.zip
+2025-04-18 10:24:13,425 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/135.0.7049.95/mac-arm64/chromedriver-mac-arm64.zip
+2025-04-18 10:24:13,553 - INFO - Driver downloading response is 200
+2025-04-18 10:24:15,013 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 10:24:15,283 - INFO - Driver has been saved in cache [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95]
+2025-04-18 10:24:20,674 - INFO - Facebook scraper initialized
+2025-04-18 10:24:20,675 - INFO - Logging into Facebook...
+2025-04-18 10:24:22,334 - ERROR - Cookie file facebook_cookies.json not found
+2025-04-18 10:24:27,724 - INFO - Login successful
+2025-04-18 10:24:27,811 - INFO - Browser closed successfully.
+2025-04-18 10:27:58,889 - INFO - ====== WebDriver manager ======
+2025-04-18 10:27:59,045 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 10:29:14,195 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 10:29:14,358 - INFO - Driver [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95/chromedriver-mac-arm64/chromedriver] found in cache
+2025-04-18 10:29:14,865 - INFO - Facebook scraper initialized
+2025-04-18 10:29:14,865 - INFO - Logging into Facebook...
+2025-04-18 10:29:16,162 - ERROR - Cookie file facebook_cookies.json not found
+2025-04-18 10:29:21,533 - INFO - Login successful
+2025-04-18 10:29:21,620 - INFO - Browser closed successfully.
+2025-04-18 10:32:51,368 - INFO - ====== WebDriver manager ======
+2025-04-18 10:32:51,523 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 10:32:51,716 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 10:34:06,938 - INFO - Driver [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95/chromedriver-mac-arm64/chromedriver] found in cache
+2025-04-18 10:34:07,440 - INFO - Facebook scraper initialized
+2025-04-18 10:34:07,440 - INFO - Logging into Facebook...
+2025-04-18 10:34:08,708 - ERROR - Cookie file facebook_cookies.json not found
+2025-04-18 10:34:14,035 - INFO - Login successful
+2025-04-18 10:34:14,123 - INFO - Browser closed successfully.
+2025-04-18 11:46:50,773 - INFO - ====== WebDriver manager ======
+2025-04-18 11:46:50,964 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 11:46:51,135 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 11:46:51,219 - INFO - Driver [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95/chromedriver-mac-arm64/chromedriver] found in cache
+2025-04-18 11:46:52,708 - INFO - Facebook scraper initialized
+2025-04-18 11:46:52,708 - INFO - Logging into Facebook...
+2025-04-18 11:46:53,910 - ERROR - Cookie file facebook_cookies.json not found
+2025-04-18 11:46:59,298 - INFO - Login successful
+2025-04-18 11:46:59,298 - INFO - Searching for posts with keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 11:47:09,547 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000104e4ee10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000104e470ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010498e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001049d56a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000104a167b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x00000001049c9a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000104e13c98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000104e16f64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000104df3a20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000104e177e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000104de4b14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000104e379c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000104e37b50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000104e46cf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 11:47:09,548 - INFO - No posts found for keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 11:47:09,548 - INFO - Searching for posts with keyword: Lọc máu giảm đột quỵ
+2025-04-18 11:47:19,827 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000104e4ee10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000104e470ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010498e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001049d56a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000104a167b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x00000001049c9a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000104e13c98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000104e16f64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000104df3a20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000104e177e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000104de4b14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000104e379c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000104e37b50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000104e46cf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 11:47:19,827 - INFO - No posts found for keyword: Lọc máu giảm đột quỵ
+2025-04-18 11:47:19,827 - INFO - Searching for posts with keyword: Lọc máu phòng đột quỵ
+2025-04-18 11:47:30,117 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000104e4ee10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000104e470ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010498e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001049d56a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000104a167b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x00000001049c9a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000104e13c98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000104e16f64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000104df3a20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000104e177e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000104de4b14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000104e379c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000104e37b50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000104e46cf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 11:47:30,117 - INFO - No posts found for keyword: Lọc máu phòng đột quỵ
+2025-04-18 11:47:30,118 - INFO - Searching for posts with keyword: Lọc máu ngừa đột quỵ
+2025-04-18 11:47:40,390 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000104e4ee10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000104e470ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010498e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001049d56a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000104a167b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x00000001049c9a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000104e13c98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000104e16f64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000104df3a20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000104e177e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000104de4b14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000104e379c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000104e37b50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000104e46cf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 11:47:40,390 - INFO - No posts found for keyword: Lọc máu ngừa đột quỵ
+2025-04-18 11:47:40,390 - INFO - Searching for posts with keyword: xuất tinh sớm
+2025-04-18 11:47:50,662 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000104e4ee10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000104e470ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010498e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001049d56a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000104a167b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x00000001049c9a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000104e13c98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000104e16f64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000104df3a20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000104e177e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000104de4b14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000104e379c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000104e37b50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000104e46cf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 11:47:50,662 - INFO - No posts found for keyword: xuất tinh sớm
+2025-04-18 11:47:50,662 - INFO - Searching for posts with keyword: cậu nhỏ
+2025-04-18 11:48:00,927 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000104e4ee10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000104e470ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010498e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001049d56a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000104a167b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x00000001049c9a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000104e13c98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000104e16f64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000104df3a20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000104e177e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000104de4b14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000104e379c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000104e37b50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000104e46cf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 11:48:00,928 - INFO - No posts found for keyword: cậu nhỏ
+2025-04-18 11:48:01,031 - INFO - Browser closed successfully.
+2025-04-18 11:51:16,856 - INFO - ====== WebDriver manager ======
+2025-04-18 11:51:17,004 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 11:51:17,146 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 11:51:17,286 - INFO - Driver [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95/chromedriver-mac-arm64/chromedriver] found in cache
+2025-04-18 11:51:17,820 - INFO - Facebook scraper initialized
+2025-04-18 11:51:17,821 - INFO - Logging into Facebook...
+2025-04-18 11:51:18,737 - INFO - Browser closed successfully.
+2025-04-18 11:52:36,355 - INFO - ====== WebDriver manager ======
+2025-04-18 11:52:36,496 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 11:52:36,638 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 11:52:36,793 - INFO - Driver [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95/chromedriver-mac-arm64/chromedriver] found in cache
+2025-04-18 11:52:37,201 - INFO - Facebook scraper initialized
+2025-04-18 11:52:37,201 - INFO - Logging into Facebook...
+2025-04-18 11:52:38,151 - INFO - Cookies loaded from facebook_cookies.json
+2025-04-18 11:52:43,526 - INFO - Login successful
+2025-04-18 11:52:43,526 - INFO - Searching for posts with keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 11:52:53,822 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000105192e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x000000010518b0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x0000000104cd28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000104d196a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000104d5a7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000104d0da80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000105157c98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x000000010515af64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000105137a20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x000000010515b7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000105128b14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x000000010517b9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x000000010517bb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x000000010518acf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 11:52:53,822 - INFO - No posts found for keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 11:52:53,823 - INFO - Searching for posts with keyword: Lọc máu giảm đột quỵ
+2025-04-18 11:53:04,129 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000105192e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x000000010518b0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x0000000104cd28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000104d196a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000104d5a7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000104d0da80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000105157c98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x000000010515af64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000105137a20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x000000010515b7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000105128b14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x000000010517b9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x000000010517bb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x000000010518acf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 11:53:04,130 - INFO - No posts found for keyword: Lọc máu giảm đột quỵ
+2025-04-18 11:53:04,130 - INFO - Searching for posts with keyword: Lọc máu phòng đột quỵ
+2025-04-18 11:53:14,427 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000105192e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x000000010518b0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x0000000104cd28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000104d196a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000104d5a7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000104d0da80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000105157c98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x000000010515af64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000105137a20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x000000010515b7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000105128b14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x000000010517b9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x000000010517bb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x000000010518acf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 11:53:14,428 - INFO - No posts found for keyword: Lọc máu phòng đột quỵ
+2025-04-18 11:53:14,428 - INFO - Searching for posts with keyword: Lọc máu ngừa đột quỵ
+2025-04-18 11:53:24,739 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000105192e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x000000010518b0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x0000000104cd28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000104d196a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000104d5a7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000104d0da80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000105157c98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x000000010515af64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000105137a20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x000000010515b7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000105128b14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x000000010517b9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x000000010517bb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x000000010518acf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 11:53:24,740 - INFO - No posts found for keyword: Lọc máu ngừa đột quỵ
+2025-04-18 11:53:24,740 - INFO - Searching for posts with keyword: xuất tinh sớm
+2025-04-18 11:53:35,049 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000105192e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x000000010518b0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x0000000104cd28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000104d196a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000104d5a7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000104d0da80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000105157c98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x000000010515af64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000105137a20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x000000010515b7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000105128b14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x000000010517b9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x000000010517bb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x000000010518acf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 11:53:35,050 - INFO - No posts found for keyword: xuất tinh sớm
+2025-04-18 11:53:35,050 - INFO - Searching for posts with keyword: cậu nhỏ
+2025-04-18 11:53:45,347 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000105192e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x000000010518b0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x0000000104cd28d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000104d196a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000104d5a7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000104d0da80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000105157c98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x000000010515af64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000105137a20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x000000010515b7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000105128b14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x000000010517b9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x000000010517bb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x000000010518acf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 11:53:45,347 - INFO - No posts found for keyword: cậu nhỏ
+2025-04-18 11:53:45,474 - INFO - Browser closed successfully.
+2025-04-18 11:55:07,452 - INFO - ====== WebDriver manager ======
+2025-04-18 11:55:07,598 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 11:55:07,765 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 11:55:07,884 - INFO - Driver [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95/chromedriver-mac-arm64/chromedriver] found in cache
+2025-04-18 11:55:08,397 - INFO - Facebook scraper initialized
+2025-04-18 11:55:08,398 - INFO - Logging into Facebook...
+2025-04-18 11:55:09,383 - INFO - Cookies loaded from facebook_cookies.json
+2025-04-18 11:55:14,746 - INFO - Login successful
+2025-04-18 11:55:14,747 - INFO - Searching for posts with keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 11:55:25,052 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000104fa6e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000104f9f0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x0000000104ae68d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000104b2d6a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000104b6e7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000104b21a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000104f6bc98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000104f6ef64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000104f4ba20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000104f6f7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000104f3cb14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000104f8f9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000104f8fb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000104f9ecf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 11:55:25,053 - INFO - No posts found for keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 11:55:25,053 - INFO - Searching for posts with keyword: Lọc máu giảm đột quỵ
+2025-04-18 11:55:35,358 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000104fa6e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000104f9f0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x0000000104ae68d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000104b2d6a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000104b6e7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000104b21a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000104f6bc98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000104f6ef64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000104f4ba20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000104f6f7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000104f3cb14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000104f8f9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000104f8fb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000104f9ecf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 11:55:35,358 - INFO - No posts found for keyword: Lọc máu giảm đột quỵ
+2025-04-18 11:55:35,358 - INFO - Searching for posts with keyword: Lọc máu phòng đột quỵ
+2025-04-18 11:55:45,669 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000104fa6e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000104f9f0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x0000000104ae68d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000104b2d6a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000104b6e7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000104b21a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000104f6bc98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000104f6ef64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000104f4ba20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000104f6f7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000104f3cb14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000104f8f9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000104f8fb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000104f9ecf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 11:55:45,669 - INFO - No posts found for keyword: Lọc máu phòng đột quỵ
+2025-04-18 11:55:45,669 - INFO - Searching for posts with keyword: Lọc máu ngừa đột quỵ
+2025-04-18 11:55:55,968 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000104fa6e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000104f9f0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x0000000104ae68d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000104b2d6a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000104b6e7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000104b21a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000104f6bc98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000104f6ef64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000104f4ba20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000104f6f7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000104f3cb14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000104f8f9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000104f8fb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000104f9ecf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 11:55:55,969 - INFO - No posts found for keyword: Lọc máu ngừa đột quỵ
+2025-04-18 11:55:55,969 - INFO - Searching for posts with keyword: xuất tinh sớm
+2025-04-18 11:56:06,273 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000104fa6e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000104f9f0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x0000000104ae68d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000104b2d6a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000104b6e7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000104b21a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000104f6bc98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000104f6ef64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000104f4ba20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000104f6f7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000104f3cb14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000104f8f9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000104f8fb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000104f9ecf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 11:56:06,273 - INFO - No posts found for keyword: xuất tinh sớm
+2025-04-18 11:56:06,273 - INFO - Searching for posts with keyword: cậu nhỏ
+2025-04-18 11:56:16,555 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000104fa6e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000104f9f0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x0000000104ae68d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000104b2d6a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000104b6e7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000104b21a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000104f6bc98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000104f6ef64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000104f4ba20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000104f6f7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000104f3cb14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000104f8f9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000104f8fb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000104f9ecf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 11:56:16,555 - INFO - No posts found for keyword: cậu nhỏ
+2025-04-18 11:56:16,684 - INFO - Browser closed successfully.
+2025-04-18 13:42:37,819 - INFO - ====== WebDriver manager ======
+2025-04-18 13:42:38,009 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 13:42:38,192 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 13:42:38,307 - INFO - Driver [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95/chromedriver-mac-arm64/chromedriver] found in cache
+2025-04-18 13:42:39,760 - INFO - Facebook scraper initialized
+2025-04-18 13:42:39,760 - INFO - Logging into Facebook...
+2025-04-18 13:42:40,657 - INFO - Cookies loaded from facebook_cookies.json
+2025-04-18 13:42:47,478 - INFO - Login successful
+2025-04-18 13:42:47,478 - INFO - Searching for posts with keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 13:42:57,770 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000104bdae10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000104bd30ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010471a8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001047616a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x00000001047a27b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000104755a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000104b9fc98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000104ba2f64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000104b7fa20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000104ba37e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000104b70b14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000104bc39c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000104bc3b50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000104bd2cf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 13:42:57,772 - INFO - No posts found for keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 13:42:57,772 - INFO - Searching for posts with keyword: Lọc máu giảm đột quỵ
+2025-04-18 13:45:06,821 - INFO - ====== WebDriver manager ======
+2025-04-18 13:45:06,964 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 13:45:07,074 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 13:45:07,180 - INFO - Driver [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95/chromedriver-mac-arm64/chromedriver] found in cache
+2025-04-18 13:45:07,680 - INFO - Facebook scraper initialized
+2025-04-18 13:45:07,680 - INFO - Logging into Facebook...
+2025-04-18 13:45:09,085 - INFO - Cookies loaded from facebook_cookies.json
+2025-04-18 13:45:14,460 - INFO - Login successful
+2025-04-18 13:45:14,465 - INFO - Searching for posts with keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 13:45:24,779 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x00000001047e6e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001047df0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001043268d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x000000010436d6a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x00000001043ae7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000104361a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x00000001047abc98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x00000001047aef64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x000000010478ba20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x00000001047af7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x000000010477cb14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x00000001047cf9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x00000001047cfb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x00000001047decf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 13:45:24,779 - INFO - No posts found for keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 13:45:24,779 - INFO - Searching for posts with keyword: Lọc máu giảm đột quỵ
+2025-04-18 13:45:50,528 - INFO - ====== WebDriver manager ======
+2025-04-18 13:45:50,672 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 13:45:50,810 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 13:45:50,892 - INFO - Driver [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95/chromedriver-mac-arm64/chromedriver] found in cache
+2025-04-18 13:45:52,048 - INFO - Facebook scraper initialized
+2025-04-18 13:45:52,048 - INFO - Logging into Facebook...
+2025-04-18 13:45:53,304 - INFO - Cookies loaded from facebook_cookies.json
+2025-04-18 13:45:58,655 - INFO - Login successful
+2025-04-18 13:45:58,657 - INFO - Searching for posts with keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 13:46:08,944 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000100fe6e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000100fdf0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x0000000100b268d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100b6d6a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000100bae7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000100b61a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000100fabc98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000100faef64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000100f8ba20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000100faf7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000100f7cb14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000100fcf9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000100fcfb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000100fdecf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 13:46:08,944 - INFO - No posts found for keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 13:46:08,944 - INFO - Searching for posts with keyword: Lọc máu giảm đột quỵ
+2025-04-18 13:46:19,259 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000100fe6e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000100fdf0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x0000000100b268d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100b6d6a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000100bae7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000100b61a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000100fabc98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000100faef64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000100f8ba20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000100faf7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000100f7cb14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000100fcf9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000100fcfb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000100fdecf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 13:46:19,259 - INFO - No posts found for keyword: Lọc máu giảm đột quỵ
+2025-04-18 13:46:19,260 - INFO - Searching for posts with keyword: Lọc máu phòng đột quỵ
+2025-04-18 13:46:29,552 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000100fe6e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000100fdf0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x0000000100b268d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100b6d6a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000100bae7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000100b61a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000100fabc98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000100faef64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000100f8ba20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000100faf7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000100f7cb14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000100fcf9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000100fcfb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000100fdecf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 13:46:29,554 - INFO - No posts found for keyword: Lọc máu phòng đột quỵ
+2025-04-18 13:46:29,554 - INFO - Searching for posts with keyword: Lọc máu ngừa đột quỵ
+2025-04-18 13:46:29,555 - ERROR - Search failed: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.96)
+Stacktrace:
+0   chromedriver                        0x0000000100fe6e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000100fdf0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x0000000100b268d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100b00758 chromedriver + 132952
+4   chromedriver                        0x0000000100b95734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x0000000100bae2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x0000000100b61a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000100fabc98 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x0000000100faef64 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000100f8ba20 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x0000000100faf7e0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000100f7cb14 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x0000000100fcf9c4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100fcfb50 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100fdecf8 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+16  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 13:46:29,555 - INFO - No posts found for keyword: Lọc máu ngừa đột quỵ
+2025-04-18 13:46:29,555 - INFO - Searching for posts with keyword: xuất tinh sớm
+2025-04-18 13:46:29,556 - ERROR - Search failed: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.96)
+Stacktrace:
+0   chromedriver                        0x0000000100fe6e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000100fdf0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x0000000100b268d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100b00758 chromedriver + 132952
+4   chromedriver                        0x0000000100b95734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x0000000100bae2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x0000000100b61a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000100fabc98 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x0000000100faef64 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000100f8ba20 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x0000000100faf7e0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000100f7cb14 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x0000000100fcf9c4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100fcfb50 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100fdecf8 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+16  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 13:46:29,556 - INFO - No posts found for keyword: xuất tinh sớm
+2025-04-18 13:46:29,556 - INFO - Searching for posts with keyword: cậu nhỏ
+2025-04-18 13:46:29,557 - ERROR - Search failed: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.96)
+Stacktrace:
+0   chromedriver                        0x0000000100fe6e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000100fdf0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x0000000100b268d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000100b00758 chromedriver + 132952
+4   chromedriver                        0x0000000100b95734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x0000000100bae2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x0000000100b61a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x0000000100fabc98 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x0000000100faef64 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x0000000100f8ba20 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x0000000100faf7e0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x0000000100f7cb14 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x0000000100fcf9c4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x0000000100fcfb50 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x0000000100fdecf8 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+16  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 13:46:29,557 - INFO - No posts found for keyword: cậu nhỏ
+2025-04-18 13:46:29,669 - INFO - Browser closed successfully.
+2025-04-18 13:47:00,447 - INFO - ====== WebDriver manager ======
+2025-04-18 13:47:00,588 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 13:47:00,728 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 13:47:00,846 - INFO - Driver [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95/chromedriver-mac-arm64/chromedriver] found in cache
+2025-04-18 13:47:01,551 - INFO - Facebook scraper initialized
+2025-04-18 13:47:01,552 - INFO - Logging into Facebook...
+2025-04-18 13:47:02,477 - INFO - Cookies loaded from facebook_cookies.json
+2025-04-18 13:47:07,883 - INFO - Login successful
+2025-04-18 13:47:07,885 - INFO - Searching for posts with keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 13:47:18,212 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x00000001034f6e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001034ef0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001030368d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x000000010307d6a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x00000001030be7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000103071a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x00000001034bbc98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x00000001034bef64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x000000010349ba20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x00000001034bf7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x000000010348cb14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x00000001034df9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x00000001034dfb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x00000001034eecf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 13:47:18,212 - INFO - No posts found for keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 13:47:18,212 - INFO - Searching for posts with keyword: Lọc máu giảm đột quỵ
+2025-04-18 13:47:26,450 - ERROR - Search failed: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.96)
+Stacktrace:
+0   chromedriver                        0x00000001034f6e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001034ef0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001030368d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000103010758 chromedriver + 132952
+4   chromedriver                        0x00000001030a5734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001030be2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x0000000103071a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001034bbc98 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001034bef64 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x000000010349ba20 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001034bf7e0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x000000010348cb14 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001034df9c4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x00000001034dfb50 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001034eecf8 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+16  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 13:47:26,450 - INFO - No posts found for keyword: Lọc máu giảm đột quỵ
+2025-04-18 13:47:26,450 - INFO - Searching for posts with keyword: Lọc máu phòng đột quỵ
+2025-04-18 13:47:26,452 - ERROR - Search failed: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.96)
+Stacktrace:
+0   chromedriver                        0x00000001034f6e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001034ef0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001030368d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000103010758 chromedriver + 132952
+4   chromedriver                        0x00000001030a5734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001030be2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x0000000103071a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001034bbc98 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001034bef64 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x000000010349ba20 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001034bf7e0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x000000010348cb14 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001034df9c4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x00000001034dfb50 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001034eecf8 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+16  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 13:47:26,452 - INFO - No posts found for keyword: Lọc máu phòng đột quỵ
+2025-04-18 13:47:26,452 - INFO - Searching for posts with keyword: Lọc máu ngừa đột quỵ
+2025-04-18 13:47:26,453 - ERROR - Search failed: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.96)
+Stacktrace:
+0   chromedriver                        0x00000001034f6e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001034ef0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001030368d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000103010758 chromedriver + 132952
+4   chromedriver                        0x00000001030a5734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001030be2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x0000000103071a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001034bbc98 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001034bef64 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x000000010349ba20 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001034bf7e0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x000000010348cb14 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001034df9c4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x00000001034dfb50 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001034eecf8 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+16  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 13:47:26,453 - INFO - No posts found for keyword: Lọc máu ngừa đột quỵ
+2025-04-18 13:47:26,453 - INFO - Searching for posts with keyword: xuất tinh sớm
+2025-04-18 13:47:26,454 - ERROR - Search failed: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.96)
+Stacktrace:
+0   chromedriver                        0x00000001034f6e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001034ef0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001030368d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000103010758 chromedriver + 132952
+4   chromedriver                        0x00000001030a5734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001030be2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x0000000103071a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001034bbc98 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001034bef64 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x000000010349ba20 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001034bf7e0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x000000010348cb14 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001034df9c4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x00000001034dfb50 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001034eecf8 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+16  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 13:47:26,454 - INFO - No posts found for keyword: xuất tinh sớm
+2025-04-18 13:47:26,454 - INFO - Searching for posts with keyword: cậu nhỏ
+2025-04-18 13:47:26,455 - ERROR - Search failed: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.96)
+Stacktrace:
+0   chromedriver                        0x00000001034f6e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001034ef0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001030368d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000103010758 chromedriver + 132952
+4   chromedriver                        0x00000001030a5734 cxxbridge1$string$len + 547264
+5   chromedriver                        0x00000001030be2c4 cxxbridge1$string$len + 648528
+6   chromedriver                        0x0000000103071a80 cxxbridge1$string$len + 335116
+7   chromedriver                        0x00000001034bbc98 cxxbridge1$str$ptr + 2575000
+8   chromedriver                        0x00000001034bef64 cxxbridge1$str$ptr + 2588004
+9   chromedriver                        0x000000010349ba20 cxxbridge1$str$ptr + 2443296
+10  chromedriver                        0x00000001034bf7e0 cxxbridge1$str$ptr + 2590176
+11  chromedriver                        0x000000010348cb14 cxxbridge1$str$ptr + 2382100
+12  chromedriver                        0x00000001034df9c4 cxxbridge1$str$ptr + 2721732
+13  chromedriver                        0x00000001034dfb50 cxxbridge1$str$ptr + 2722128
+14  chromedriver                        0x00000001034eecf8 cxxbridge1$str$ptr + 2783992
+15  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+16  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 13:47:26,455 - INFO - No posts found for keyword: cậu nhỏ
+2025-04-18 13:47:26,568 - INFO - Browser closed successfully.
+2025-04-18 13:49:03,021 - INFO - ====== WebDriver manager ======
+2025-04-18 13:49:03,153 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 13:49:03,262 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 13:49:03,419 - INFO - Driver [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95/chromedriver-mac-arm64/chromedriver] found in cache
+2025-04-18 13:49:04,127 - INFO - Facebook scraper initialized
+2025-04-18 13:49:04,127 - INFO - Logging into Facebook...
+2025-04-18 13:49:05,044 - INFO - Cookies loaded from facebook_cookies.json
+2025-04-18 13:49:10,374 - INFO - Login successful
+2025-04-18 13:49:10,376 - INFO - Searching for posts with keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 13:49:20,686 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000102b86e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000102b7f0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001026c68d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x000000010270d6a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x000000010274e7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000102701a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000102b4bc98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000102b4ef64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000102b2ba20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000102b4f7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000102b1cb14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000102b6f9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000102b6fb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000102b7ecf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 13:49:20,687 - INFO - No posts found for keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 13:49:20,687 - INFO - Searching for posts with keyword: Lọc máu giảm đột quỵ
+2025-04-18 13:49:30,999 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000102b86e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000102b7f0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001026c68d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x000000010270d6a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x000000010274e7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000102701a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000102b4bc98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000102b4ef64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000102b2ba20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000102b4f7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000102b1cb14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000102b6f9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000102b6fb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000102b7ecf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 13:49:31,000 - INFO - No posts found for keyword: Lọc máu giảm đột quỵ
+2025-04-18 13:49:31,000 - INFO - Searching for posts with keyword: Lọc máu phòng đột quỵ
+2025-04-18 13:49:41,303 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000102b86e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000102b7f0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001026c68d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x000000010270d6a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x000000010274e7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000102701a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000102b4bc98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000102b4ef64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000102b2ba20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000102b4f7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000102b1cb14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000102b6f9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000102b6fb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000102b7ecf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 13:49:41,304 - INFO - No posts found for keyword: Lọc máu phòng đột quỵ
+2025-04-18 13:49:41,304 - INFO - Searching for posts with keyword: Lọc máu ngừa đột quỵ
+2025-04-18 13:49:51,632 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000102b86e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000102b7f0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001026c68d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x000000010270d6a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x000000010274e7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000102701a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000102b4bc98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000102b4ef64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000102b2ba20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000102b4f7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000102b1cb14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000102b6f9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000102b6fb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000102b7ecf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 13:49:51,633 - INFO - No posts found for keyword: Lọc máu ngừa đột quỵ
+2025-04-18 13:49:51,633 - INFO - Searching for posts with keyword: xuất tinh sớm
+2025-04-18 13:50:01,948 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000102b86e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000102b7f0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001026c68d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x000000010270d6a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x000000010274e7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000102701a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000102b4bc98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000102b4ef64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000102b2ba20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000102b4f7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000102b1cb14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000102b6f9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000102b6fb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000102b7ecf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 13:50:01,948 - INFO - No posts found for keyword: xuất tinh sớm
+2025-04-18 13:50:01,948 - INFO - Searching for posts with keyword: cậu nhỏ
+2025-04-18 13:50:12,255 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000102b86e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000102b7f0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001026c68d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x000000010270d6a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x000000010274e7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000102701a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000102b4bc98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000102b4ef64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000102b2ba20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000102b4f7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000102b1cb14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000102b6f9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000102b6fb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000102b7ecf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 13:50:12,255 - INFO - No posts found for keyword: cậu nhỏ
+2025-04-18 13:50:12,375 - INFO - Browser closed successfully.
+2025-04-18 13:51:05,165 - INFO - ====== WebDriver manager ======
+2025-04-18 13:51:05,298 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 13:51:05,409 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 13:51:05,522 - INFO - Driver [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95/chromedriver-mac-arm64/chromedriver] found in cache
+2025-04-18 13:51:06,013 - INFO - Facebook scraper initialized
+2025-04-18 13:51:06,013 - INFO - Logging into Facebook...
+2025-04-18 13:51:06,970 - INFO - Cookies loaded from facebook_cookies.json
+2025-04-18 13:51:12,377 - INFO - Login successful
+2025-04-18 13:51:12,377 - INFO - Searching for posts with keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 13:51:18,236 - INFO - Loaded 2 URLs from white_list
+2025-04-18 13:51:18,308 - INFO - Post found!
+2025-04-18 13:51:19,266 - INFO - Post found!
+2025-04-18 13:51:20,244 - INFO - Post found!
+2025-04-18 13:51:21,394 - INFO - Post found!
+2025-04-18 13:51:23,507 - INFO - Post found!
+2025-04-18 13:52:54,300 - INFO - ====== WebDriver manager ======
+2025-04-18 13:52:54,441 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 13:52:54,578 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 13:52:54,721 - INFO - Driver [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95/chromedriver-mac-arm64/chromedriver] found in cache
+2025-04-18 13:52:55,982 - INFO - Facebook scraper initialized
+2025-04-18 13:52:55,982 - INFO - Logging into Facebook...
+2025-04-18 13:52:57,122 - INFO - Cookies loaded from facebook_cookies.json
+2025-04-18 13:53:02,459 - INFO - Login successful
+2025-04-18 13:53:02,459 - INFO - Searching for posts with keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 13:53:08,291 - INFO - Loaded 2 URLs from white_list
+2025-04-18 13:54:10,801 - INFO - No new content loaded. Scroll attempt 1/5
+2025-04-18 13:54:10,803 - WARNING - Scrolling timed out
+2025-04-18 13:54:10,803 - INFO - Scraped 0 posts for keyword 'Lọc máu loại bỏ mỡ máu'
+2025-04-18 13:54:10,803 - INFO - No posts found for keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 13:54:10,803 - INFO - Searching for posts with keyword: Lọc máu giảm đột quỵ
+2025-04-18 13:54:18,758 - INFO - Loaded 2 URLs from white_list
+2025-04-18 13:55:21,028 - WARNING - Scrolling timed out
+2025-04-18 13:55:21,029 - INFO - Scraped 0 posts for keyword 'Lọc máu giảm đột quỵ'
+2025-04-18 13:55:21,029 - INFO - No posts found for keyword: Lọc máu giảm đột quỵ
+2025-04-18 13:55:21,029 - INFO - Searching for posts with keyword: Lọc máu phòng đột quỵ
+2025-04-18 13:55:29,090 - INFO - Loaded 2 URLs from white_list
+2025-04-18 13:56:14,140 - INFO - No new content loaded. Scroll attempt 1/5
+2025-04-18 13:56:26,066 - INFO - No new content loaded. Scroll attempt 2/5
+2025-04-18 13:56:26,066 - WARNING - Scrolling timed out
+2025-04-18 13:56:26,066 - INFO - Scraped 0 posts for keyword 'Lọc máu phòng đột quỵ'
+2025-04-18 13:56:26,067 - INFO - No posts found for keyword: Lọc máu phòng đột quỵ
+2025-04-18 13:56:26,067 - INFO - Searching for posts with keyword: Lọc máu ngừa đột quỵ
+2025-04-18 13:56:33,543 - INFO - Loaded 2 URLs from white_list
+2025-04-18 13:57:24,118 - WARNING - Scrolling timed out
+2025-04-18 13:57:24,118 - INFO - Scraped 0 posts for keyword 'Lọc máu ngừa đột quỵ'
+2025-04-18 13:57:24,118 - INFO - No posts found for keyword: Lọc máu ngừa đột quỵ
+2025-04-18 13:57:24,118 - INFO - Searching for posts with keyword: xuất tinh sớm
+2025-04-18 13:57:31,622 - INFO - Loaded 2 URLs from white_list
+2025-04-18 13:58:00,474 - INFO - No new content loaded. Scroll attempt 1/5
+2025-04-18 13:58:12,225 - INFO - No new content loaded. Scroll attempt 2/5
+2025-04-18 13:58:23,522 - INFO - No new content loaded. Scroll attempt 3/5
+2025-04-18 13:58:23,522 - WARNING - Scrolling timed out
+2025-04-18 13:58:23,522 - INFO - Scraped 0 posts for keyword 'xuất tinh sớm'
+2025-04-18 13:58:23,522 - INFO - No posts found for keyword: xuất tinh sớm
+2025-04-18 13:58:23,522 - INFO - Searching for posts with keyword: cậu nhỏ
+2025-04-18 13:58:44,437 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000100d5ee10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000100d570ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x000000010089e8d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001008e56a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x00000001009267b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x00000001008d9a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000100d23c98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000100d26f64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000100d03a20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000100d277e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000100cf4b14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000100d479c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000100d47b50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000100d56cf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 13:58:44,438 - INFO - No posts found for keyword: cậu nhỏ
+2025-04-18 13:58:44,658 - INFO - Browser closed successfully.
+2025-04-18 14:00:38,220 - INFO - ====== WebDriver manager ======
+2025-04-18 14:00:38,359 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 14:00:38,499 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 14:00:38,614 - INFO - Driver [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95/chromedriver-mac-arm64/chromedriver] found in cache
+2025-04-18 14:00:39,157 - INFO - Facebook scraper initialized
+2025-04-18 14:00:39,157 - INFO - Logging into Facebook...
+2025-04-18 14:00:40,076 - INFO - Cookies loaded from facebook_cookies.json
+2025-04-18 14:00:45,530 - INFO - Login successful
+2025-04-18 14:00:45,530 - INFO - Searching for posts with keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 14:00:51,356 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:01:42,440 - WARNING - Scrolling timed out
+2025-04-18 14:01:42,441 - INFO - Scraped 0 posts for keyword 'Lọc máu loại bỏ mỡ máu'
+2025-04-18 14:01:42,441 - INFO - No posts found for keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 14:01:42,441 - INFO - Searching for posts with keyword: Lọc máu giảm đột quỵ
+2025-04-18 14:01:49,934 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:02:51,125 - INFO - No new content loaded. Scroll attempt 1/5
+2025-04-18 14:02:51,125 - WARNING - Scrolling timed out
+2025-04-18 14:02:51,125 - INFO - Scraped 0 posts for keyword 'Lọc máu giảm đột quỵ'
+2025-04-18 14:02:51,125 - INFO - No posts found for keyword: Lọc máu giảm đột quỵ
+2025-04-18 14:02:51,125 - INFO - Searching for posts with keyword: Lọc máu phòng đột quỵ
+2025-04-18 14:02:59,196 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:03:51,034 - INFO - No new content loaded. Scroll attempt 1/5
+2025-04-18 14:03:51,035 - WARNING - Scrolling timed out
+2025-04-18 14:03:51,036 - INFO - Scraped 0 posts for keyword 'Lọc máu phòng đột quỵ'
+2025-04-18 14:03:51,036 - INFO - No posts found for keyword: Lọc máu phòng đột quỵ
+2025-04-18 14:03:51,036 - INFO - Searching for posts with keyword: Lọc máu ngừa đột quỵ
+2025-04-18 14:03:58,059 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:05:00,456 - WARNING - Scrolling timed out
+2025-04-18 14:05:00,456 - INFO - Scraped 0 posts for keyword 'Lọc máu ngừa đột quỵ'
+2025-04-18 14:05:00,456 - INFO - No posts found for keyword: Lọc máu ngừa đột quỵ
+2025-04-18 14:05:00,456 - INFO - Searching for posts with keyword: xuất tinh sớm
+2025-04-18 14:05:07,880 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:05:37,375 - INFO - No new content loaded. Scroll attempt 1/5
+2025-04-18 14:05:49,016 - INFO - No new content loaded. Scroll attempt 2/5
+2025-04-18 14:06:00,652 - INFO - No new content loaded. Scroll attempt 3/5
+2025-04-18 14:06:00,652 - WARNING - Scrolling timed out
+2025-04-18 14:06:00,652 - INFO - Scraped 0 posts for keyword 'xuất tinh sớm'
+2025-04-18 14:06:00,652 - INFO - No posts found for keyword: xuất tinh sớm
+2025-04-18 14:06:00,653 - INFO - Searching for posts with keyword: cậu nhỏ
+2025-04-18 14:06:21,471 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x00000001045a6e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x000000010459f0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001040e68d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x000000010412d6a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x000000010416e7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000104121a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x000000010456bc98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x000000010456ef64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x000000010454ba20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x000000010456f7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x000000010453cb14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x000000010458f9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x000000010458fb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x000000010459ecf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 14:06:21,471 - INFO - No posts found for keyword: cậu nhỏ
+2025-04-18 14:06:21,728 - INFO - Browser closed successfully.
+2025-04-18 14:11:22,618 - INFO - ====== WebDriver manager ======
+2025-04-18 14:11:22,783 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 14:11:22,900 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 14:11:23,040 - INFO - Driver [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95/chromedriver-mac-arm64/chromedriver] found in cache
+2025-04-18 14:11:23,515 - INFO - Facebook scraper initialized
+2025-04-18 14:11:23,515 - INFO - Logging into Facebook...
+2025-04-18 14:11:24,438 - INFO - Cookies loaded from facebook_cookies.json
+2025-04-18 14:11:29,836 - INFO - Login successful
+2025-04-18 14:11:29,836 - INFO - Searching for posts with keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 14:11:35,724 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:11:35,789 - INFO - Post found!
+2025-04-18 14:11:36,787 - INFO - Post found!
+2025-04-18 14:11:37,858 - INFO - Post found!
+2025-04-18 14:11:40,036 - INFO - Post found!
+2025-04-18 14:11:41,879 - INFO - Post found!
+2025-04-18 14:11:53,783 - INFO - Post found!
+2025-04-18 14:11:54,781 - INFO - Post found!
+2025-04-18 14:11:55,760 - INFO - Post found!
+2025-04-18 14:11:57,937 - INFO - Post found!
+2025-04-18 14:12:00,431 - INFO - Post found!
+2025-04-18 14:12:01,433 - INFO - Post found!
+2025-04-18 14:12:02,427 - INFO - Post found!
+2025-04-18 14:12:03,453 - INFO - Post found!
+2025-04-18 14:12:05,672 - INFO - Post found!
+2025-04-18 14:12:06,694 - INFO - Post found!
+2025-04-18 14:12:12,899 - INFO - Post found!
+2025-04-18 14:12:16,327 - INFO - Post found!
+2025-04-18 14:12:17,927 - INFO - Post found!
+2025-04-18 14:12:20,741 - INFO - Post found!
+2025-04-18 14:12:31,481 - INFO - Post found!
+2025-04-18 14:12:33,701 - INFO - Scraped 20 posts for keyword 'Lọc máu loại bỏ mỡ máu'
+2025-04-18 14:12:33,702 - INFO - Searching for posts with keyword: Lọc máu giảm đột quỵ
+2025-04-18 14:12:41,036 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:12:41,078 - INFO - Post found!
+2025-04-18 14:12:51,734 - INFO - Post found!
+2025-04-18 14:12:52,756 - INFO - Post found!
+2025-04-18 14:13:20,818 - INFO - No new content loaded. Scroll attempt 1/5
+2025-04-18 14:13:32,280 - INFO - No new content loaded. Scroll attempt 2/5
+2025-04-18 14:13:43,735 - INFO - No new content loaded. Scroll attempt 3/5
+2025-04-18 14:13:55,282 - INFO - No new content loaded. Scroll attempt 4/5
+2025-04-18 14:14:06,756 - INFO - No new content loaded. Scroll attempt 5/5
+2025-04-18 14:14:06,756 - INFO - Scraped 3 posts for keyword 'Lọc máu giảm đột quỵ'
+2025-04-18 14:14:06,756 - INFO - Searching for posts with keyword: Lọc máu phòng đột quỵ
+2025-04-18 14:14:14,614 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:14:14,646 - INFO - Post found!
+2025-04-18 14:14:26,179 - INFO - Post found!
+2025-04-18 14:14:37,206 - INFO - Post found!
+2025-04-18 14:15:11,013 - INFO - No new content loaded. Scroll attempt 1/5
+2025-04-18 14:15:22,548 - INFO - No new content loaded. Scroll attempt 2/5
+2025-04-18 14:15:33,990 - INFO - No new content loaded. Scroll attempt 3/5
+2025-04-18 14:15:45,429 - INFO - No new content loaded. Scroll attempt 4/5
+2025-04-18 14:15:56,878 - INFO - No new content loaded. Scroll attempt 5/5
+2025-04-18 14:15:56,878 - WARNING - Scrolling timed out
+2025-04-18 14:15:56,879 - INFO - Scraped 3 posts for keyword 'Lọc máu phòng đột quỵ'
+2025-04-18 14:15:56,879 - INFO - Searching for posts with keyword: Lọc máu ngừa đột quỵ
+2025-04-18 14:16:04,362 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:16:04,407 - INFO - Post found!
+2025-04-18 14:16:15,440 - INFO - Post found!
+2025-04-18 14:16:49,420 - INFO - No new content loaded. Scroll attempt 1/5
+2025-04-18 14:17:00,926 - INFO - No new content loaded. Scroll attempt 2/5
+2025-04-18 14:17:12,431 - INFO - No new content loaded. Scroll attempt 3/5
+2025-04-18 14:17:24,027 - INFO - No new content loaded. Scroll attempt 4/5
+2025-04-18 14:17:35,539 - INFO - No new content loaded. Scroll attempt 5/5
+2025-04-18 14:17:35,539 - INFO - Scraped 2 posts for keyword 'Lọc máu ngừa đột quỵ'
+2025-04-18 14:17:35,539 - INFO - Searching for posts with keyword: xuất tinh sớm
+2025-04-18 14:17:43,102 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:17:43,162 - INFO - Post found!
+2025-04-18 14:17:54,415 - INFO - Post found!
+2025-04-18 14:18:28,358 - INFO - No new content loaded. Scroll attempt 1/5
+2025-04-18 14:18:39,863 - INFO - No new content loaded. Scroll attempt 2/5
+2025-04-18 14:18:51,418 - INFO - No new content loaded. Scroll attempt 3/5
+2025-04-18 14:19:02,930 - INFO - No new content loaded. Scroll attempt 4/5
+2025-04-18 14:19:14,448 - INFO - No new content loaded. Scroll attempt 5/5
+2025-04-18 14:19:14,449 - INFO - Scraped 2 posts for keyword 'xuất tinh sớm'
+2025-04-18 14:19:14,449 - INFO - Searching for posts with keyword: cậu nhỏ
+2025-04-18 14:19:35,770 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000103422e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x000000010341b0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x0000000102f628d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x0000000102fa96a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000102fea7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x0000000102f9da80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x00000001033e7c98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x00000001033eaf64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x00000001033c7a20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x00000001033eb7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x00000001033b8b14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x000000010340b9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x000000010340bb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x000000010341acf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 14:19:35,771 - INFO - No posts found for keyword: cậu nhỏ
+2025-04-18 14:19:35,887 - INFO - Data saved to facebook_posts.xlsx
+2025-04-18 14:19:36,088 - INFO - Browser closed
+2025-04-18 14:29:46,601 - INFO - ====== WebDriver manager ======
+2025-04-18 14:29:46,736 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 14:29:46,899 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 14:29:47,035 - INFO - Driver [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95/chromedriver-mac-arm64/chromedriver] found in cache
+2025-04-18 14:29:47,560 - INFO - Facebook scraper initialized
+2025-04-18 14:29:47,560 - INFO - Logging into Facebook...
+2025-04-18 14:29:48,422 - INFO - Cookies loaded from facebook_cookies.json
+2025-04-18 14:29:53,784 - INFO - Login successful
+2025-04-18 14:29:53,784 - INFO - Searching for posts with keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 14:29:59,673 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:31:01,512 - INFO - No new content loaded. Scroll attempt 1/5
+2025-04-18 14:31:01,513 - WARNING - Scrolling timed out
+2025-04-18 14:31:01,514 - INFO - Scraped 0 posts for keyword 'Lọc máu loại bỏ mỡ máu'
+2025-04-18 14:31:01,514 - INFO - No posts found for keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 14:31:01,514 - INFO - Searching for posts with keyword: Lọc máu giảm đột quỵ
+2025-04-18 14:31:09,463 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:32:01,759 - WARNING - Scrolling timed out
+2025-04-18 14:32:01,759 - INFO - Scraped 0 posts for keyword 'Lọc máu giảm đột quỵ'
+2025-04-18 14:32:01,759 - INFO - No posts found for keyword: Lọc máu giảm đột quỵ
+2025-04-18 14:32:01,759 - INFO - Searching for posts with keyword: Lọc máu phòng đột quỵ
+2025-04-18 14:32:09,840 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:32:55,246 - INFO - No new content loaded. Scroll attempt 1/5
+2025-04-18 14:33:07,075 - INFO - No new content loaded. Scroll attempt 2/5
+2025-04-18 14:33:07,076 - WARNING - Scrolling timed out
+2025-04-18 14:33:07,076 - INFO - Scraped 0 posts for keyword 'Lọc máu phòng đột quỵ'
+2025-04-18 14:33:07,076 - INFO - No posts found for keyword: Lọc máu phòng đột quỵ
+2025-04-18 14:33:07,076 - INFO - Searching for posts with keyword: Lọc máu ngừa đột quỵ
+2025-04-18 14:33:14,625 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:34:05,169 - WARNING - Scrolling timed out
+2025-04-18 14:34:05,170 - INFO - Scraped 0 posts for keyword 'Lọc máu ngừa đột quỵ'
+2025-04-18 14:34:05,170 - INFO - No posts found for keyword: Lọc máu ngừa đột quỵ
+2025-04-18 14:34:05,170 - INFO - Searching for posts with keyword: xuất tinh sớm
+2025-04-18 14:34:12,626 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:34:53,395 - INFO - No new content loaded. Scroll attempt 1/5
+2025-04-18 14:35:05,007 - INFO - No new content loaded. Scroll attempt 2/5
+2025-04-18 14:35:05,007 - WARNING - Scrolling timed out
+2025-04-18 14:35:05,007 - INFO - Scraped 0 posts for keyword 'xuất tinh sớm'
+2025-04-18 14:35:05,007 - INFO - No posts found for keyword: xuất tinh sớm
+2025-04-18 14:35:05,007 - INFO - Searching for posts with keyword: cậu nhỏ
+2025-04-18 14:35:25,893 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000100e56e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x0000000100e4f0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001009968d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001009dd6a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x0000000100a1e7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x00000001009d1a80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x0000000100e1bc98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x0000000100e1ef64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x0000000100dfba20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x0000000100e1f7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000100decb14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x0000000100e3f9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x0000000100e3fb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x0000000100e4ecf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 14:35:25,894 - INFO - No posts found for keyword: cậu nhỏ
+2025-04-18 14:35:26,100 - INFO - Browser closed successfully.
+2025-04-18 14:37:20,435 - INFO - ====== WebDriver manager ======
+2025-04-18 14:37:20,576 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 14:37:20,726 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 14:37:20,840 - INFO - Driver [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95/chromedriver-mac-arm64/chromedriver] found in cache
+2025-04-18 14:37:21,351 - INFO - Facebook scraper initialized
+2025-04-18 14:37:21,351 - INFO - Logging into Facebook...
+2025-04-18 14:37:22,206 - INFO - Cookies loaded from facebook_cookies.json
+2025-04-18 14:37:27,556 - INFO - Login successful
+2025-04-18 14:37:27,556 - INFO - Searching for posts with keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 14:37:33,391 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:38:31,444 - WARNING - Scrolling timed out
+2025-04-18 14:38:31,445 - INFO - Scraped 0 posts for keyword 'Lọc máu loại bỏ mỡ máu'
+2025-04-18 14:38:31,445 - INFO - No posts found for keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 14:38:31,445 - INFO - Searching for posts with keyword: Lọc máu giảm đột quỵ
+2025-04-18 14:38:38,846 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:39:35,900 - WARNING - Scrolling timed out
+2025-04-18 14:39:35,901 - INFO - Scraped 0 posts for keyword 'Lọc máu giảm đột quỵ'
+2025-04-18 14:39:35,901 - INFO - No posts found for keyword: Lọc máu giảm đột quỵ
+2025-04-18 14:39:35,901 - INFO - Searching for posts with keyword: Lọc máu phòng đột quỵ
+2025-04-18 14:44:31,848 - INFO - ====== WebDriver manager ======
+2025-04-18 14:44:31,991 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 14:44:32,111 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 14:44:32,231 - INFO - Driver [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95/chromedriver-mac-arm64/chromedriver] found in cache
+2025-04-18 14:44:33,731 - INFO - Facebook scraper initialized
+2025-04-18 14:44:33,731 - INFO - Logging into Facebook...
+2025-04-18 14:44:35,090 - INFO - Cookies loaded from facebook_cookies.json
+2025-04-18 14:44:40,431 - INFO - Login successful
+2025-04-18 14:44:40,432 - INFO - Searching for posts with keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 14:44:46,332 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:44:46,400 - INFO - Post found!
+2025-04-18 14:44:47,340 - INFO - Post found!
+2025-04-18 14:44:48,297 - INFO - Post found!
+2025-04-18 14:44:50,515 - INFO - Post found!
+2025-04-18 14:44:51,445 - INFO - Post found!
+2025-04-18 14:44:52,397 - INFO - Post found!
+2025-04-18 14:44:54,595 - INFO - Post found!
+2025-04-18 14:44:55,959 - INFO - Post found!
+2025-04-18 14:44:56,889 - INFO - Post found!
+2025-04-18 14:47:22,636 - INFO - ====== WebDriver manager ======
+2025-04-18 14:47:22,778 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 14:47:22,932 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 14:47:23,048 - INFO - Driver [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95/chromedriver-mac-arm64/chromedriver] found in cache
+2025-04-18 14:47:23,572 - INFO - Facebook scraper initialized
+2025-04-18 14:47:23,572 - INFO - Logging into Facebook...
+2025-04-18 14:47:24,891 - INFO - Cookies loaded from facebook_cookies.json
+2025-04-18 14:47:30,257 - INFO - Login successful
+2025-04-18 14:47:30,258 - INFO - Searching for posts with keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 14:47:36,117 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:47:36,210 - INFO - Post found!
+2025-04-18 14:47:37,153 - INFO - Post found!
+2025-04-18 14:47:38,086 - INFO - Post found!
+2025-04-18 14:47:40,302 - INFO - Post found!
+2025-04-18 14:47:51,736 - INFO - Post found!
+2025-04-18 14:48:03,506 - INFO - Post found!
+2025-04-18 14:48:14,533 - INFO - Post found!
+2025-04-18 14:48:25,582 - INFO - Post found!
+2025-04-18 14:48:36,607 - INFO - Post found!
+2025-04-18 14:48:47,667 - INFO - Post found!
+2025-04-18 14:48:58,856 - INFO - Browser closed successfully.
+2025-04-18 14:49:38,516 - INFO - ====== WebDriver manager ======
+2025-04-18 14:49:38,659 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 14:49:38,809 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 14:49:38,952 - INFO - Driver [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95/chromedriver-mac-arm64/chromedriver] found in cache
+2025-04-18 14:49:39,463 - INFO - Facebook scraper initialized
+2025-04-18 14:49:39,463 - INFO - Logging into Facebook...
+2025-04-18 14:49:40,405 - INFO - Cookies loaded from facebook_cookies.json
+2025-04-18 14:49:45,748 - INFO - Login successful
+2025-04-18 14:49:45,748 - INFO - Searching for posts with keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 14:49:51,577 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:49:51,653 - INFO - Post found!
+2025-04-18 14:49:52,611 - INFO - Post found!
+2025-04-18 14:49:53,576 - INFO - Post found!
+2025-04-18 14:49:55,072 - INFO - Post found!
+2025-04-18 14:49:56,140 - INFO - Post found!
+2025-04-18 14:49:57,107 - INFO - Post found!
+2025-04-18 14:49:58,738 - INFO - Post found!
+2025-04-18 14:49:59,758 - INFO - Post found!
+2025-04-18 14:50:00,730 - INFO - Post found!
+2025-04-18 14:50:01,825 - INFO - Post found!
+2025-04-18 14:50:02,757 - INFO - Data saved to facebook_posts.xlsx
+2025-04-18 14:50:03,283 - INFO - Scraped 10 posts for keyword 'Lọc máu loại bỏ mỡ máu'
+2025-04-18 14:50:03,283 - INFO - No posts found for keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 14:50:03,283 - INFO - Searching for posts with keyword: Lọc máu giảm đột quỵ
+2025-04-18 14:50:09,082 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:50:09,126 - INFO - Post found!
+2025-04-18 14:50:19,755 - INFO - Post found!
+2025-04-18 14:50:20,836 - INFO - Post found!
+2025-04-18 14:50:37,483 - INFO - Post found!
+2025-04-18 14:50:43,051 - INFO - Post found!
+2025-04-18 14:50:48,320 - INFO - Post found!
+2025-04-18 14:51:05,098 - INFO - No new content loaded. Scroll attempt 1/5
+2025-04-18 14:51:05,100 - WARNING - Scrolling timed out
+2025-04-18 14:51:05,100 - INFO - Scraped 6 posts for keyword 'Lọc máu giảm đột quỵ'
+2025-04-18 14:51:05,101 - INFO - No posts found for keyword: Lọc máu giảm đột quỵ
+2025-04-18 14:51:05,101 - INFO - Searching for posts with keyword: Lọc máu phòng đột quỵ
+2025-04-18 14:51:12,958 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:51:13,003 - INFO - Post found!
+2025-04-18 14:51:24,030 - INFO - Post found!
+2025-04-18 14:51:35,053 - INFO - Post found!
+2025-04-18 14:51:57,490 - INFO - Post found!
+2025-04-18 14:52:09,081 - ERROR - Failed to save data to Excel: property 'book' of 'OpenpyxlWriter' object has no setter
+2025-04-18 14:52:09,097 - INFO - Post found!
+2025-04-18 14:52:20,126 - INFO - Post found!
+2025-04-18 14:52:42,501 - INFO - No new content loaded. Scroll attempt 1/5
+2025-04-18 14:52:42,502 - WARNING - Scrolling timed out
+2025-04-18 14:52:42,503 - INFO - Scraped 6 posts for keyword 'Lọc máu phòng đột quỵ'
+2025-04-18 14:52:42,503 - INFO - No posts found for keyword: Lọc máu phòng đột quỵ
+2025-04-18 14:52:42,503 - INFO - Searching for posts with keyword: Lọc máu ngừa đột quỵ
+2025-04-18 14:52:49,824 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:52:49,868 - INFO - Post found!
+2025-04-18 14:53:01,393 - INFO - Post found!
+2025-04-18 14:53:15,629 - INFO - ====== WebDriver manager ======
+2025-04-18 14:53:15,770 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 14:53:15,915 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 14:53:16,025 - INFO - Driver [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95/chromedriver-mac-arm64/chromedriver] found in cache
+2025-04-18 14:53:16,568 - INFO - Facebook scraper initialized
+2025-04-18 14:53:16,569 - INFO - Logging into Facebook...
+2025-04-18 14:53:17,937 - INFO - Cookies loaded from facebook_cookies.json
+2025-04-18 14:53:23,276 - INFO - Login successful
+2025-04-18 14:53:23,278 - INFO - Searching for posts with keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 14:53:29,159 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:53:29,255 - INFO - Post found!
+2025-04-18 14:53:30,180 - INFO - Post found!
+2025-04-18 14:53:31,139 - INFO - Post found!
+2025-04-18 14:53:32,853 - INFO - Post found!
+2025-04-18 14:53:33,911 - INFO - Post found!
+2025-04-18 14:53:34,890 - INFO - Post found!
+2025-04-18 14:53:36,511 - INFO - Post found!
+2025-04-18 14:53:37,618 - INFO - Post found!
+2025-04-18 14:53:38,623 - INFO - Post found!
+2025-04-18 14:53:39,684 - INFO - Post found!
+2025-04-18 14:53:40,653 - INFO - Data saved to facebook_posts.xlsx
+2025-04-18 14:53:41,172 - INFO - Scraped 10 posts for keyword 'Lọc máu loại bỏ mỡ máu'
+2025-04-18 14:53:41,172 - INFO - No posts found for keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 14:53:41,172 - INFO - Searching for posts with keyword: Lọc máu giảm đột quỵ
+2025-04-18 14:53:46,949 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:53:46,994 - INFO - Post found!
+2025-04-18 14:53:48,062 - INFO - Post found!
+2025-04-18 14:53:49,057 - INFO - Post found!
+2025-04-18 14:53:51,049 - INFO - Post found!
+2025-04-18 14:53:52,069 - INFO - Post found!
+2025-04-18 14:53:53,025 - INFO - Post found!
+2025-04-18 14:53:54,113 - INFO - Post found!
+2025-04-18 14:54:00,233 - INFO - Post found!
+2025-04-18 14:54:01,215 - INFO - Post found!
+2025-04-18 14:54:02,725 - INFO - Post found!
+2025-04-18 14:54:03,743 - ERROR - Failed to save data to Excel: property 'sheets' of 'OpenpyxlWriter' object has no setter
+2025-04-18 14:54:03,814 - INFO - Scraped 10 posts for keyword 'Lọc máu giảm đột quỵ'
+2025-04-18 14:54:03,814 - INFO - No posts found for keyword: Lọc máu giảm đột quỵ
+2025-04-18 14:54:03,814 - INFO - Searching for posts with keyword: Lọc máu phòng đột quỵ
+2025-04-18 14:54:10,630 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:54:10,672 - INFO - Post found!
+2025-04-18 14:54:11,719 - INFO - Post found!
+2025-04-18 14:54:12,714 - INFO - Post found!
+2025-04-18 14:54:14,257 - INFO - Post found!
+2025-04-18 14:54:15,265 - INFO - Post found!
+2025-04-18 14:54:16,227 - INFO - Post found!
+2025-04-18 14:54:18,786 - INFO - Post found!
+2025-04-18 14:54:19,837 - INFO - Post found!
+2025-04-18 14:54:20,832 - INFO - Post found!
+2025-04-18 14:54:21,929 - INFO - Post found!
+2025-04-18 14:54:22,856 - ERROR - Failed to save data to Excel: property 'sheets' of 'OpenpyxlWriter' object has no setter
+2025-04-18 14:54:23,385 - INFO - Scraped 10 posts for keyword 'Lọc máu phòng đột quỵ'
+2025-04-18 14:54:23,385 - INFO - No posts found for keyword: Lọc máu phòng đột quỵ
+2025-04-18 14:54:23,386 - INFO - Searching for posts with keyword: Lọc máu ngừa đột quỵ
+2025-04-18 14:54:29,731 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:54:29,776 - INFO - Post found!
+2025-04-18 14:54:30,857 - INFO - Post found!
+2025-04-18 14:54:32,416 - INFO - Post found!
+2025-04-18 14:54:33,411 - INFO - Post found!
+2025-04-18 14:54:34,936 - INFO - Post found!
+2025-04-18 14:54:35,969 - INFO - Post found!
+2025-04-18 14:54:36,955 - INFO - Post found!
+2025-04-18 14:54:37,925 - INFO - Post found!
+2025-04-18 14:56:08,639 - INFO - ====== WebDriver manager ======
+2025-04-18 14:56:08,782 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 14:56:08,928 - INFO - Get LATEST chromedriver version for google-chrome
+2025-04-18 14:56:09,068 - INFO - Driver [/Users/trinhhai/.wdm/drivers/chromedriver/mac64/135.0.7049.95/chromedriver-mac-arm64/chromedriver] found in cache
+2025-04-18 14:56:09,623 - INFO - Facebook scraper initialized
+2025-04-18 14:56:09,625 - INFO - Logging into Facebook...
+2025-04-18 14:56:11,074 - INFO - Cookies loaded from facebook_cookies.json
+2025-04-18 14:56:16,447 - INFO - Login successful
+2025-04-18 14:56:16,447 - INFO - Searching for posts with keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 14:56:22,341 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:56:22,409 - INFO - Post found!
+2025-04-18 14:56:23,358 - INFO - Post found!
+2025-04-18 14:56:24,330 - INFO - Post found!
+2025-04-18 14:56:26,488 - INFO - Post found!
+2025-04-18 14:56:27,530 - INFO - Post found!
+2025-04-18 14:56:28,542 - INFO - Post found!
+2025-04-18 14:56:29,561 - INFO - Post found!
+2025-04-18 14:56:30,567 - INFO - Post found!
+2025-04-18 14:56:31,569 - INFO - Post found!
+2025-04-18 14:56:33,134 - INFO - Post found!
+2025-04-18 14:56:34,169 - INFO - Data saved to facebook_posts.xlsx
+2025-04-18 14:56:35,228 - INFO - Scraped 10 posts for keyword 'Lọc máu loại bỏ mỡ máu'
+2025-04-18 14:56:35,229 - INFO - No posts found for keyword: Lọc máu loại bỏ mỡ máu
+2025-04-18 14:56:35,229 - INFO - Searching for posts with keyword: Lọc máu giảm đột quỵ
+2025-04-18 14:56:41,178 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:56:41,222 - INFO - Post found!
+2025-04-18 14:56:42,273 - INFO - Post found!
+2025-04-18 14:56:43,231 - INFO - Post found!
+2025-04-18 14:56:44,747 - INFO - Post found!
+2025-04-18 14:56:45,577 - INFO - Post found!
+2025-04-18 14:56:46,555 - INFO - Post found!
+2025-04-18 14:56:47,707 - INFO - Post found!
+2025-04-18 14:56:53,823 - INFO - Post found!
+2025-04-18 14:56:54,775 - INFO - Post found!
+2025-04-18 14:56:56,399 - INFO - Post found!
+2025-04-18 14:56:57,527 - INFO - Data saved to facebook_posts.xlsx
+2025-04-18 14:56:58,051 - INFO - Scraped 10 posts for keyword 'Lọc máu giảm đột quỵ'
+2025-04-18 14:56:58,051 - INFO - No posts found for keyword: Lọc máu giảm đột quỵ
+2025-04-18 14:56:58,051 - INFO - Searching for posts with keyword: Lọc máu phòng đột quỵ
+2025-04-18 14:57:05,921 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:57:05,962 - INFO - Post found!
+2025-04-18 14:57:06,945 - INFO - Post found!
+2025-04-18 14:57:07,900 - INFO - Post found!
+2025-04-18 14:57:10,509 - INFO - Post found!
+2025-04-18 14:57:11,468 - INFO - Post found!
+2025-04-18 14:57:12,452 - INFO - Post found!
+2025-04-18 14:57:13,495 - INFO - Post found!
+2025-04-18 14:57:14,451 - INFO - Post found!
+2025-04-18 14:57:20,685 - INFO - Post found!
+2025-04-18 14:57:22,178 - INFO - Post found!
+2025-04-18 14:57:23,186 - INFO - Data saved to facebook_posts.xlsx
+2025-04-18 14:57:24,857 - INFO - Scraped 10 posts for keyword 'Lọc máu phòng đột quỵ'
+2025-04-18 14:57:24,857 - INFO - No posts found for keyword: Lọc máu phòng đột quỵ
+2025-04-18 14:57:24,857 - INFO - Searching for posts with keyword: Lọc máu ngừa đột quỵ
+2025-04-18 14:57:31,687 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:57:31,730 - INFO - Post found!
+2025-04-18 14:57:32,787 - INFO - Post found!
+2025-04-18 14:57:34,316 - INFO - Post found!
+2025-04-18 14:57:35,365 - INFO - Post found!
+2025-04-18 14:57:36,915 - INFO - Post found!
+2025-04-18 14:57:37,985 - INFO - Post found!
+2025-04-18 14:57:38,980 - INFO - Post found!
+2025-04-18 14:57:39,962 - INFO - Post found!
+2025-04-18 14:57:40,968 - INFO - Post found!
+2025-04-18 14:57:43,131 - INFO - Post found!
+2025-04-18 14:57:44,191 - INFO - Data saved to facebook_posts.xlsx
+2025-04-18 14:57:45,364 - INFO - Scraped 10 posts for keyword 'Lọc máu ngừa đột quỵ'
+2025-04-18 14:57:45,364 - INFO - No posts found for keyword: Lọc máu ngừa đột quỵ
+2025-04-18 14:57:45,364 - INFO - Searching for posts with keyword: xuất tinh sớm
+2025-04-18 14:57:52,691 - INFO - Loaded 2 URLs from white_list
+2025-04-18 14:57:52,731 - INFO - Post found!
+2025-04-18 14:57:58,308 - INFO - Post found!
+2025-04-18 14:58:00,092 - INFO - Post found!
+2025-04-18 14:58:01,213 - INFO - Post found!
+2025-04-18 14:58:02,249 - INFO - Post found!
+2025-04-18 14:58:03,209 - INFO - Post found!
+2025-04-18 14:58:04,180 - INFO - Post found!
+2025-04-18 14:58:05,781 - INFO - Post found!
+2025-04-18 14:58:06,827 - INFO - Post found!
+2025-04-18 14:58:07,863 - INFO - Post found!
+2025-04-18 14:58:08,966 - INFO - Data saved to facebook_posts.xlsx
+2025-04-18 14:58:10,057 - INFO - Scraped 10 posts for keyword 'xuất tinh sớm'
+2025-04-18 14:58:10,057 - INFO - No posts found for keyword: xuất tinh sớm
+2025-04-18 14:58:10,057 - INFO - Searching for posts with keyword: cậu nhỏ
+2025-04-18 14:58:30,764 - ERROR - Search failed: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000102702e10 cxxbridge1$str$ptr + 2817040
+1   chromedriver                        0x00000001026fb0ac cxxbridge1$str$ptr + 2784940
+2   chromedriver                        0x00000001022428d8 cxxbridge1$string$len + 93028
+3   chromedriver                        0x00000001022896a0 cxxbridge1$string$len + 383276
+4   chromedriver                        0x00000001022ca7b8 cxxbridge1$string$len + 649796
+5   chromedriver                        0x000000010227da80 cxxbridge1$string$len + 335116
+6   chromedriver                        0x00000001026c7c98 cxxbridge1$str$ptr + 2575000
+7   chromedriver                        0x00000001026caf64 cxxbridge1$str$ptr + 2588004
+8   chromedriver                        0x00000001026a7a20 cxxbridge1$str$ptr + 2443296
+9   chromedriver                        0x00000001026cb7e0 cxxbridge1$str$ptr + 2590176
+10  chromedriver                        0x0000000102698b14 cxxbridge1$str$ptr + 2382100
+11  chromedriver                        0x00000001026eb9c4 cxxbridge1$str$ptr + 2721732
+12  chromedriver                        0x00000001026ebb50 cxxbridge1$str$ptr + 2722128
+13  chromedriver                        0x00000001026facf8 cxxbridge1$str$ptr + 2783992
+14  libsystem_pthread.dylib             0x000000018a9442e4 _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000018a93f0fc thread_start + 8
+
+2025-04-18 14:58:30,764 - INFO - No posts found for keyword: cậu nhỏ
+2025-04-18 14:58:30,989 - INFO - Browser closed successfully.

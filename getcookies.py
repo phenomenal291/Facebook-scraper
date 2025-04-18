@@ -2,7 +2,9 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 import json
 
-service = Service("chromedriver.exe")
+from webdriver_manager.chrome import ChromeDriverManager
+
+service = Service(service=(ChromeDriverManager().install()))
 browser = webdriver.Chrome(service=service)
 
 # Open Facebook login page

@@ -13,7 +13,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from utils import get_default_chrome_user_data_dir
-from db_mapping import save_to_database, save_to_excel,open_database,close_database
+from db_mapping import save_to_excel
 
 from webdriver_manager.chrome import ChromeDriverManager
 
@@ -202,7 +202,7 @@ class FacebookScraper:
         # Search for the keyword
         try:
             search_box = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, "//input[@type='search' and contains(@aria-label, 'Search Facebook')]"))
+                EC.presence_of_element_located((By.XPATH, "//input[@type='search' and contains(@aria-label, 'Tìm kiếm')]"))
             )
             search_box.send_keys(Keys.CONTROL + "a")
             search_box.send_keys(Keys.DELETE)
@@ -250,7 +250,7 @@ class FacebookScraper:
                 try:
                     story_elem = elem.find_element(By.XPATH, ".//div[@data-ad-rendering-role='story_message']")
                     text = story_elem.text.strip()
-                    if not text or text in [p["text"] for p in posts]:
+                    if not text:
                         continue
                     self.logger.info("Post found!")
 
@@ -317,7 +317,7 @@ class FacebookScraper:
                     if skip_post or link in url_checked: #thêm điều kiện check url_checked
                         continue
                     #thay vì save to posts ta sẽ yield 
-                    count+=1 #cộng count lên đã
+                    count+=1
                     yield({"text": text, "link": link, "date": post_date, "images": images, "videos": videos, "keyword": keyword})
                 except Exception as e:
                     self.logger.debug(f"Could not extract post content: {str(e)}")
@@ -397,49 +397,31 @@ def main():
         # Load keywords from file
         with open('keywords.txt', 'r', encoding='utf-8') as file:
             keywords = [line.strip() for line in file if line.strip()]
-            
-        #open database
-        engine , session = None,None
-        connection_string = (
-            "mssql+pyodbc://"
-            "sa:123456@" #login:password
-            "Tan-PC/"  # Replace with your server name
-            "crawl"    # Your database name
-            "?driver=ODBC+Driver+18+for+SQL+Server"
-            "&TrustServerCertificate=yes"
-            "&charset=UTF8"
-            "&encoding=utf8"
-        )
-        engine,session = open_database(connection_string)
 
         # Scrape posts for each keyword
         batch = []
         batch_size = 10
-        """ 
-            ông oke với hàm này thì ta sẽ tiến hành add biến branch_size vào cái args của hàm,
-            giờ mình demo trước đã nên tôi chưa thêm, lỡ không ổn xoá đỡ         
-         """
+
         for keyword in keywords:
-            post = scraper.scrape_posts(keyword, max_posts)
-            if post:
+            posts = scraper.scrape_posts(keyword, max_posts)
+            for post in posts:
                 batch.append(post)
                 if len(batch) >= batch_size:
-                    save_to_excel(batch)
-                    save_to_database(session,batch)
+                    save_to_excel(list(batch))
+                    #save_to_database(session,batch)
                     batch = []  #reset batch
             else:
                 logging.info(f"No posts found for keyword: {keyword}")
         
-        #check dư thừa vì batch chưa đủ = batch_size thì vẫn dư ra mín:
+        #phần dư 
         if batch:
             save_to_excel(batch)
-            save_to_database(session,batch)
+            #save_to_database(session,batch)
 
     finally:
         # Always close the browser
-        close_database(engine,session)
+        #close_database(engine,session)
         scraper.close()
-        #close database lun:
 
 
 if __name__ == "__main__":

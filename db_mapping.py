@@ -172,13 +172,11 @@ def save_to_excel(data, filename="facebook_posts.xlsx"):
         cleaned_post = {}
         for key, value in post.items():
             if key == 'text':
-                # Assuming clean_text is defined in this file
                 cleaned_post[key] = clean_text(value)
             else:
                 cleaned_post[key] = value
         cleaned_data.append(cleaned_post)
 
-    # Convert to a DataFrame
     df = pd.DataFrame(cleaned_data).fillna('')
 
     # Group by 'text'
@@ -198,16 +196,15 @@ def save_to_excel(data, filename="facebook_posts.xlsx"):
     grouped = grouped[column_order]
 
     try:
-        #nếu file đã tồn tại, tiến hành append thay vì tạo mới
+        #If file exists
         if os.path.exists(filename):
             book = load_workbook(filename)
+            start_row = book["Posts"].max_row
+
             with pd.ExcelWriter(filename, engine='openpyxl', mode='a', if_sheet_exists='overlay') as writer:
-                writer.book = book
-                writer.sheets = {ws.title: ws for ws in book.worksheets}
-                start_row = writer.sheets['Posts'].max_row
-                df.to_excel(writer, sheet_name="Posts", index=False, header=False, startrow=start_row)
+                grouped.to_excel(writer, sheet_name="Posts", index=False, header=False, startrow=start_row)
+        #the first time append to file
         else:
-            #chưa có file, tạo mới
             with pd.ExcelWriter(filename, engine='openpyxl') as writer:
                 grouped.to_excel(writer, sheet_name="Posts", index=False)
                 worksheet = writer.sheets["Posts"]
