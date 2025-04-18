@@ -16,6 +16,8 @@ import re
 import emoji
 import unicodedata
 
+from db_mapping import save_to_database, save_to_excel,open_database,close_database
+
 class AdsScraperLogger:
     """
     Handles logging configuration for the Facebook scraper.
@@ -113,7 +115,8 @@ class AdsScraper:
         search_box.send_keys(keyword)
         search_box.send_keys(Keys.RETURN)
     
-        posts = []
+        count = 0
+        url_checked =[]
         link = None
         last_height = self.driver.execute_script("return document.body.scrollHeight")
         scroll_attempts = 0
@@ -126,10 +129,10 @@ class AdsScraper:
         except Exception as e:
             print("Error finding ads:", e)
         
-        while ( len(posts) < maxposts and scroll_attempts < 5):
+        while ( count < maxposts and scroll_attempts < 5):
             ads = elems.find_elements(By.XPATH, "//div[contains(@class, '_7jyg _7jyh')]")
             for ad in ads:
-                if ( len(posts) >= maxposts):
+                if ( count >= maxposts):
                     break
         
                 try:
@@ -138,7 +141,7 @@ class AdsScraper:
                     self.logger.error(f"Error retrieving text from ad: {e}")
                     continue
                 
-                if not text or text in [p["text"] for p in posts]:
+                if not text:
                     continue
                     
                 try:
@@ -147,6 +150,11 @@ class AdsScraper:
                 except Exception as e:
                     self.logger.error(f"Error retrieving link from ad: {e}")
                     continue
+
+                if link in url_checked:
+                    continue
+                else: 
+                    url_checked.append(link)
                 
                 imgs = ad.find_elements(By.TAG_NAME, "img")
                 vids = ad.find_elements(By.TAG_NAME, "video")
@@ -155,7 +163,8 @@ class AdsScraper:
                 images = images[1:]     ## remove the image of profile
                 videos = [vid.get_attribute("src") for vid in vids]
                 
-                posts.append({"link": link,"text": text , "image": images, "video": videos,"keyword": keyword})
+                count+=1
+                yield({"link": link,"text": text , "image": images, "video": videos,"keyword": keyword})
                 self.logger.info("Ads Scraped")
                 
             # Scroll to load more content
@@ -182,111 +191,110 @@ class AdsScraper:
                 break
 
             last_height = new_height
-        self.logger.info(f"Scraped {len(posts)} posts for keyword '{keyword}'")
-        return posts
+        self.logger.info(f"Scraped {count} posts for keyword '{keyword}'")
     
-    @staticmethod
-    def clean_text(text):
-        """
-        Remove or replace characters that cause Excel errors.
-        Handles multiple styles of Unicode mathematical alphabetic symbols.
-        """
-        if not isinstance(text, str):
-            return text
+    # @staticmethod
+    # def clean_text(text):
+    #     """
+    #     Remove or replace characters that cause Excel errors.
+    #     Handles multiple styles of Unicode mathematical alphabetic symbols.
+    #     """
+    #     if not isinstance(text, str):
+    #         return text
         
-        text = emoji.replace_emoji(text, "")
-        # Dictionary of Unicode mathematical alphabetic symbols and their replacements
-        replacements = {
-            # Bold
-            range(0x1D400, 0x1D433): lambda c: chr(ord(c) - 0x1D400 + ord('A')),  # Bold A-Z and a-z
-            range(0x1D7CE, 0x1D7FF): lambda c: chr(ord(c) - 0x1D7CE + ord('0')),  # Bold numbers
+    #     text = emoji.replace_emoji(text, "")
+    #     # Dictionary of Unicode mathematical alphabetic symbols and their replacements
+    #     replacements = {
+    #         # Bold
+    #         range(0x1D400, 0x1D433): lambda c: chr(ord(c) - 0x1D400 + ord('A')),  # Bold A-Z and a-z
+    #         range(0x1D7CE, 0x1D7FF): lambda c: chr(ord(c) - 0x1D7CE + ord('0')),  # Bold numbers
             
-            # Italic
-            range(0x1D434, 0x1D467): lambda c: chr(ord(c) - 0x1D434 + ord('A')),  # Italic A-Z and a-z
+    #         # Italic
+    #         range(0x1D434, 0x1D467): lambda c: chr(ord(c) - 0x1D434 + ord('A')),  # Italic A-Z and a-z
             
-            # Bold Italic
-            range(0x1D468, 0x1D49B): lambda c: chr(ord(c) - 0x1D468 + ord('A')),  # Bold Italic A-Z and a-z
+    #         # Bold Italic
+    #         range(0x1D468, 0x1D49B): lambda c: chr(ord(c) - 0x1D468 + ord('A')),  # Bold Italic A-Z and a-z
             
-            # Script
-            range(0x1D49C, 0x1D4CF): lambda c: chr(ord(c) - 0x1D49C + ord('A')),  # Script A-Z and a-z
+    #         # Script
+    #         range(0x1D49C, 0x1D4CF): lambda c: chr(ord(c) - 0x1D49C + ord('A')),  # Script A-Z and a-z
             
-            # Bold Script
-            range(0x1D4D0, 0x1D503): lambda c: chr(ord(c) - 0x1D4D0 + ord('A')),  # Bold Script A-Z and a-z
+    #         # Bold Script
+    #         range(0x1D4D0, 0x1D503): lambda c: chr(ord(c) - 0x1D4D0 + ord('A')),  # Bold Script A-Z and a-z
             
-            # Fraktur
-            range(0x1D504, 0x1D537): lambda c: chr(ord(c) - 0x1D504 + ord('A')),  # Fraktur A-Z and a-z
+    #         # Fraktur
+    #         range(0x1D504, 0x1D537): lambda c: chr(ord(c) - 0x1D504 + ord('A')),  # Fraktur A-Z and a-z
             
-            # Double-struck
-            range(0x1D538, 0x1D56B): lambda c: chr(ord(c) - 0x1D538 + ord('A')),  # Double-struck A-Z and a-z
+    #         # Double-struck
+    #         range(0x1D538, 0x1D56B): lambda c: chr(ord(c) - 0x1D538 + ord('A')),  # Double-struck A-Z and a-z
             
-            # Bold Fraktur
-            range(0x1D56C, 0x1D59F): lambda c: chr(ord(c) - 0x1D56C + ord('A')),  # Bold Fraktur A-Z and a-z
+    #         # Bold Fraktur
+    #         range(0x1D56C, 0x1D59F): lambda c: chr(ord(c) - 0x1D56C + ord('A')),  # Bold Fraktur A-Z and a-z
             
-            # Sans-serif
-            range(0x1D5A0, 0x1D5D3): lambda c: chr(ord(c) - 0x1D5A0 + ord('A')),  # Sans-serif A-Z and a-z
+    #         # Sans-serif
+    #         range(0x1D5A0, 0x1D5D3): lambda c: chr(ord(c) - 0x1D5A0 + ord('A')),  # Sans-serif A-Z and a-z
             
-            # Sans-serif Bold
-            range(0x1D5D4, 0x1D607): lambda c: chr(ord(c) - 0x1D5D4 + ord('A')),  # Sans-serif Bold A-Z and a-z
-            range(0x1D7EC, 0x1D7F6): lambda c: chr(ord(c) - 0x1D7EC + ord('0')),  # Sans-serif Bold numbers
+    #         # Sans-serif Bold
+    #         range(0x1D5D4, 0x1D607): lambda c: chr(ord(c) - 0x1D5D4 + ord('A')),  # Sans-serif Bold A-Z and a-z
+    #         range(0x1D7EC, 0x1D7F6): lambda c: chr(ord(c) - 0x1D7EC + ord('0')),  # Sans-serif Bold numbers
             
-            # Sans-serif Italic
-            range(0x1D608, 0x1D63B): lambda c: chr(ord(c) - 0x1D608 + ord('A')),  # Sans-serif Italic A-Z and a-z
-        }
+    #         # Sans-serif Italic
+    #         range(0x1D608, 0x1D63B): lambda c: chr(ord(c) - 0x1D608 + ord('A')),  # Sans-serif Italic A-Z and a-z
+    #     }
         
         
-        # First normalize the text - this will separate characters from combining marks
-        normalized = unicodedata.normalize('NFKD', text)
-        result = ""
-        for char in normalized:
-            code = ord(char)
+    #     # First normalize the text - this will separate characters from combining marks
+    #     normalized = unicodedata.normalize('NFKD', text)
+    #     result = ""
+    #     for char in normalized:
+    #         code = ord(char)
             
-            # Skip control characters except tab, LF, CR
-            if code < 32 and code not in (9, 10, 13):
-                continue
+    #         # Skip control characters except tab, LF, CR
+    #         if code < 32 and code not in (9, 10, 13):
+    #             continue
             
-            # Try replacing mathematical symbols
-            replaced = False
-            for char_range, replacement_func in replacements.items():
-                if code in char_range:
-                    result += replacement_func(char)
-                    replaced = True
-                    break
+    #         # Try replacing mathematical symbols
+    #         replaced = False
+    #         for char_range, replacement_func in replacements.items():
+    #             if code in char_range:
+    #                 result += replacement_func(char)
+    #                 replaced = True
+    #                 break
             
-            # Keep the character if it wasn't replaced and is in BMP
-            if not replaced:
-                if code < 65536:  # Basic Multilingual Plane
-                    result += char
-        return result
+    #         # Keep the character if it wasn't replaced and is in BMP
+    #         if not replaced:
+    #             if code < 65536:  # Basic Multilingual Plane
+    #                 result += char
+    #     return result
     
-    def close(self):
-        if self.driver:
-            self.driver.quit()
-        self.logger.info("Browser closed")
+    # def close(self):
+    #     if self.driver:
+    #         self.driver.quit()
+    #     self.logger.info("Browser closed")
    
-    @staticmethod
-    def save_to_excel(data, filename="ads_posts.xlsx"):
-        """
-        Saves scraped post data to an Excel file with plain text formatting.
+    # @staticmethod
+    # def save_to_excel(data, filename="ads_posts.xlsx"):
+    #     """
+    #     Saves scraped post data to an Excel file with plain text formatting.
         
-        Args:
-            data: List of post dictionaries
-            filename: Output Excel file name
-        """
-        if not data:
-            logging.info("No data to save to Excel.")
-            return
+    #     Args:
+    #         data: List of post dictionaries
+    #         filename: Output Excel file name
+    #     """
+    #     if not data:
+    #         logging.info("No data to save to Excel.")
+    #         return
 
-        df = pd.DataFrame(data)
-        df.rename(columns={'text': 'Post Content', 'link': 'Link', 'image' : 'Image', 'video': 'Video','keyword': 'Keyword'}, inplace=True)
+    #     df = pd.DataFrame(data)
+    #     df.rename(columns={'text': 'Post Content', 'link': 'Link', 'image' : 'Image', 'video': 'Video','keyword': 'Keyword'}, inplace=True)
         
-        # Apply the cleaner row-wise
-        for col in df.columns:
-            df[col] = df[col].astype(str).apply(AdsScraper.clean_text)
+    #     # Apply the cleaner row-wise
+    #     for col in df.columns:
+    #         df[col] = df[col].astype(str).apply(AdsScraper.clean_text)
 
-        with pd.ExcelWriter(filename, engine='openpyxl') as writer:
-            df.to_excel(writer, sheet_name="Posts", index=False)
+    #     with pd.ExcelWriter(filename, engine='openpyxl') as writer:
+    #         df.to_excel(writer, sheet_name="Posts", index=False)
             
-        logging.info(f"Data saved to {filename}")
+    #     logging.info(f"Data saved to {filename}")
     
         
 
@@ -296,25 +304,48 @@ def main():
     max_posts = 15
     
     scraper = AdsScraper(headless=headless, proxy=proxy)
-    all_posts = []
-
+    #  open database
+    # engine , session = None,None
+    # connection_string = (
+    #     "mssql+pyodbc://"
+    #     "sa:123456@" #login:password
+    #     "Tan-PC/"  # Replace with your server name
+    #     "crawl"    # Your database name
+    #     "?driver=ODBC+Driver+18+for+SQL+Server"
+    #     "&TrustServerCertificate=yes"
+    #     "&charset=UTF8"
+    #     "&encoding=utf8"
+    # )
+    # engine,session = open_database(connection_string)
     # Using try/except here so the browser only closes on success/final step
     try:
         with open('keywords.txt', 'r', encoding='utf-8') as file:
             keywords = [line.strip() for line in file if line.strip()]
         
+        batch = []
+        batch_size = 10
+
         for keyword in keywords:
             posts = scraper.scrape_posts(keyword, max_posts)
-            if posts:
-                all_posts.extend(posts)
+            for post in posts:
+                batch.append(post)
+                if len(batch) >= batch_size:
+                    #save_to_database(list(batch))
+                    save_to_excel(list(batch))
+                    batch = []
             else:
                 logging.info(f"No posts found for keyword: {keyword}")
         
         # Save after all keywords are scraped
-        AdsScraper.save_to_excel(all_posts)
+        if(batch):
+            #save_to_database(batch)
+            save_to_excel(batch)
+            batch = []
+
     except Exception as e:
         logging.error(f"Scraper error: {e}")
     finally:
+        #close_database(engine,session)
         # Always close the browser 
         scraper.close()
         logging.info("Browser closed")
