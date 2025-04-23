@@ -13,7 +13,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from utils import get_default_chrome_user_data_dir
-from db_mapping import save_to_database, save_to_excel
+from db_mapping import save_to_excel
 
 from webdriver_manager.chrome import ChromeDriverManager
 
@@ -202,10 +202,15 @@ class FacebookScraper:
         # Search for the keyword
         try:
             search_box = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, "//input[@type='search' and contains(@aria-label, 'Search Facebook')]"))
+                EC.presence_of_element_located((By.XPATH, "//input[@type='search' and contains(@aria-label, 'Tìm kiếm')]"))
             )
-            search_box.send_keys(Keys.CONTROL + "a")
-            search_box.send_keys(Keys.DELETE)
+            search_box.click()
+            search_box.send_keys(Keys.END)
+            for _ in range(50): 
+                search_box.send_keys(Keys.BACKSPACE)
+            self.driver.execute_script("arguments[0].value = '';", search_box)
+            self.driver.execute_script("arguments[0].dispatchEvent(new Event('input', { bubbles: true }));", search_box)
+
             search_box.send_keys(keyword)
             current_url = self.driver.current_url
             search_box.send_keys(Keys.RETURN)
@@ -266,6 +271,7 @@ class FacebookScraper:
                     link = None
                     post_date = None
                     date_tooltip = None # date tooltip element
+                    poster_name = None #name
                     try:
                         span_elem = elem.find_element(By.CSS_SELECTOR, "span.html-span.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x1hl2dhg.x16tdsg8.x1vvkbs.x4k7w5x.x1h91t0o.x1h9r5lt.x1jfb8zj.xv2umb2.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1qrby5j")
                         
@@ -299,6 +305,12 @@ class FacebookScraper:
                         WebDriverWait(self.driver, 15).until(lambda d: d.execute_script("return document.readyState") == "complete")
                         link = self.driver.current_url
 
+                        #extract name
+                        try:
+                            poster_name = elem.find_element(By.CSS_SELECTOR,"span.x193iq5w.xeuugli.x13faqbe.x1vvkbs.xlh3980.xvmahel.x1n0sxbx.x1nxh6w3.x1sibtaa.x1s688f.xi81zsa").text
+                        except:
+                            poster_name = elem.find_element(By.CSS_SELECTOR,"span.html-span.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x1hl2dhg.x16tdsg8.x1vvkbs").text
+
                         # Close current post
                         self.driver.back()
                         WebDriverWait(self.driver, 10).until(lambda d: d.current_url == old_url)
@@ -316,7 +328,7 @@ class FacebookScraper:
                     if skip_post:
                         continue
 
-                    posts.append({"text": text, "link": link, "date": post_date, "images": images, "videos": videos, "keyword": keyword})
+                    posts.append({"name": poster_name,"text": text, "link": link, "date": post_date, "images": images, "videos": videos, "keyword": keyword})
                 except Exception as e:
                     self.logger.debug(f"Could not extract post content: {str(e)}")
 
@@ -367,13 +379,13 @@ def main():
     Main function that runs the Facebook scraper.
     """
     # Configuration
-    headless = True  # Run without showing browser window if True
+    headless = False  # Run without showing browser window if True
     proxy = None     # No proxy by default
     cookies_file = "facebook_cookies.json"  # Cookies file path
     white_list = "white_list.txt"
     user_data_dir = None  # Use default Chrome user data directory
     profile_name = None   # Use the specified Chrome profile
-    max_posts = 10        # Number of posts to scrape per keyword
+    max_posts = 15        # Number of posts to scrape per keyword
     
     # Initialize scraper
     scraper = FacebookScraper(
@@ -408,17 +420,17 @@ def main():
         save_to_excel(all_posts)
         
         # Save to database
-        connection_string = (
-            "mssql+pyodbc://"
-            "sa:123456@" #login:password
-            "Tan-PC/"  # Replace with your server name
-            "crawl"    # Your database name
-            "?driver=ODBC+Driver+18+for+SQL+Server"
-            "&TrustServerCertificate=yes"
-            "&charset=UTF8"
-            "&encoding=utf8"
-        )
-        save_to_database(all_posts, connection_string)
+        # connection_string = (
+        #     "mssql+pyodbc://"
+        #     "sa:123456@" #login:password
+        #     "Tan-PC/"  # Replace with your server name
+        #     "crawl"    # Your database name
+        #     "?driver=ODBC+Driver+18+for+SQL+Server"
+        #     "&TrustServerCertificate=yes"
+        #     "&charset=UTF8"
+        #     "&encoding=utf8"
+        # )
+        # save_to_database(all_posts, connection_string)
         
     finally:
         # Always close the browser
