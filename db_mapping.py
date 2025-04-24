@@ -7,6 +7,10 @@ from sqlalchemy.dialects.mssql import NVARCHAR
 import unicodedata
 import pandas as pd
 
+#thêm 2 thư viện để tiến hành "append" vào excel
+import os
+from openpyxl import load_workbook
+
 # Create base class for declarative models
 Base = declarative_base()
 
@@ -196,12 +200,21 @@ def save_to_excel(data, filename="facebook_posts.xlsx"):
     grouped = grouped[column_order]
 
     try:
-        with pd.ExcelWriter(filename, engine='openpyxl') as writer:
-            grouped.to_excel(writer, sheet_name="Posts", index=False)
-            worksheet = writer.sheets["Posts"]
-            for row in worksheet.iter_rows():
-                for cell in row:
-                    cell.number_format = '@'
+        #if file existed
+        if os.path.exists(filename):
+            book = load_workbook(filename)
+            start_row = book["Posts"].max_row
+
+            with pd.ExcelWriter(filename, engine='openpyxl', mode='a', if_sheet_exists='overlay') as writer:
+                grouped.to_excel(writer, sheet_name="Posts", index=False, header=False, startrow=start_row)
+        #the first time append to file
+        else:
+            with pd.ExcelWriter(filename, engine='openpyxl') as writer:
+                grouped.to_excel(writer, sheet_name="Posts", index=False)
+                worksheet = writer.sheets["Posts"]
+                for row in worksheet.iter_rows():
+                    for cell in row:
+                        cell.number_format = '@'        
     except Exception as e:
         logging.error(f"Failed to save data to Excel: {e}")
         return

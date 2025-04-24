@@ -227,18 +227,18 @@ class FacebookScraper:
             return []
 
         # Begin collecting posts
-        posts = []
+        url_crawled = [] #list of crawled url
         last_height = self.driver.execute_script("return document.body.scrollHeight")
         scroll_attempts = 0
         timeout = time.time() + max_posts * 5
         whitelist_entries = self.load_white_list() if self.white_list else []
         
-        while len(posts) < max_posts and scroll_attempts < 5:
+        while len(url_crawled) < max_posts and scroll_attempts < 5:
             # Find post elements
             elements = self.driver.find_elements(By.CSS_SELECTOR, "div.x1yztbdb.x1n2onr6.xh8yej3.x1ja2u2z")
 
             for elem in elements:
-                if len(posts) >= max_posts:
+                if len(url_crawled) >= max_posts:
                     break
 
                 # Try to expand truncated posts
@@ -254,8 +254,6 @@ class FacebookScraper:
                 try:
                     story_elem = elem.find_element(By.XPATH, ".//div[@data-ad-rendering-role='story_message']")
                     text = story_elem.text.strip()
-                    if not text or text in [p["text"] for p in posts]:
-                        continue
                     self.logger.info("Post found!")
 
                     # Extract images
@@ -327,8 +325,13 @@ class FacebookScraper:
                                 break
                     if skip_post:
                         continue
-
-                    posts.append({"name": poster_name,"text": text, "link": link, "date": post_date, "images": images, "videos": videos, "keyword": keyword})
+                    
+                    if link in url_crawled:
+                        self.logger.info(f"Skipping crawled post: {link}")
+                        continue
+                    
+                    url_crawled.append(link)
+                    yield ({"name": poster_name,"text": text, "link": link, "date": post_date, "images": images, "videos": videos, "keyword": keyword})
                 except Exception as e:
                     self.logger.debug(f"Could not extract post content: {str(e)}")
 
@@ -357,9 +360,7 @@ class FacebookScraper:
 
             last_height = new_height
 
-        self.logger.info(f"Scraped {len(posts)} posts for keyword '{keyword}'")
-        return posts
-
+        self.logger.info(f"Scraped {len(url_crawled)} posts for keyword '{keyword}'")
     def close(self):
         """
         Closes the browser and quits the WebDriver session.
@@ -408,17 +409,21 @@ def main():
             keywords = [line.strip() for line in file if line.strip()]
             
         # Scrape posts for each keyword
-        all_posts = []
+        batch = []
+        batch_size = 5
         for keyword in keywords:
             posts = scraper.scrape_posts(keyword, max_posts)
-            if posts:
-                all_posts.extend(posts)
+            for post in posts:
+                batch.append(post)
+                if(len(batch)>= batch_size):
+                    save_to_excel(batch)
+                    batch =[]
+            #sau khi save vẫn dư ra 1 phần
+            if batch:
+                save_to_excel(batch)
+                batch =[]
             else:
-                logging.info(f"No posts found for keyword: {keyword}")
-                
-        # Save results to Excel
-        save_to_excel(all_posts)
-        
+                logging.info(f"No posts found for keyword: {keyword}")        
         # Save to database
         # connection_string = (
         #     "mssql+pyodbc://"
