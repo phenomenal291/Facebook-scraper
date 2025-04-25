@@ -16,6 +16,8 @@ import re
 import emoji
 import unicodedata
 
+from db_mapping import save_to_excel
+
 class AdsScraperLogger:
     """
     Handles logging configuration for the Facebook scraper.
@@ -113,8 +115,12 @@ class AdsScraper:
         search_box.send_keys(keyword)
         search_box.send_keys(Keys.RETURN)
     
-        posts = []
+        url_checked = []
         link = None
+        #new element
+        post_date = None
+        date_tooltip = None # date tooltip element
+        poster_name = None  #name
         last_height = self.driver.execute_script("return document.body.scrollHeight")
         scroll_attempts = 0
         timeout = time.time() + maxposts*5
@@ -126,10 +132,10 @@ class AdsScraper:
         except Exception as e:
             print("Error finding ads:", e)
         
-        while ( len(posts) < maxposts and scroll_attempts < 5):
+        while ( len(url_checked) < maxposts and scroll_attempts < 5):
             ads = elems.find_elements(By.XPATH, "//div[contains(@class, '_7jyg _7jyh')]")
             for ad in ads:
-                if ( len(posts) >= maxposts):
+                if ( len(url_checked) >= maxposts):
                     break
         
                 try:
@@ -138,16 +144,20 @@ class AdsScraper:
                     self.logger.error(f"Error retrieving text from ad: {e}")
                     continue
                 
-                if not text or text in [p["text"] for p in posts]:
-                    continue
-                    
                 try:
                     link = ad.find_element(By.CLASS_NAME, "xt0psk2.x1hl2dhg.xt0b8zv.x8t9es0.x1fvot60.xxio538.xjnfcd9.xq9mrsl.x1yc453h.x1h4wwuj.x1fcty0u")
                     link = link.get_attribute('href')
                 except Exception as e:
                     self.logger.error(f"Error retrieving link from ad: {e}")
                     continue
-                
+                #check if link is crawled
+                if link in url_checked:
+                        self.logger.info(f"Skip crawled post")
+                        continue
+                #add to list of crawled link
+                url_checked.append(link)
+
+
                 imgs = ad.find_elements(By.TAG_NAME, "img")
                 vids = ad.find_elements(By.TAG_NAME, "video")
                 
@@ -155,7 +165,12 @@ class AdsScraper:
                 images = images[1:]     ## remove the image of profile
                 videos = [vid.get_attribute("src") for vid in vids]
                 
-                posts.append({"link": link,"text": text , "image": images, "video": videos,"keyword": keyword})
+                #extract poster_name
+                poster_name = ad.find_element(By.CSS_SELECTOR,"span.x8t9es0.x1fvot60.xxio538.x108nfp6.xq9mrsl.x1h4wwuj.x117nqv4.xeuugli")
+                #extract date
+
+
+                yield ({"name": poster_name,"text": text, "link": link, "date": post_date, "images": images, "videos": videos, "keyword": keyword})
                 self.logger.info("Ads Scraped")
                 
             # Scroll to load more content
@@ -182,8 +197,7 @@ class AdsScraper:
                 break
 
             last_height = new_height
-        self.logger.info(f"Scraped {len(posts)} posts for keyword '{keyword}'")
-        return posts
+        self.logger.info(f"Scraped {len(url_checked)} posts for keyword '{keyword}'")
     
     @staticmethod
     def clean_text(text):
@@ -263,30 +277,30 @@ class AdsScraper:
             self.driver.quit()
         self.logger.info("Browser closed")
    
-    @staticmethod
-    def save_to_excel(data, filename="ads_posts.xlsx"):
-        """
-        Saves scraped post data to an Excel file with plain text formatting.
+    # @staticmethod
+    # def save_to_excel(data, filename="ads_posts.xlsx"):
+    #     """
+    #     Saves scraped post data to an Excel file with plain text formatting.
         
-        Args:
-            data: List of post dictionaries
-            filename: Output Excel file name
-        """
-        if not data:
-            logging.info("No data to save to Excel.")
-            return
+    #     Args:
+    #         data: List of post dictionaries
+    #         filename: Output Excel file name
+    #     """
+    #     if not data:
+    #         logging.info("No data to save to Excel.")
+    #         return
 
-        df = pd.DataFrame(data)
-        df.rename(columns={'text': 'Post Content', 'link': 'Link', 'image' : 'Image', 'video': 'Video','keyword': 'Keyword'}, inplace=True)
+    #     df = pd.DataFrame(data)
+    #     df.rename(columns={'text': 'Post Content', 'link': 'Link', 'image' : 'Image', 'video': 'Video','keyword': 'Keyword'}, inplace=True)
         
-        # Apply the cleaner row-wise
-        for col in df.columns:
-            df[col] = df[col].astype(str).apply(AdsScraper.clean_text)
+    #     # Apply the cleaner row-wise
+    #     for col in df.columns:
+    #         df[col] = df[col].astype(str).apply(AdsScraper.clean_text)
 
-        with pd.ExcelWriter(filename, engine='openpyxl') as writer:
-            df.to_excel(writer, sheet_name="Posts", index=False)
+    #     with pd.ExcelWriter(filename, engine='openpyxl') as writer:
+    #         df.to_excel(writer, sheet_name="Posts", index=False)
             
-        logging.info(f"Data saved to {filename}")
+    #     logging.info(f"Data saved to {filename}")
     
         
 
@@ -296,7 +310,8 @@ def main():
     max_posts = 15
     
     scraper = AdsScraper(headless=headless, proxy=proxy)
-    all_posts = []
+    batch = []
+    batch_size = 5
 
     # Using try/except here so the browser only closes on success/final step
     try:
@@ -305,13 +320,16 @@ def main():
         
         for keyword in keywords:
             posts = scraper.scrape_posts(keyword, max_posts)
-            if posts:
-                all_posts.extend(posts)
-            else:
-                logging.info(f"No posts found for keyword: {keyword}")
+            for post in posts:
+                batch.append(post)
+                if(len(batch)>= batch_size):
+                    save_to_excel(batch)
+                    batch =[]
+            #sau khi save vẫn dư ra 1 phần
+            if batch:
+                save_to_excel(batch)
+                batch =[]
         
-        # Save after all keywords are scraped
-        AdsScraper.save_to_excel(all_posts)
     except Exception as e:
         logging.error(f"Scraper error: {e}")
     finally:
