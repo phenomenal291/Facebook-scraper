@@ -73,6 +73,7 @@ class BrowserManager:
         options.add_argument("--mute-audio")
         options.add_argument("start-maximized")
         options.add_argument(f"user-agent={BrowserManager.get_random_user_agent()}")
+        options.add_argument("--lang=vi")
 
         # Configure proxy if provided
         if proxy:
@@ -133,17 +134,17 @@ class AdsScraper:
             print("Error finding ads:", e)
         
         while ( len(url_checked) < maxposts and scroll_attempts < 5):
-            ads = elems.find_elements(By.XPATH, "//div[contains(@class, '_7jyg _7jyh')]")
+            ads = elems.find_elements(By.XPATH, "//div[contains(@class, 'x1plvlek xryxfnj x1gzqxud x178xt8z xm81vs4 xso031l xy80clv xb9moi8 xfth1om x21b0me xmls85d xhk9q7s x1otrzb0 x1i1ezom x1o6z2jb x1kmqopl x13fuv20 xu3j5b3 x1q0q8m5 x26u7qi x9f619')]")
             for ad in ads:
                 if ( len(url_checked) >= maxposts):
                     break
         
                 try:
-                    text = ad.text
+                    content = ad.find_element(By.XPATH, ".//div[contains(@class, '_7jyg _7jyh')]")
+                    text = content.find_element(By.XPATH, ".//div[contains(@class, 'x6ikm8r x10wlt62')]").text
                 except Exception as e:
                     self.logger.error(f"Error retrieving text from ad: {e}")
                     continue
-                
                 try:
                     link = ad.find_element(By.CLASS_NAME, "xt0psk2.x1hl2dhg.xt0b8zv.x8t9es0.x1fvot60.xxio538.xjnfcd9.xq9mrsl.x1yc453h.x1h4wwuj.x1fcty0u")
                     link = link.get_attribute('href')
@@ -166,9 +167,11 @@ class AdsScraper:
                 videos = [vid.get_attribute("src") for vid in vids]
                 
                 #extract poster_name
-                poster_name = ad.find_element(By.CSS_SELECTOR,"span.x8t9es0.x1fvot60.xxio538.x108nfp6.xq9mrsl.x1h4wwuj.x117nqv4.xeuugli")
+                poster_name = ad.find_element(By.CSS_SELECTOR,"span.x8t9es0.x1fvot60.xxio538.x108nfp6.xq9mrsl.x1h4wwuj.x117nqv4.xeuugli").text
                 #extract date
-
+                date_text = ad.find_elements(By.CLASS_NAME, "x8t9es0.xw23nyj.xo1l8bm.x63nzvj.x108nfp6.xq9mrsl.x1h4wwuj.xeuugli")
+                numbers = re.findall(r'\d+', date_text[1].text)
+                post_date = '/'.join(numbers[:3])
 
                 yield ({"name": poster_name,"text": text, "link": link, "date": post_date, "images": images, "videos": videos, "keyword": keyword})
                 self.logger.info("Ads Scraped")
