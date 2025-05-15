@@ -2,5 +2,10 @@ openpyxl==3.1.5
 pandas==2.2.3
 selenium==4.29.0
 emoji==1.7.0
-webdriver_manager
 sqlalchemy
+Scrapy==2.12.0
+requests==2.32.3
+beautifulsoup4==4.13.3
+loguru==0.7.3
+webdriver-manager==4.0.2
+trafilatura==2.0.0
